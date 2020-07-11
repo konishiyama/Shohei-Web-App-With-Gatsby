@@ -1,42 +1,127 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+import React, { useState, useContext } from "react"
+import styled from "styled-components"
+import NavbarLinks from "./NavbarLinks"
+import Logo from "./Logo"
+import {FirebaseContext} from './Firebase';
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+const Navigation = styled.nav`
+  height: 10vh;
+  display: flex;
+  background-color: #fff;
+  position: relative;
+  justify-content: space-between;
+  text-transform: uppercase;
+  margin: 0 auto;
+  padding: 0 5vw;
+  z-index: 2;
+  align-self: center;
 
-Header.defaultProps = {
-  siteTitle: ``,
+  @media (max-width: 768px) {
+    position: sticky;
+    height: 6.5vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+  }
+`
+
+const Toggle = styled.div`
+  display: none;
+  height: 100%;
+  cursor: pointer;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`
+
+const Navbox = styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 10vh;
+    background-color: #fff;
+    transition: all 0.3s ease-in;
+    top: 6.5vh;
+    left: ${props => (props.open ? "-100%" : "0")};
+  }
+`
+
+const Hamburger = styled.div`
+  background-color: #111;
+  width: 30px;
+  height: 3px;
+  transition: all .3s linear;
+  align-self: center;
+  position: relative;
+  transform: ${props => (props.open ? "rotate(-45deg)" : "inherit")};
+
+  ::before,
+  ::after {
+    width: 30px;
+    height: 3px;
+    background-color: #111;
+    content: "";
+    position: absolute;
+    transition: all 0.3s linear;
+  }
+
+  ::before {
+    transform: ${props =>
+      props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
+    top: -10px;
+  }
+
+  ::after {
+    opacity: ${props => (props.open ? "0" : "1")};
+    transform: ${props => (props.open ? "rotate(90deg) " : "rotate(0deg)")};
+    top: 10px;
+  }
+`
+const Header = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false)
+  const {firebase, user} = useContext(FirebaseContext);
+  console.log(firebase, user);
+
+  return (
+    <>
+    <Navigation>
+      <Logo />
+      <div>
+        {!!user && !!user.email &&
+          <div>
+            You are logged in!
+          </div>
+        }
+      </div>
+      <Toggle
+        navbarOpen={navbarOpen}
+        onClick={() => setNavbarOpen(!navbarOpen)}
+      >
+        {navbarOpen ? <Hamburger open /> : <Hamburger />}
+      </Toggle>
+      {navbarOpen ? (
+        <Navbox>
+          <NavbarLinks />
+        </Navbox>
+      ) : (
+        <Navbox open>
+          <NavbarLinks />
+        </Navbox>
+      )}
+    </Navigation>
+    </>
+  )
 }
 
 export default Header

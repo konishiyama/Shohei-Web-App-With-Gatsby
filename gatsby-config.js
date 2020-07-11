@@ -5,6 +5,26 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-styled-components`,
+    },
+    {
+      resolve: 'gatsby-firesource',
+      options: {
+        credential: require("./firebase.json"),
+        types: [
+          {
+            type: 'Test',  //ここの名前はただのqueryの名称になるのでなんでもいい。
+            collection: 'test', //これはFirebaseのコレクション名と同一にする必要がある（というかこれで指定する）
+            map: doc => ({
+              title: doc.title,
+              name: doc.name,
+            })
+          },
+        ]
+      }
+    },
+    `gatsby-plugin-twitter`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

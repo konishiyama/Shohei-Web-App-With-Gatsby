@@ -1,22 +1,106 @@
-import React from "react"
-import { Link } from "gatsby"
-
+import React, { Children } from "react"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import { Link, graphql } from "gatsby"
 
-const IndexPage = () => (
+const IndexPage = (props) => {
+  console.log(props);
+  return(
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+      <div>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3>testtest</h3>
+        <br></br>
+        <h3 className="has-text-weight-semibold is-size-2">
+        Twitter
+        </h3>
+        <br>
+        </br>
+        <a class="twitter-timeline" data-lang="ja" data-width="360" data-height="410" data-theme="light" href="https://twitter.com/GekidanHitori?ref_src=twsrc%5Etfw" 
+        style={{
+          textDecoration: `none`
+        }} target="_blank">Tweets by GekidanHitori</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <br>
+        </br>
+        <br>
+        </br>
+        <h3 className="has-text-weight-semibold is-size-2">
+          Instagram
+        </h3>
+        <br>
+        </br>
+        <a 
+        href="https://www.instagram.com/dlwlrma/?hl=ja"
+        target= "_blank"
+        >
+          <img src="/img/Instagram-thumnail.png"></img>
+        </a>
+        <p>
+          <a 
+            href="https://www.instagram.com/dlwlrma/?hl=ja"
+            target= "_blank"
+            style={{
+              textDecoration: `none`
+            }}
+            >もっと見る
+          </a>
+        </p>
+      </div>
   </Layout>
-)
+);
+}
+
+export const query = graphql`
+{
+  allTest {
+    edges {
+      node {
+        name
+        title
+        id
+      }
+    }
+  }
+}
+
+`
 
 export default IndexPage
