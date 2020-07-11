@@ -96,13 +96,15 @@ const Header = () => {
   return (
     <>
     <Navigation>
-      <img 
-        src="/img/logo.jpg"
-        style={{
-          height:`40px`,
-          marginTop: `8px`,
-        }}
-      ></img>
+      <a href="/">
+        <img 
+          src="/img/logo.jpg"
+          style={{
+            height:`40px`,
+            marginTop: `8px`,
+          }}
+        ></img>
+      </a>
       <div>
         {!!user && !!user.email &&
           <div>

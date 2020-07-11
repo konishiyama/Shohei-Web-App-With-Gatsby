@@ -43,9 +43,9 @@ const NavbarLinks = () => {
   const {firebase, user} = useContext(FirebaseContext);
   return (
     <>
-      <NavItem to="https://shohei-web-app-demo.netlify.app/">About</NavItem>
-      <NavItem to="https://shohei-web-app-demo.netlify.app/">Blog</NavItem>
-      <NavItem to="https://shohei-web-app-demo.netlify.app/">Contact</NavItem>
+      <NavItem to="/">About</NavItem>
+      <NavItem to="/">Blog</NavItem>
+      <NavItem to="/">Contact</NavItem>
       {!user &&
         <NavItem href="/login">Login</NavItem>
       }

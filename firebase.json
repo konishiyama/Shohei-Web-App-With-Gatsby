@@ -8,5 +8,56 @@
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-oqq54%40shohei-s-webapp-with-gatsby.iam.gserviceaccount.com"
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-oqq54%40shohei-s-webapp-with-gatsby.iam.gserviceaccount.com",
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "headers": [
+      {
+        "source": "**/*",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "cache-control: public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "static/**",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "sw.js",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "cache-control: public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "page-data/**",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "cache-control: public, max-age=0, must-revalidate"
+          }
+        ]
+      }
+    ]
+  }
 }
