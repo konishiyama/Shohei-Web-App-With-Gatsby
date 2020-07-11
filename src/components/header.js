@@ -107,7 +107,13 @@ const Header = () => {
       </a>
       <div>
         {!!user && !!user.email &&
-          <div>
+          <div
+          style={{
+            height:`100%`,
+            marginTop: `12px`,
+            verticalAlign: `middle`,
+          }}
+          >
             You are logged in!
           </div>
         }

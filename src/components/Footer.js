@@ -9,28 +9,33 @@ const Container = styled.div`
 
 `
 
-const Home = styled(Link)`
+const Home = styled.div`
   width: 50%;
   text-align: center;
-  text-decoration: none;
   cursor: pointer;
   // font-weight: bold;
+  a{
+    text-decoration: none;
     &:hover{
       color: #0086d1;
       transition: all 0.4s ease-in;
     }
+  }
 `
 
-const LogIn = styled(Link)`
+const LogIn = styled.div`
   width: 50%;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   font-weight: bold;
+  a{
+    text-decoration: none;
     &:hover{
       color: #0086d1;
       transition: all 0.4s ease-in;
     }
+  }
 `
 
 const LogOut = styled.span`
@@ -95,7 +100,6 @@ const Footer = () => {
   const {firebase, user} = useContext(FirebaseContext);
   
   function handleLogOutClick(){
-    console.log('it works');
     firebase.logout().then(() => navigate('/login'))
   }
 
@@ -103,12 +107,18 @@ const Footer = () => {
   <>
     <Container>
       <Paragraph1>
-        <Home href="/">
+        <Home>
             {/* <img src="/icons/Home1.png"></img> */}
-              HOME
+              <a href="/">
+                HOME
+              </a>
         </Home>
           {!user &&
-            <LogIn href="/login">ログイン</LogIn>
+            <LogIn>
+              <a href="/login">
+                ログイン
+              </a>
+            </LogIn>
           }
           {!!user && 
             <LogOut onClick={handleLogOutClick}>ログアウト</LogOut>
