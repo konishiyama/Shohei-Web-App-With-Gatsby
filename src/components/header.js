@@ -60,7 +60,7 @@ const Navbox = styled.div`
 const Hamburger = styled.div`
   background-color: #111;
   width: 30px;
-  height: 3px;
+  height: 2px;
   transition: all .3s linear;
   align-self: center;
   position: relative;
@@ -69,7 +69,7 @@ const Hamburger = styled.div`
   ::before,
   ::after {
     width: 30px;
-    height: 3px;
+    height: 2px;
     background-color: #111;
     content: "";
     position: absolute;
@@ -96,7 +96,13 @@ const Header = () => {
   return (
     <>
     <Navigation>
-      <Logo />
+      <img 
+        src="/img/logo.jpg"
+        style={{
+          height:`40px`,
+          marginTop: `8px`,
+        }}
+      ></img>
       <div>
         {!!user && !!user.email &&
           <div>

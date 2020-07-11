@@ -6,7 +6,23 @@ import { Link, graphql } from "gatsby"
 const CoverPic = styled.img`
   margin: 0;
   maxWidth: 960;
-  padding: 0 0 2rem;
+  padding: 0 0 0;
+  height: 630px;
+  object-fit: cover;
+`
+
+const Index = styled.div`
+  margin: 4rem auto 2rem;
+  text-align: center;
+
+  span{
+    font-family: Avenir Next Condensed;
+    font-weight: 200;
+    letter-spacing: 0.03em;
+    font-size: 28px;
+    color: #444444;
+    margin: 0 auto;
+  }
 `
 
 const ArticleList = styled.ul`
@@ -32,6 +48,7 @@ const Container = styled.div`
   p{
     text-align: left;
     color: #888;
+    margin-bottom: 0.1rem;
   }
 `
 
@@ -64,10 +81,14 @@ const IndexPage = (props) => {
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `0 1.0rem 1.45rem`,
+          padding: `0 0.8rem 1.45rem`,
         }}
       >
-    <h3>Recent Posts</h3>
+    <Index>
+      <span>
+         Recent Posts
+      </span>
+    </Index>
       <div>
        <ArticleList>
           {props.data.allArticle.edges.map(edge => (
@@ -87,20 +108,20 @@ const IndexPage = (props) => {
           )
           )}
        </ArticleList>
-        <br></br>
-        <br></br>
-        <h3 className="has-text-weight-semibold is-size-2">
-        Twitter
-        </h3>
+        <Index>
+          <span>
+            Twitter
+          </span>
+        </Index>
         <a class="twitter-timeline" data-lang="ja" data-width="360" data-height="410" data-theme="light" href="https://twitter.com/GekidanHitori?ref_src=twsrc%5Etfw" 
         style={{
           textDecoration: `none`
         }} target="_blank">Tweets by GekidanHitori</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <br></br>
-        <br></br>
-        <h3 className="has-text-weight-semibold is-size-2">
-          Instagram
-        </h3>
+        <Index>
+          <span>
+            Instagram
+          </span>
+        </Index>
         <a 
         href="https://www.instagram.com/dlwlrma/?hl=ja"
         target= "_blank"

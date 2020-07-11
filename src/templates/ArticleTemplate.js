@@ -18,11 +18,12 @@ const ArticleTemplate = (props) => {
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `1.5rem 1rem 1.45rem`,
+          padding: `1.5rem 1.5rem 1.45rem`,
         }}
       >
       <ArticleItem>
         <h2>{props.pageContext.title}</h2>
+        <p>{props.pageContext.time.slice(0, 10)}</p>
         <img src={props.pageContext.coverImage} alt="CoverImage"></img>
         <p>{props.pageContext.content}</p>
       </ArticleItem>
