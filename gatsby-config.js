@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `衆議院議員 山口翔平 公式ウェブサイト`,
+    description: `栃木県日光市選出、衆議院議員、山口翔平の公式ウェブサイトです。`,
+    author: `@ShoheiYamaguchi`,
   },
   plugins: [
     {
@@ -14,11 +14,15 @@ module.exports = {
         credential: require("./firebase.json"),
         types: [
           {
-            type: 'Test',  //ここの名前はただのqueryの名称になるのでなんでもいい。
-            collection: 'test', //これはFirebaseのコレクション名と同一にする必要がある（というかこれで指定する）
+            type: 'Article',  //ここの名前はただのqueryの名称になるのでなんでもいい。
+            collection: 'articles', //これはFirebaseのコレクション名と同一にする必要がある（というかこれで指定する）
             map: doc => ({
               title: doc.title,
-              name: doc.name,
+              content: doc.content,
+              coverImage: doc.coverImage,
+              thumnail: doc.thumnail,
+              time: doc.time.toDate(),
+              category: doc.category,
             })
           },
         ]

@@ -2,16 +2,20 @@ const path = require('path');
 
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions;
-  const ArticleTemplate = path.resolve('src/templates/ArticleTemplate.js') 
+  const ArticleTemplate = path.resolve('src/templates/ArticleTemplate.js');
 
   return graphql(`
   {
-    allTest {
+    allArticle {
       edges {
         node {
-          name
-          title
+          category
+          content
+          coverImage
           id
+          thumnail
+          title
+          time
         }
       }
     }
@@ -22,7 +26,7 @@ exports.createPages = ({graphql, actions}) => {
       throw result.errors;
     }
 
-    result.data.allTest.edges.forEach(edge =>{
+    result.data.allArticle.edges.forEach(edge =>{
       createPage({
         path: `/article/${edge.node.id}`,
         component: ArticleTemplate,

@@ -45,7 +45,7 @@ const LogOut = styled.span`
   `
 
 const ImgContainer = styled.div`
-  height: 50px;
+  height: 40px;
   width: 80%;
   margin: 0 auto 10px;
   display: flex;
@@ -53,7 +53,7 @@ const ImgContainer = styled.div`
 `
 
 const Img = styled.img`
-  height: 40px;
+  height: 30px;
   margin: 0 auto;
 
 `
