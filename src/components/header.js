@@ -90,8 +90,8 @@ const Hamburger = styled.div`
 `
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
-  const {firebase, user} = useContext(FirebaseContext);
-  console.log(firebase, user);
+  const {user} = useContext(FirebaseContext);
+  console.log(user);
 
   return (
     <>
@@ -100,8 +100,8 @@ const Header = () => {
         <img 
           src="/img/logo.jpg"
           style={{
-            height:`40px`,
-            marginTop: `8px`,
+            height:`35px`,
+            marginTop: `5px`,
           }}
         ></img>
       </a>
@@ -114,7 +114,7 @@ const Header = () => {
             verticalAlign: `middle`,
           }}
           >
-            Logged in!
+            Hi, {user.username || user.email} !
           </div>
         }
       </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Layout from "../components/layout"
 import {Link, navigate} from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, Facebook, FBContainer, SmallP} from '../components/common';
+import { Form, Button, Input, FormContainer, Title, Facebook, FBContainer, SmallP, ErrorMessage} from '../components/common';
 import {useAuth} from '../components/Firebase'
 import styled from 'styled-components';
 
@@ -19,14 +19,19 @@ const A = styled.a`
 const Login = () => {
   const [formValues, setFormValues] = useState({email:'', password: ''});
   const {firebase} = useAuth();
+  const [errorMessage, setErrorMessage] = useState('');
 
   function handleSubmit(e){
     e.preventDefault();
-    firebase.login({email: formValues.email, password: formValues.password}).then(()=> navigate('/'))
+    firebase.login({email: formValues.email, password: formValues.password}).then(()=> navigate('/')).catch(error => {
+      console.log(error);
+      setErrorMessage(error.message);
+    })
   }
 
   function handleInputChange(e){
     e.persist();
+    setErrorMessage('');
     setFormValues(currentValues => ({
       ...currentValues,
       [e.target.name]: e.target.value
@@ -38,14 +43,16 @@ const Login = () => {
       <br></br>
       <br></br>
       <br></br>
-      <br></br>
       <FormContainer>
         <Title>
           LOGIN
         </Title>
         <Form onSubmit={handleSubmit}>
-          <Input placeholder="email" value={formValues.email} name="email" type="email" onChange={handleInputChange} />
-          <Input placeholder="password" value={formValues.password} name="password" type="password" onChange={handleInputChange} />
+          <Input required placeholder="email" value={formValues.email} name="email" type="email" onChange={handleInputChange} />
+          <Input required placeholder="password" value={formValues.password} name="password" type="password" onChange={handleInputChange} />
+          {!!errorMessage &&
+          <ErrorMessage>パスワードまたはメールアドレスが間違っています</ErrorMessage>
+          }
           <Button type="submit" block>Login</Button>
         </Form>
         <div 
@@ -69,12 +76,12 @@ const Login = () => {
         <br/>
         <SmallP>
           <p>Forgot
-           <A to="/"> Password?</A>
+           <A href="/"> Password?</A>
           </p>
         </SmallP>
         <SmallP>
          <p>Not a member?
-          <A to="/"> Sign up now</A>
+          <A href="/register"> Sign up now</A>
          </p>
         </SmallP>
         <br/>
