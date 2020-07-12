@@ -87,7 +87,7 @@ const NavbarLinks = () => {
   return (
     <>
       <NavItem to="/">About</NavItem>
-      <NavItem to="/">Blog</NavItem>
+      <NavItem to="/blog">Blog</NavItem>
       <NavItem to="/">Contact</NavItem>
       {!user &&
         <NavItem href="/login">Login</NavItem>

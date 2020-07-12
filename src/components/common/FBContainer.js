@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
-  max-width: 250px;
+export const FBContainer = styled.div`
   margin: 0 auto;
+  height: 35px;
 `

@@ -24,16 +24,8 @@ const Layout = ({ children }) => {
   return (
     <FirebaseContext.Provider value={{user, firebase, loading}}>
       <Header />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 0 1.45rem`,
-        }}
-      >
         <main>{children}</main>
         <Footer />
-      </div>
     </FirebaseContext.Provider>
   )
 }

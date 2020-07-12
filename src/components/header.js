@@ -114,7 +114,7 @@ const Header = () => {
             verticalAlign: `middle`,
           }}
           >
-            You are logged in!
+            Logged in!
           </div>
         }
       </div>
