@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Layout from "../components/layout"
 import {Link, navigate} from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, Facebook, FBContainer, SmallP, ErrorMessage} from '../components/common';
+import { Form, Button, Input, FormContainer, Title, Facebook, FBContainer, SmallP, ErrorMessage, CheckBox} from '../components/common';
 import {useAuth} from '../components/Firebase'
 import styled from 'styled-components';
 
@@ -42,27 +42,46 @@ const Login = () => {
     <Layout>
       <br></br>
       <br></br>
-      <br></br>
       <FormContainer>
         <Title>
           LOGIN
         </Title>
         <Form onSubmit={handleSubmit}>
+          <p style={{
+            textAlign: `left`,
+            fontSize: `16px`,
+            marginBottom: `4px`,
+          }}>EMAIL</p>
           <Input required placeholder="email" value={formValues.email} name="email" type="email" onChange={handleInputChange} />
+          <p style={{
+            textAlign: `left`,
+            fontSize: `16px`,
+            marginBottom: `4px`,
+          }}>PASSWORD</p>
           <Input required placeholder="password" value={formValues.password} name="password" type="password" onChange={handleInputChange} />
           {!!errorMessage &&
           <ErrorMessage>パスワードまたはメールアドレスが間違っています</ErrorMessage>
           }
+          <div style={{
+            display: `flex`,
+            marginBottom: `20px`,
+            marginTop: `20px`,
+          }}>
+            <CheckBox type="checkbox" />
+            <span style={{
+              paddingLeft: `4px`
+            }}>Remember Password</span>
+          </div>
           <Button type="submit" block>Login</Button>
         </Form>
-        <div 
+        {/* <div 
         style={{
           margin: `1rem auto 0.5rem`,
-          fontSize: `12px`,
+          fontSize: `16px`,
         }}>
           or log in with 
-        </div>
-        <Facebook>
+        </div> */}
+        {/* <Facebook>
           <FBContainer>
             <span style={{
               fontFamily: `Lucida Grande`,
@@ -72,7 +91,7 @@ const Login = () => {
               paddingLeft: `5px`,
             }}>Facebook</span>
           </FBContainer>
-        </Facebook>
+        </Facebook> */}
         <br/>
         <SmallP>
           <p>Forgot

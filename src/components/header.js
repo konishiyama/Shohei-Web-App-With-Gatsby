@@ -100,8 +100,8 @@ const Header = () => {
         <img 
           src="/img/logo.jpg"
           style={{
-            height:`35px`,
-            marginTop: `5px`,
+            height:`40px`,
+            marginTop: `8px`,
           }}
         ></img>
       </a>
