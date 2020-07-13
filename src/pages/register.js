@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react"
 import Layout from "../components/layout"
 import {Link, navigate} from 'gatsby'
 import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage} from '../components/common';
-import {useAuth} from '../components/Firebase'
+import {useAuth, FirebaseContext} from '../components/Firebase'
 import styled from 'styled-components';
 
 
@@ -18,7 +18,7 @@ const A = styled.a`
 `
 
 const Register = () => {
-  const {firebase} = useAuth();
+  const {firebase} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
 
   const [formValues, setFormValues] = useState({
@@ -54,8 +54,7 @@ const Register = () => {
 }
 
   return(
-    <Layout>
-      <br></br>
+    <section>
       <br></br>
       <br></br>
       <FormContainer>
@@ -93,7 +92,7 @@ const Register = () => {
       <br></br>
       <br></br>
       <br></br>
-    </Layout>
+    </section>
 )
 }
 

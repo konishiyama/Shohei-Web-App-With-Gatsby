@@ -34,6 +34,7 @@ const Title = styled.h3`
   font-weight: 800;
   color: #02102e;
   text-align: left;
+  letter-spacing: normal;
   &:hover{
     color: #0086d1;
     transition: all 0.4s ease-in;

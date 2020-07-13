@@ -39,7 +39,7 @@ const Login = () => {
   }
 
   return(
-    <Layout>
+    <section>
       <br></br>
       <br></br>
       <FormContainer>
@@ -109,7 +109,7 @@ const Login = () => {
       <br></br>
       <br></br>
       <br></br>
-    </Layout>
+    </section>
 )
 }
 

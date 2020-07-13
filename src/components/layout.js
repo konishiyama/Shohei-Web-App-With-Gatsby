@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { FirebaseContext, useAuth } from './Firebase'; 
 
 import Header from "./header"
 import Footer from "./Footer"
 import "./layout.css"
 
-import { FirebaseContext, useAuth } from './Firebase'; 
 
 const Layout = ({ children }) => {
   const {user, firebase, loading} = useAuth();
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <FirebaseContext.Provider value={{user, firebase, loading}}>
+    <FirebaseContext.Provider value= {{user, firebase, loading}}>
       <Header />
         <main>{children}</main>
         <Footer />

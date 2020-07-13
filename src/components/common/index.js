@@ -8,3 +8,4 @@ export * from './FBContainer';
 export * from './Facebook';
 export * from './SmallP';
 export * from './ErrorMessage';
+export * from './ArticleComments';

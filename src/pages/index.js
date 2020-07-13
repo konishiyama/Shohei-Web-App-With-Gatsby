@@ -38,7 +38,7 @@ const ArticleList = styled.ul`
 const IndexPage = (props) => {
   return(
   <>
-  <Layout>
+  <section>
     <CoverPic src="/img/progile-pic.jpg"></CoverPic>
     <div
         style={{
@@ -93,7 +93,7 @@ const IndexPage = (props) => {
           </a>
         </p>
       </div>
-  </Layout>
+  </section>
   </>
 );
 }

@@ -24,6 +24,11 @@ class Firebase {
     })
   }
 
+  async subscribeToArticleComments({articleId, onSnapshot}){
+    const articleRef = this.db.collection('articles').doc(articleId); //lesson41,42を参照
+    return this.db.collection('comments').where('article' , '==', articleRef).onSnapshot(onSnapshot)
+  }
+
   async login({email, password}) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
