@@ -24,6 +24,14 @@ class Firebase {
     })
   }
 
+  async postComment({text, articleId}){
+    const postCommentCallable = this.functions.httpsCallable('postComment');
+    return postCommentCallable({
+      text,
+      articleId
+    });
+  }
+
   async subscribeToArticleComments({articleId, onSnapshot}){
     const articleRef = this.db.collection('articles').doc(articleId); //lesson41,42を参照
     return this.db.collection('comments').where('article' , '==', articleRef).onSnapshot(onSnapshot)
