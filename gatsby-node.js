@@ -15,7 +15,6 @@ exports.createPages = ({graphql, actions}) => {
           id
           thumnail
           title
-          time
         }
       }
     }
@@ -25,6 +24,7 @@ exports.createPages = ({graphql, actions}) => {
     if(result.errors){
       throw result.errors;
     }
+
 
     result.data.allArticle.edges.forEach(edge =>{
       createPage({

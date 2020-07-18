@@ -85,7 +85,6 @@ export const query = graphql`
         id
         thumnail
         title
-        time
       }
     }
   }

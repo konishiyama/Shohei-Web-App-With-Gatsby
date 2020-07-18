@@ -1,10 +1,10 @@
 
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
-import { Link, navigate } from "gatsby"
+import { navigate } from "gatsby"
 import {FirebaseContext} from './Firebase';
 
-const NavItem = styled(Link)`
+const NavItem = styled.a`
   text-decoration: none;
   color: #111;
   display: inline-block;
@@ -86,9 +86,9 @@ const NavbarLinks = () => {
 
   return (
     <>
-      <NavItem to="/">About</NavItem>
-      <NavItem to="/blog">Blog</NavItem>
-      <NavItem to="/">Contact</NavItem>
+      <NavItem href="/">About</NavItem>
+      <NavItem href="/blog">Blog</NavItem>
+      <NavItem href="/">Contact</NavItem>
       {!user &&
         <NavItem href="/login">Login</NavItem>
       }

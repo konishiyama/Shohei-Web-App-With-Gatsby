@@ -13,6 +13,14 @@ class Firebase {
     }
   }
 
+
+  async postArticle({title, content}){
+    return this.db.collection('articles').doc().set({
+      title: title,
+      content: content
+    })
+  }
+
   async getUserProfile({userId}){
     return this.db.collection('publicProfiles').where('userId', '==', userId).get();
   }

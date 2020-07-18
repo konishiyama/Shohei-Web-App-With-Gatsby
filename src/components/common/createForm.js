@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
-  max-width: 90%;
+export const createForm = styled.form`
+  max-width: 800px;
   margin: 0 auto;
 `

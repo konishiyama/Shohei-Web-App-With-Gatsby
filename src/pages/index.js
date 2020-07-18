@@ -1,6 +1,5 @@
 import React, { Children } from "react"
 import styled from "styled-components"
-import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
 
@@ -109,7 +108,6 @@ export const query = graphql`
         id
         thumnail
         title
-        time
       }
     }
   }

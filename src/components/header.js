@@ -2,7 +2,6 @@
 import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import NavbarLinks from "./NavbarLinks"
-import Logo from "./Logo"
 import {FirebaseContext} from './Firebase';
 
 const Navigation = styled.nav`
@@ -91,7 +90,7 @@ const Hamburger = styled.div`
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const {firebase, user} = useContext(FirebaseContext);
-  console.log(user);
+  // console.log(user);
 
   return (
     <>
@@ -126,7 +125,10 @@ const Header = () => {
       </Toggle>
       {navbarOpen ? (
         <Navbox>
-          <NavbarLinks />
+          <NavbarLinks
+          navbarOpen={navbarOpen}
+          onClick={() => setNavbarOpen(!navbarOpen)}
+          />
         </Navbox>
       ) : (
         <Navbox open>

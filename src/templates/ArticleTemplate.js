@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
-import Layout from "../components/layout"
 import styled from "styled-components"
 import { FirebaseContext } from '../components/Firebase';
 import { ArticleComments } from '../components/common'
-
+import renderHTML from 'react-render-html'
 
 const ArticleTemplate = (props) => {
   const {firebase} = useContext(FirebaseContext)
@@ -23,9 +22,9 @@ const ArticleTemplate = (props) => {
       >
         <ArticleItem>
           <h2>{props.pageContext.title}</h2>
-          <p>{props.pageContext.time.slice(0, 10)}</p>
+          {/* <p>{props.pageContext.time.slice(0, 10)}</p> */}
           <img src={props.pageContext.coverImage} alt="CoverImage"></img>
-          <p>{props.pageContext.content}</p>
+          <p>{renderHTML(props.pageContext.content)}</p>
         </ArticleItem>
         {!!firebase &&  
           <ArticleComments

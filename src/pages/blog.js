@@ -37,7 +37,7 @@ const IndexPage = (props) => {
      {props.data.allArticle.edges.map(edge => (
       <ArticleRoll 
         title = {edge.node.title}
-        time = {edge.node.time}
+        // time = {edge.node.time}
         thumnail = {edge.node.thumnail}
         id = {edge.node.id}
       />
@@ -60,7 +60,6 @@ export const query = graphql`
         id
         thumnail
         title
-        time
       }
     }
   }
