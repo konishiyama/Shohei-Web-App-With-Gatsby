@@ -1,16 +1,9 @@
 import React, { Children } from "react"
 import styled from "styled-components"
-import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
+import {  Button, Input, ErrorMessage, Form, Message, UploadButton, PageTitle, SubIndex, PageCover } from '../components/common';
 
-const CoverPic = styled.img`
-  margin: 0;
-  maxWidth: 960;
-  padding: 0 0 0;
-  height: 400px;
-  object-fit: cover;
-`
 
 const ArticleList = styled.ul`
   display: flex;
@@ -25,7 +18,14 @@ const IndexPage = (props) => {
   return(
   <>
   <section>
-    <CoverPic src="/img/progile-pic.jpg"></CoverPic>
+    <PageCover>
+      <img src="/img/coversample3.jpg"></img>
+      <p>
+        <span>
+          BLOG
+        </span>
+      </p>
+    </PageCover>
     <div
         style={{
           margin: `0 auto`,

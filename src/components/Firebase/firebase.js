@@ -14,11 +14,20 @@ class Firebase {
   }
 
 
-  async postArticle({title, content}){
-    return this.db.collection('articles').doc().set({
+  async uploadImages({image}){
+    return this.storage.ref(`/images/${image.name}`).put(image)
+  }
+
+  async getImageURL({image}){
+    return this.storage.ref("images").child(image.name).getDownloadURL();
+  }
+
+  async postArticle({title, content, cover}){
+    return this.db.collection('articles').add({ //doc().set()でもいいが、この場合は一旦、doc()として参照しつつ、あとでその参照を利用するのが便利な場合。ってかどっちでもいい。
       title: title,
-      content: content
-    })
+      content: content,
+      thumnail: cover, 
+    });
   }
 
   async getUserProfile({userId}){

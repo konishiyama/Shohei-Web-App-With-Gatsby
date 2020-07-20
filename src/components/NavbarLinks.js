@@ -80,17 +80,19 @@ const NavbarLinks = () => {
   const {firebase, user} = useContext(FirebaseContext);
 
   function handleLogOutClick(){
-    console.log('it works!!!');
     firebase.logout().then(() => navigate('/login'))
   }
 
   return (
     <>
-      <NavItem href="/">About</NavItem>
+      <NavItem href="/about">About</NavItem>
       <NavItem href="/blog">Blog</NavItem>
-      <NavItem href="/">Contact</NavItem>
+      <NavItem href="/contact">Contact</NavItem>
       {!user &&
-        <NavItem href="/login">Login</NavItem>
+        <NavItem href="/login">Login</NavItem> 
+      }
+      {!!user &&
+        <NavItem href="/post">Post</NavItem> 
       }
       {!!user &&
         <Logout onClick={handleLogOutClick}>Logout</Logout>

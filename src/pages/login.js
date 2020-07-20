@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { navigate } from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, Facebook, FBContainer, SmallP, ErrorMessage, CheckBox} from '../components/common';
+import { Form, Button, Input, FormContainer, Title, Facebook, FBContainer, SmallP, ErrorMessage, CheckBox, SubIndex } from '../components/common';
 import {useAuth} from '../components/Firebase'
 import styled from 'styled-components';
 
@@ -46,17 +46,9 @@ const Login = () => {
           LOGIN
         </Title>
         <Form onSubmit={handleSubmit}>
-          <p style={{
-            textAlign: `left`,
-            fontSize: `16px`,
-            marginBottom: `4px`,
-          }}>EMAIL</p>
+          <SubIndex>EMAIL</SubIndex>
           <Input required placeholder="email" value={formValues.email} name="email" type="email" onChange={handleInputChange} />
-          <p style={{
-            textAlign: `left`,
-            fontSize: `16px`,
-            marginBottom: `4px`,
-          }}>PASSWORD</p>
+          <SubIndex>PASSWORD</SubIndex>
           <Input required placeholder="password" value={formValues.password} name="password" type="password" onChange={handleInputChange} />
           {!!errorMessage &&
           <ErrorMessage>パスワードまたはメールアドレスが間違っています</ErrorMessage>

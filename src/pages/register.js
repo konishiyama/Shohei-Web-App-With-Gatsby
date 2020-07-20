@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 // import {FirebaseContext} from '../components/Firebase'
 import Layout from "../components/layout"
 import {Link, navigate} from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage} from '../components/common';
+import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex } from '../components/common';
 import {useAuth, FirebaseContext} from '../components/Firebase'
 import styled from 'styled-components';
 
@@ -62,9 +62,13 @@ const Register = () => {
           SIGN UP
         </Title>
         <Form onSubmit={handleSubmit}>
+          <SubIndex>USERNAME</SubIndex>
           <Input onChange={handleInputChange} value={formValues.username} placeholder="username" type="text" required name="username" />
+          <SubIndex>EMAIL</SubIndex>
           <Input onChange={handleInputChange} value={formValues.email} placeholder="email" type="email" required name="email" />
+          <SubIndex>PASSWORD</SubIndex>
           <Input onChange={handleInputChange} value={formValues.password} placeholder="password" type="password" required minLength={6} name="password" />
+          <SubIndex>CONFIRM PASSWORD</SubIndex>
           <Input onChange={handleInputChange} value={formValues.confirmPassword} placeholder="confirm password" type="password" required minLength={6} name="confirmPassword" />
           {!!errorMessage &&
           <ErrorMessage>

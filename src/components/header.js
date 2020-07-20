@@ -104,7 +104,7 @@ const Header = () => {
           }}
         ></img>
       </a>
-      <div>
+      {/* <div>
         {!!user && !!user.email &&
           <div
           style={{
@@ -116,7 +116,7 @@ const Header = () => {
             Hi, {user.username || user.email} !
           </div>
         }
-      </div>
+      </div> */}
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

@@ -52,7 +52,7 @@ export const ArticleComments = ({firebase, articleId}) => {
 
     return () => {
       if(unsubscribe){
-        unsubscribe();
+        // unsubscribe();   後で復活させる必要あり？
       }
     }
   }, [])
