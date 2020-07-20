@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { navigate } from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, Facebook, FBContainer, SmallP, ErrorMessage, CheckBox, SubIndex } from '../components/common';
+import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, CheckBox, SubIndex } from '../components/common';
 import {useAuth} from '../components/Firebase'
 import styled from 'styled-components';
 

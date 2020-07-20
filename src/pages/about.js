@@ -1,5 +1,5 @@
 import React, { Children } from "react"
-import {  Button, Input, ErrorMessage, Form, Message, UploadButton, PageTitle, SubIndex, PageCover } from '../components/common';
+import { PageCover } from '../components/common';
 
 
 

@@ -2,7 +2,7 @@ import React, { Children } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
-import {  Button, Input, ErrorMessage, Form, Message, UploadButton, PageTitle, SubIndex, PageCover } from '../components/common';
+import { PageCover } from '../components/common';
 
 
 const ArticleList = styled.ul`

@@ -20,6 +20,7 @@ const Post = () => {
   function handleSubmit(e){
     e.preventDefault();
     firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl}).then(()=> navigate('/')).catch(error => {
+      console.log(error);
       setErrorMessage(error.message);
     })
   }
@@ -32,6 +33,15 @@ const Post = () => {
     })
     console.log(titleValues);
   }
+
+  // function handleInputContentChange(e){
+  //   // e.persist();
+  //   setErrorMessage('');
+  //   setContentValues( {
+  //     content: e
+  //   })
+  //   console.log(contentValues);
+  // }
 
   function handleEditorChange(e){
     setContentValues( {
@@ -115,6 +125,14 @@ const Post = () => {
           required 
         />
         </div>
+        {/* <ReactQuill 
+          required 
+          value={contentValues.content}  
+          onChange={handleInputContentChange} 
+          modules = {Post.modules}
+          formats = {Post.formats}
+          name="content"
+          /> */}
         <br></br>
         {!!errorMessage &&
         <ErrorMessage>Failed posting article properly</ErrorMessage>

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import styled from "styled-components"
 import { FirebaseContext } from '../components/Firebase';
-import { ArticleComments } from '../components/common'
+// import { ArticleComments } from '../components/common'
 import renderHTML from 'react-render-html'
 
 const ArticleTemplate = (props) => {
@@ -26,12 +26,12 @@ const ArticleTemplate = (props) => {
           <img src={props.pageContext.thumnail} alt="CoverImage"></img>
           <p>{renderHTML(props.pageContext.content)}</p>
         </ArticleItem>
-        {!!firebase &&  
+        {/* {!!firebase &&  
           <ArticleComments
             firebase= {firebase}
             articleId= {props.pageContext.id}
           />
-        }
+        } */}
       </div>
     </section>
   )

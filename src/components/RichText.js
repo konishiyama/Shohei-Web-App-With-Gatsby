@@ -4,7 +4,6 @@ import { Editor } from '@tinymce/tinymce-react';
 class RichText extends React.Component {
   handleEditorChange = (e) => {
     console.log(
-      'Content was updated:',
       e.target.getContent()
     );
   }
@@ -12,7 +11,6 @@ class RichText extends React.Component {
   render() {
     return (
       <Editor
-        initialValue="<p>Wow ! ... It Works !!!</p>"
         init={{
           height: 500,
           menubar: false,
