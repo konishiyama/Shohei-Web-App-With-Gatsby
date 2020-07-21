@@ -3,8 +3,6 @@ import { navigate } from 'gatsby'
 import {  Button, Input, ErrorMessage, Form, Message, UploadButton, SubIndex, PageCover } from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
 import { Editor } from '@tinymce/tinymce-react';
-// import ReactQuill from 'react-quill'
-// import 'react-quill/dist/quill.snow.css';
 
 
 const Post = () => {
@@ -111,54 +109,22 @@ const Post = () => {
               alignleft aligncenter alignright | \
               bullist numlist outdent indent | help'
           }}
+          apiKey="n5flvaer5akndukhxw941fwbvz69k09cq48w1bhe57jq4s65"
           onChange={handleEditorChange}
           required 
         />
         </div>
-        <br></br>
         {!!errorMessage &&
         <ErrorMessage>Failed posting article properly</ErrorMessage>
         }
-        <br></br>
         <Button type="submit" block>Post</Button>
       </Form>
       <br/>
       <br/>
       <br></br>
-      <br></br>
-      <br></br>
     </section>
 )
 }
 
-// Post.modules = {
-//   toolbar:[
-//     [{'header': '1'}, {'header': '2'}, {'font': []}],
-//     [{'size': [] }],
-//     ['bold','italic', 'underline', 'strike', 'blockquote'],
-//     [{'list': 'ordered'},{'list': 'bullet'}],
-//     ['link',
-//     //  'image', 'video'
-//     ],
-//     ['clean'],
-//     ['code-block']
-//   ]
-// };
-
-// Post.formats = [
-//   'header', 
-//   'font',
-//   'size',
-//   'bold',
-//   'italic', 
-//   'underline', 
-//   'strike', 
-//   'blockquote',
-//   'list', 
-//   'link', 
-//   // 'image', 
-//   // 'video', 
-//   'code-block'
-// ]
 
 export default Post

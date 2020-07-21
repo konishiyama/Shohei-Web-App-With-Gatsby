@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 
 
 const EachArticle = styled.li`
-  width: 50%;
   margin: 0 auto 1rem;
 
 `

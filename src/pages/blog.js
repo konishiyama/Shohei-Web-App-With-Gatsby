@@ -1,4 +1,4 @@
-import React, { Children } from "react"
+import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
@@ -14,7 +14,10 @@ const ArticleList = styled.ul`
   justify-content: space-between;
 `
 
-const IndexPage = (props) => {
+const Blog = ({data}) => {
+  const allArticles = data.allArticle.edges;
+  const latestPosts = allArticles.slice(0, 6);
+
   return(
   <>
   <section>
@@ -34,13 +37,13 @@ const IndexPage = (props) => {
         }}
       >
     <ArticleList>
-     {props.data.allArticle.edges.map(edge => (
-      <ArticleRoll 
-        title = {edge.node.title}
-        // time = {edge.node.time}
-        thumnail = {edge.node.thumnail}
-        id = {edge.node.id}
-      />
+      {latestPosts.map(edge => (
+        <ArticleRoll 
+          title = {edge.node.title}
+          time = {edge.node.time}
+          thumnail = {edge.node.thumnail}
+          id = {edge.node.id}
+        />
       ))}
     </ArticleList>
       </div>
@@ -54,9 +57,6 @@ export const query = graphql`
   allArticle {
     edges {
       node {
-        category
-        content
-        coverImage
         id
         thumnail
         title
@@ -64,7 +64,6 @@ export const query = graphql`
     }
   }
 }
-
 `
 
-export default IndexPage
+export default Blog

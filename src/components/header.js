@@ -100,6 +100,7 @@ const Header = () => {
           style={{
             height:`40px`,
             marginTop: `8px`,
+            marginBottom: `0`,
           }}
           alt="image"
         ></img>
