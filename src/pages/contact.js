@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
 import styled from "styled-components"
-import {  Button, Input, ErrorMessage, Form, Message, UploadButton, SubIndex, PageCover } from '../components/common';
-import { FirebaseContext} from '../components/Firebase'
-import { Editor } from '@tinymce/tinymce-react';
+import {  Button, Input, ErrorMessage, Form, SubIndex, PageCover } from '../components/common';
+// import { FirebaseContext} from '../components/Firebase'
+// import { Editor } from '@tinymce/tinymce-react';
 
 
 const TEXTAREA = styled.textarea`
