@@ -22,12 +22,17 @@ class Firebase {
     return this.storage.ref("images").child(image.name).getDownloadURL();
   }
 
-  async postArticle({title, content, cover}){
-    return this.db.collection('articles').add({ //doc().set()でもいいが、この場合は一旦、doc()として参照しつつ、あとでその参照を利用するのが便利な場合。ってかどっちでもいい。
+  async postArticle({title, content, cover, number}){
+    return this.db.collection('articles').doc().set({
       title: title,
       content: content,
       thumnail: cover, 
+      number:number,
     });
+  }
+
+  async getArticleNumber(){
+    return this.db.collection('articles').get();
   }
 
   async getUserProfile({userId}){
@@ -37,7 +42,8 @@ class Firebase {
   async register({email, password, username}){
     const newUser = await this.auth.createUserWithEmailAndPassword(email, password); 
     return this.db.collection('publicProfiles').doc(username).set({
-      userId: newUser.user.uid
+      userId: newUser.user.uid,
+      Email: newUser.user.email,
     })
   }
 

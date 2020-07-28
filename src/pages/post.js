@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { navigate } from 'gatsby'
 import {  Button, Input, ErrorMessage, Form, Message, UploadButton, SubIndex, PageCover } from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
 import { Editor } from '@tinymce/tinymce-react';
 
 
-const Post = () => {
+const Post = ({data}) => {
   const [titleValues, setTitleValues] = useState({ title:''});
   const [contentValues, setContentValues] = useState({ content: ''});
   const {firebase} = useContext(FirebaseContext);
@@ -14,10 +14,17 @@ const Post = () => {
   const [fileUploaded, setFileUploaded] = useState('');
   const [image, setImage] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const allArticles = data.allArticle.edges;
+  const [articleNumber, setArticleNumber] = useState('');
+
+  useEffect(()=>{
+    setArticleNumber(allArticles.length);
+    console.log(articleNumber);
+  })
 
   function handleSubmit(e){
     e.preventDefault();
-    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl}).then(()=> navigate('/')).catch(error => {
+    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl, number: articleNumber}).then(()=> navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
   }
@@ -71,7 +78,7 @@ const Post = () => {
   return(
     <section>
       <PageCover>
-        <img src="/img/coversample1.jpg" alt="image"></img>
+        <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample1.jpg?alt=media&token=bd5a45f3-b0ed-409b-a00b-f9760db145d7" alt="image"></img>
         <p>
           <span>
             POST ARTICLE
@@ -126,5 +133,19 @@ const Post = () => {
 )
 }
 
+export const query = graphql`
+  {
+    allArticle {
+      edges {
+        node {
+          id
+          thumnail
+          title
+          number
+        }
+      }
+    }
+  }
+`
 
 export default Post

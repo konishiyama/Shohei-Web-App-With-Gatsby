@@ -24,7 +24,14 @@ const ArticleList = styled.ul`
 const IndexPage = ({ data }) => {
   
   const allArticles = data.allArticle.edges;
-  const latestPosts = allArticles.slice(0, 4);
+  const articlesOrdered = allArticles.sort(function(a, b) {
+    if (a.node.number < b.node.number) {
+        return 1;
+    } else {
+        return -1;
+    }
+ });
+ const latestPosts = articlesOrdered.slice(0,4);
 
   return(
   <>
@@ -105,6 +112,7 @@ export const query = graphql`
           id
           thumnail
           title
+          number
         }
       }
     }

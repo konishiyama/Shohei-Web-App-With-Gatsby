@@ -96,6 +96,7 @@ exports.createPages = ({graphql, actions}) => {
           id
           thumnail
           title
+          number
         }
       }
     }

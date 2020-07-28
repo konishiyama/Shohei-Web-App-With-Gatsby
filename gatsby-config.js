@@ -27,6 +27,7 @@ module.exports = {
               // time: doc.time,
               category: doc.category,
               body: doc.body,
+              number: doc.number,
             })
           },
         ]
