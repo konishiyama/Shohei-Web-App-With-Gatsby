@@ -49,7 +49,7 @@ const Contact = () => {
       <br></br>
         <input type="hidden" name="form-name" value="contact" />
         <SubIndex>NAME</SubIndex>            
-        <Input required placeholder="title"  type="text" />
+        <Input required placeholder="Name"  type="text" name="name" />
         {/* <SubIndex>TYPE</SubIndex> */}
         {/* <RadioContainer>
           <Radio name="type" type="radio" />
@@ -65,12 +65,12 @@ const Contact = () => {
           <span>個人</span>
         </RadioContainer>
         </div> */}
-        <SubIndex name="subject">TITLE</SubIndex>
-        <Input required placeholder="Title"  type="text" />
+        <SubIndex>TITLE</SubIndex>
+        <Input required placeholder="Title"  type="text" name="subject"/>
         <SubIndex>EMAIL</SubIndex>
-        <Input required placeholder="Email"  type="email" />
+        <Input required placeholder="Email"  type="email" name="email"/>
         <SubIndex>INQUIRY</SubIndex>
-        <TEXTAREA required placeholder="Inquiry"  />
+        <TEXTAREA required placeholder="Inquiry" name="inquiry"  />
         <Button type="submit" block>Post</Button>
       </Form>
       <br/>
