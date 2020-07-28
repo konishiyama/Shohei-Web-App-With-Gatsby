@@ -96,7 +96,7 @@ const Header = () => {
     <Navigation>
       <a href="/">
         <img 
-          src="/img/logo.jpg"
+          src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Flogo.jpg?alt=media&token=6a010728-d709-44b4-a1bf-d19217dbdd5c"
           style={{
             height:`40px`,
             marginTop: `8px`,
