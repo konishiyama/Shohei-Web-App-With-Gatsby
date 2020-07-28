@@ -35,7 +35,7 @@ const Contact = () => {
   <>
   <section>
     <PageCover>
-      <img src="/img/coversample2.png"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample2.png?alt=media&token=92d82677-6857-46d2-aa10-fdbe00f166d9"></img>
       <p>
         <span>
           CONTACT

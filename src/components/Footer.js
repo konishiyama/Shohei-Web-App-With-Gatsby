@@ -126,9 +126,9 @@ const Footer = () => {
       </Paragraph1>
 
       <ImgContainer>
-        <Img src="/img/Twitter_Logo_Blue.png" href="" target="_blank" alt="Twitter"></Img>
-        <Img src="/img/f_logo_RGB-Blue_58.png" href="" target="_blank" alt="Facebook"></Img>
-        <Img src="/img//Instagram.png" href="" target="_blank" alt="Instagram"></Img>
+        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FTwitter_Logo_Blue.png?alt=media&token=028253c0-ebfe-4f04-9cee-64efba8a187f" href="" target="_blank" alt="Twitter"></Img>
+        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ff_logo_RGB-Blue_58.png?alt=media&token=fb458aff-398e-43fc-9cfd-96d239cad140" href="" target="_blank" alt="Facebook"></Img>
+        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FInstagram.png?alt=media&token=d2d96f0e-b7c3-42d7-a11e-d1373577f8c2" href="" target="_blank" alt="Instagram"></Img>
       </ImgContainer>
 
       <Paragraph2>

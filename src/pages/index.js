@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
   return(
   <>
   <section>
-    <CoverPic src="progile-pic.jpg"></CoverPic>
+    <CoverPic src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fprofile-pic.jpg?alt=media&token=85714a7f-1863-4a7d-92f2-973a70964737"></CoverPic>
     <div
         style={{
           margin: `0 auto`,
@@ -79,7 +79,7 @@ const IndexPage = ({ data }) => {
     href="https://www.instagram.com/dlwlrma/?hl=ja"
     target= "_blank"
     >
-      <img src="/img/Instagram-thumnail.png"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FInstagram-thumnail.png?alt=media&token=7a577e36-5c8f-43d9-9032-4911cac0b762"></img>
     </a>
     <p>
       <a 

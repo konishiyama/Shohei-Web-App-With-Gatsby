@@ -22,7 +22,7 @@ const Blog = ({data}) => {
   <>
   <section>
     <PageCover>
-      <img src="/img/coversample3.jpg"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample3.jpg?alt=media&token=52fe4ca0-416a-4402-b74d-782209f0a044"></img>
       <p>
         <span>
           BLOG
