@@ -16,15 +16,16 @@ const Post = ({data}) => {
   const [imageUrl, setImageUrl] = useState("");
   const allArticles = data.allArticle.edges;
   const [articleNumber, setArticleNumber] = useState('');
+  const [timeStamp, setTimeStamp] = useState('');
 
   useEffect(()=>{
     setArticleNumber(allArticles.length);
-    console.log(articleNumber);
   })
 
   function handleSubmit(e){
     e.preventDefault();
-    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl, number: articleNumber}).then(()=> navigate('/')).catch(error => {
+    console.log(timeStamp);
+    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl, number: articleNumber, time:timeStamp}).then(()=> navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
   }
@@ -35,14 +36,14 @@ const Post = ({data}) => {
     setTitleValues( {
       title: e.target.value
     })
-    console.log(titleValues);
+    setTimeStamp(new Date());
   }
 
   function handleEditorChange(e){
     setContentValues( {
           content: e.target.getContent()
         })
-    console.log(contentValues);
+    setTimeStamp(new Date());
   }
 
   function onSubmitFile(e){
@@ -67,12 +68,14 @@ const Post = ({data}) => {
       .getDownloadURL()
       .then(fireBaseUrl => {
         setImageUrl(fireBaseUrl);
+        setTimeStamp(new Date());
       });
   };
 
   function handleImage(e){
     const image = e.target.files[0];
     setImage(image);
+    setTimeStamp(new Date());
   };
 
   return(

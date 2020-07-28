@@ -61,7 +61,6 @@ const ArticleContainer = (props) => {
               textDecoration: `none`
             }}>
             <Container>
-              <p>{edge.node.time.slice(0,10)}</p>
               <Thumnail src={edge.node.thumnail}></Thumnail>
               <Title>{edge.node.title}</Title>
             </Container>
@@ -85,6 +84,7 @@ export const query = graphql`
         id
         thumnail
         title
+        time
       }
     }
   }

@@ -22,12 +22,13 @@ class Firebase {
     return this.storage.ref("images").child(image.name).getDownloadURL();
   }
 
-  async postArticle({title, content, cover, number}){
+  async postArticle({title, content, cover, number,time}){
     return this.db.collection('articles').doc().set({
       title: title,
       content: content,
       thumnail: cover, 
       number:number,
+      date: time
     });
   }
 

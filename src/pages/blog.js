@@ -16,7 +16,13 @@ const ArticleList = styled.ul`
 
 const Blog = ({data}) => {
   const allArticles = data.allArticle.edges;
-  const latestPosts = allArticles.slice(0, 6);
+  const articlesOrdered = allArticles.sort(function(a, b) {
+    if (a.node.time < b.node.time) {
+        return 1;
+    } else {
+        return -1;
+    }
+  });
 
   return(
   <>
@@ -37,7 +43,7 @@ const Blog = ({data}) => {
         }}
       >
     <ArticleList>
-      {latestPosts.map(edge => (
+      {articlesOrdered.map(edge => (
         <ArticleRoll 
           title = {edge.node.title}
           time = {edge.node.time}
@@ -61,6 +67,7 @@ export const query = graphql`
         thumnail
         title
         number
+        time
       }
     }
   }

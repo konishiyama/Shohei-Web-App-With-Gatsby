@@ -24,7 +24,7 @@ module.exports = {
               content: doc.content,
               coverImage: doc.coverImage,
               thumnail: doc.thumnail,
-              // time: doc.time,
+              time: doc.time.toDate(),
               category: doc.category,
               body: doc.body,
               number: doc.number,

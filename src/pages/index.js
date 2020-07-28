@@ -22,16 +22,16 @@ const ArticleList = styled.ul`
 `
 
 const IndexPage = ({ data }) => {
-  
+  console.log(data);
   const allArticles = data.allArticle.edges;
   const articlesOrdered = allArticles.sort(function(a, b) {
-    if (a.node.number < b.node.number) {
+    if (a.node.time < b.node.time) {
         return 1;
     } else {
         return -1;
     }
- });
- const latestPosts = articlesOrdered.slice(0,4);
+  });
+  const latestPosts = articlesOrdered.slice(0,6);
 
   return(
   <>
@@ -56,6 +56,7 @@ const IndexPage = ({ data }) => {
           time = {edge.node.time}
           thumnail = {edge.node.thumnail}
           id = {edge.node.id}
+          time = {edge.node.time}
         />
       ))}
     </ArticleList>
@@ -113,6 +114,7 @@ export const query = graphql`
           thumnail
           title
           number
+          time
         }
       }
     }
