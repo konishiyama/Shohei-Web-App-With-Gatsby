@@ -42,7 +42,7 @@ const Contact = () => {
         </span>
       </p>
     </PageCover>
-      <Form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+      <Form name="contact" method="post" action="/contact_success" data-netlify="true" data-netlify-honeypot="bot-field">
       <br></br>
       <p>下記フォームに必要事項をご記入の上、お問合せください。</p>
       <p>４営業日以内にご連絡いたします。送信エラーなどを未然に防ぐ為、メールアドレスの入力はお間違いのないようにお願いいたします。</p>
@@ -50,21 +50,6 @@ const Contact = () => {
         <input type="hidden" name="form-name" value="contact" />
         <SubIndex>NAME</SubIndex>            
         <Input required placeholder="Name"  type="text" name="name" />
-        {/* <SubIndex>TYPE</SubIndex> */}
-        {/* <RadioContainer>
-          <Radio name="type" type="radio" />
-          <span>法人</span>
-        </RadioContainer>
-        <div
-          style={{
-            marginBottom: `1rem`,
-          }}
-        >
-        <RadioContainer>
-          <Radio name="type" type="radio" />
-          <span>個人</span>
-        </RadioContainer>
-        </div> */}
         <SubIndex>TITLE</SubIndex>
         <Input required placeholder="Title"  type="text" name="subject"/>
         <SubIndex>EMAIL</SubIndex>
