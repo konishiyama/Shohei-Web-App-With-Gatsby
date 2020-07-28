@@ -22,7 +22,7 @@ const ArticleTemplate = (props) => {
       >
         <ArticleItem>
           <h2>{props.pageContext.title}</h2>
-          {/* <p>{props.pageContext.time.slice(0, 10)}</p> */}
+          <p>{props.pageContext.date}</p>
           <img src={props.pageContext.thumnail} alt="CoverImage"></img>
           <p>{renderHTML(props.pageContext.content)}</p>
         </ArticleItem>

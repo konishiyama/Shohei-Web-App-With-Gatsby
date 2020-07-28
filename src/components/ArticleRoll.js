@@ -50,7 +50,7 @@ const ArticleRoll = (props) => {
             textDecoration: `none`
           }}>
           <Container>
-            <p>{props.time.slice(0,10)}</p>
+            <p>{props.date}</p>
             <Thumnail src={props.thumnail}></Thumnail>
             <Title>{props.title}</Title>
           </Container>

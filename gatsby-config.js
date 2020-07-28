@@ -24,10 +24,9 @@ module.exports = {
               content: doc.content,
               coverImage: doc.coverImage,
               thumnail: doc.thumnail,
-              time: doc.time.toDate(),
+              date: doc.date,
               category: doc.category,
               body: doc.body,
-              number: doc.number,
             })
           },
         ]

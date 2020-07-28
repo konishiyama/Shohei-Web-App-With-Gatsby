@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
 import {  Button, Input, ErrorMessage, Form, Message, UploadButton, SubIndex, PageCover } from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
@@ -14,18 +14,13 @@ const Post = ({data}) => {
   const [fileUploaded, setFileUploaded] = useState('');
   const [image, setImage] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const allArticles = data.allArticle.edges;
-  const [articleNumber, setArticleNumber] = useState('');
   const [timeStamp, setTimeStamp] = useState('');
 
-  useEffect(()=>{
-    setArticleNumber(allArticles.length);
-  })
 
   function handleSubmit(e){
     e.preventDefault();
     console.log(timeStamp);
-    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl, number: articleNumber, time:timeStamp}).then(()=> navigate('/')).catch(error => {
+    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl,  date:timeStamp}).then(()=> navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
   }
@@ -36,14 +31,14 @@ const Post = ({data}) => {
     setTitleValues( {
       title: e.target.value
     })
-    setTimeStamp(new Date());
+    setTimeStamp(new Date().toLocaleDateString());
   }
 
   function handleEditorChange(e){
     setContentValues( {
           content: e.target.getContent()
         })
-    setTimeStamp(new Date());
+    setTimeStamp(new Date().toLocaleDateString());
   }
 
   function onSubmitFile(e){
@@ -68,14 +63,14 @@ const Post = ({data}) => {
       .getDownloadURL()
       .then(fireBaseUrl => {
         setImageUrl(fireBaseUrl);
-        setTimeStamp(new Date());
+        setTimeStamp(new Date().toLocaleDateString());
       });
   };
 
   function handleImage(e){
     const image = e.target.files[0];
     setImage(image);
-    setTimeStamp(new Date());
+    setTimeStamp(new Date().toLocaleDateString());
   };
 
   return(
@@ -144,7 +139,7 @@ export const query = graphql`
           id
           thumnail
           title
-          number
+          date
         }
       }
     }

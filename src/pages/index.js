@@ -25,13 +25,13 @@ const IndexPage = ({ data }) => {
   console.log(data);
   const allArticles = data.allArticle.edges;
   const articlesOrdered = allArticles.sort(function(a, b) {
-    if (a.node.time < b.node.time) {
+    if (a.node.date < b.node.date) {
         return 1;
     } else {
         return -1;
     }
   });
-  const latestPosts = articlesOrdered.slice(0,6);
+  const latestPosts = articlesOrdered.slice(0,4);
 
   return(
   <>
@@ -56,7 +56,7 @@ const IndexPage = ({ data }) => {
           time = {edge.node.time}
           thumnail = {edge.node.thumnail}
           id = {edge.node.id}
-          time = {edge.node.time}
+          date = {edge.node.date}
         />
       ))}
     </ArticleList>
@@ -113,8 +113,7 @@ export const query = graphql`
           id
           thumnail
           title
-          number
-          time
+          date
         }
       }
     }
