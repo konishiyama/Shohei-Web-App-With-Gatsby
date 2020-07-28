@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
   return(
   <>
   <section>
-    <CoverPic src="/img/progile-pic.jpg"></CoverPic>
+    <CoverPic src="progile-pic.jpg"></CoverPic>
     <div
         style={{
           margin: `0 auto`,

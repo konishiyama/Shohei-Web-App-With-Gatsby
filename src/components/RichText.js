@@ -13,15 +13,16 @@ class RichText extends React.Component {
       <Editor
         init={{
           height: 500,
-          menubar: false,
+          menubar: true,
           plugins: [
             'advlist autolink lists link image',
             'charmap print preview anchor help',
             'searchreplace visualblocks code',
-            'insertdatetime media table paste wordcount'
+            'insertdatetime media table paste wordcount',
+            'textcolor'
           ],
           toolbar:
-            'undo redo | formatselect | bold italic | \
+            'undo redo | formatselect | forecolor backcolor | bold italic | \
             alignleft aligncenter alignright | \
             bullist numlist outdent indent | help'
         }}
