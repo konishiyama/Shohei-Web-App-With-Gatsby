@@ -13,7 +13,7 @@ export * from './PageTitle';
 export * from './SubIndex';
 export * from './FBContainer';
 export * from './Facebook';
-export * from './SmallP';
+export * from './SMallP';
 export * from './ErrorMessage';
 export * from './Message';
 export * from './ArticleComments';
