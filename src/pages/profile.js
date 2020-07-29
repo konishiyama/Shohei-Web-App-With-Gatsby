@@ -16,13 +16,6 @@ const A = styled.a`
 `
 
 const Profile = () => {
-  useEffect(()=>{
-    if(!!user.photoURL){
-      return setPImageUrl(user.photoURL)
-    }else{
-      return setPImageUrl("https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6")
-    }
-  }, [])
 
   const {firebase, user} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
@@ -79,7 +72,6 @@ function Complete(){
     .then(fireBaseUrl => {
       setPImageUrl(fireBaseUrl);
     });
-    console.log(PimageUrl);
 };
 
 function handlePImage(e){
@@ -95,6 +87,7 @@ function handlePImage(e){
         <Title>
           EDIT PROFILE
         </Title>
+        {!!PimageUrl && 
              <img
              src= {PimageUrl}
              style={{
@@ -106,10 +99,11 @@ function handlePImage(e){
              }}
              > 
              </img>
+          }
 
         <Form  onSubmit={onSubmitPFile}>
           <SubIndex>PROFILE IMAGE</SubIndex>
-            <input type="file" onChange={handlePImage}  />
+            <input type="file" onChange={handlePImage} required />
             <UploadButton>Upload</UploadButton>
               {!!PfileUploaded &&
               <Message>Uploaded image properly!</Message>
