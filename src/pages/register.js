@@ -27,10 +27,6 @@ const Register = () => {
     username: ''
   });
 
-  // const [PfileErrorMessage, setPFileErrorMessage] = useState('');
-  // const [PfileUploaded, setPFileUploaded] = useState('');
-  // const [Pimage, setPImage] = useState("");
-  // const [PimageUrl, setPImageUrl] = useState("");
   
   function handleInputChange(e){
     e.persist();
@@ -58,35 +54,6 @@ const Register = () => {
   }
 }
 
-// function onSubmitPFile(e){
-//   e.preventDefault();
-//   if (Pimage === "") {
-//     setPFileErrorMessage('Error File Uploading!');
-//   }
-//   firebase.storage.ref(`/profileImages/${Pimage.name}`).put(Pimage).then(
-//     Complete,
-//     setPFileErrorMessage(''),
-//     setPFileUploaded('File Uploaded')
-//   )
-//   .catch(error => {
-//     setPFileErrorMessage(error.message);
-//   })
-// }
-
-// function Complete(){
-//   firebase.storage
-//     .ref("profileImages")
-//     .child(Pimage.name)
-//     .getDownloadURL()
-//     .then(fireBaseUrl => {
-//       setPImageUrl(fireBaseUrl);
-//     });
-// };
-
-// function handlePImage(e){
-//   const Pimage = e.target.files[0];
-//   setPImage(Pimage);
-// };
 
   return(
     <section>
@@ -96,17 +63,6 @@ const Register = () => {
         <Title>
           SIGN UP
         </Title>
-        {/* <Form  required onSubmit={onSubmitPFile}>
-          <SubIndex>PROFILE IMAGE</SubIndex>
-            <input type="file" onChange={handlePImage}  />
-            <UploadButton>Upload</UploadButton>
-              {!!PfileUploaded &&
-              <Message>Uploaded image properly!</Message>
-                }
-              {!!PfileErrorMessage &&
-              <ErrorMessage>You need to uploaded image!</ErrorMessage>
-              }
-        </Form> */}
         <br></br>
         <Form onSubmit={handleSubmit}>
           <SubIndex>USERNAME</SubIndex>

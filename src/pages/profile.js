@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { navigate } from 'gatsby'
 import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton, ProfileImage} from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
@@ -16,8 +16,15 @@ const A = styled.a`
 `
 
 const Profile = () => {
+  useEffect(()=>{
+    if(!!user.photoURL){
+      return setPImageUrl(user.photoURL)
+    }else{
+      return setPImageUrl("https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6")
+    }
+  }, [])
+
   const {firebase, user} = useContext(FirebaseContext);
-  console.log(user);
   const [errorMessage, setErrorMessage] = useState('');
 
   const [formValues, setFormValues] = useState({
@@ -27,8 +34,8 @@ const Profile = () => {
   const [PfileErrorMessage, setPFileErrorMessage] = useState('');
   const [PfileUploaded, setPFileUploaded] = useState('');
   const [Pimage, setPImage] = useState("");
-  const [PimageUrl, setPImageUrl] = useState("");
-  
+  const [PimageUrl, setPImageUrl] = useState('');
+
   function handleInputChange(e){
     e.persist();
     setErrorMessage('');
@@ -37,9 +44,8 @@ const Profile = () => {
       ...currentValues,
       [e.target.name]: e.target.value
     }))
-    console.log(formValues);
   }
-
+  
   function handleSubmit(e){
     e.preventDefault();
     firebase.editProfile({
@@ -73,6 +79,7 @@ function Complete(){
     .then(fireBaseUrl => {
       setPImageUrl(fireBaseUrl);
     });
+    console.log(PimageUrl);
 };
 
 function handlePImage(e){
@@ -88,15 +95,18 @@ function handlePImage(e){
         <Title>
           EDIT PROFILE
         </Title>
-          {/* <img
-          src= {PimageUrl}
-          style={{
-            height: `8rem`,
-            borderRadius: `50%`,
-            margin: `0 auto 1rem`
-          }}
-          > 
-          </img> */}
+             <img
+             src= {PimageUrl}
+             style={{
+               height: `8rem`,
+               width: `8rem`,
+               objectFit: `cover`,
+               borderRadius: `50%`,
+               margin: `0 auto 1rem`
+             }}
+             > 
+             </img>
+
         <Form  onSubmit={onSubmitPFile}>
           <SubIndex>PROFILE IMAGE</SubIndex>
             <input type="file" onChange={handlePImage}  />
