@@ -19,7 +19,6 @@ const Post = ({data}) => {
 
   function handleSubmit(e){
     e.preventDefault();
-    console.log(timeStamp);
     firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl,  date:timeStamp}).then(()=> navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
@@ -83,18 +82,18 @@ const Post = ({data}) => {
           </span>
         </p>
       </PageCover>
-      <Form onSubmit={handleSubmit}>
-        <SubIndex>COVER IMAGE</SubIndex>
-          <form  required onSubmit={onSubmitFile}>
-            <input type="file" onChange={handleImage}  />
-            <UploadButton>Upload</UploadButton>
-          </form>
+      <Form  required onSubmit={onSubmitFile}>
+      <SubIndex>COVER IMAGE</SubIndex>
+        <input type="file" onChange={handleImage}  />
+        <UploadButton>Upload</UploadButton>
           {!!fileUploaded &&
           <Message>Uploaded image properly!</Message>
-          }
+            }
           {!!fileErrorMessage &&
           <ErrorMessage>You need to uploaded image!</ErrorMessage>
           }
+      </Form>
+      <Form onSubmit={handleSubmit}>
         <SubIndex>TITLE</SubIndex>            
         <Input required placeholder="title"  type="text" onChange={handleInputTitleChange}  />
         <SubIndex>CONTENT</SubIndex>
