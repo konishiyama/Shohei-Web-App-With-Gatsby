@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex } from '../components/common';
-import { FirebaseContext} from '../components/Firebase'
+import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton} from '../components/common';
+// import { FirebaseContext} from '../components/Firebase'
+import {useAuth} from '../components/Firebase'
 import styled from 'styled-components';
 
 
@@ -16,7 +17,7 @@ const A = styled.a`
 `
 
 const Register = () => {
-  const {firebase} = useContext(FirebaseContext);
+  const {firebase} = useAuth();
   const [errorMessage, setErrorMessage] = useState('');
 
   const [formValues, setFormValues] = useState({
@@ -25,6 +26,11 @@ const Register = () => {
     confirmPassword: '',
     username: ''
   });
+
+  // const [PfileErrorMessage, setPFileErrorMessage] = useState('');
+  // const [PfileUploaded, setPFileUploaded] = useState('');
+  // const [Pimage, setPImage] = useState("");
+  // const [PimageUrl, setPImageUrl] = useState("");
   
   function handleInputChange(e){
     e.persist();
@@ -42,7 +48,8 @@ const Register = () => {
       firebase.register({
         username: formValues.username,
         email: formValues.email,
-        password: formValues.password
+        password: formValues.password,
+        // photoURL: PimageUrl
       }).then(() => navigate('/')).catch(error => {
         setErrorMessage(error.message);
       })
@@ -50,6 +57,36 @@ const Register = () => {
     setErrorMessage('Password and Confirm Password do not match');
   }
 }
+
+// function onSubmitPFile(e){
+//   e.preventDefault();
+//   if (Pimage === "") {
+//     setPFileErrorMessage('Error File Uploading!');
+//   }
+//   firebase.storage.ref(`/profileImages/${Pimage.name}`).put(Pimage).then(
+//     Complete,
+//     setPFileErrorMessage(''),
+//     setPFileUploaded('File Uploaded')
+//   )
+//   .catch(error => {
+//     setPFileErrorMessage(error.message);
+//   })
+// }
+
+// function Complete(){
+//   firebase.storage
+//     .ref("profileImages")
+//     .child(Pimage.name)
+//     .getDownloadURL()
+//     .then(fireBaseUrl => {
+//       setPImageUrl(fireBaseUrl);
+//     });
+// };
+
+// function handlePImage(e){
+//   const Pimage = e.target.files[0];
+//   setPImage(Pimage);
+// };
 
   return(
     <section>
@@ -59,6 +96,18 @@ const Register = () => {
         <Title>
           SIGN UP
         </Title>
+        {/* <Form  required onSubmit={onSubmitPFile}>
+          <SubIndex>PROFILE IMAGE</SubIndex>
+            <input type="file" onChange={handlePImage}  />
+            <UploadButton>Upload</UploadButton>
+              {!!PfileUploaded &&
+              <Message>Uploaded image properly!</Message>
+                }
+              {!!PfileErrorMessage &&
+              <ErrorMessage>You need to uploaded image!</ErrorMessage>
+              }
+        </Form> */}
+        <br></br>
         <Form onSubmit={handleSubmit}>
           <SubIndex>USERNAME</SubIndex>
           <Input onChange={handleInputChange} value={formValues.username} placeholder="username" type="text" required name="username" />
@@ -97,5 +146,22 @@ const Register = () => {
     </section>
 )
 }
+
+
+export const query = graphql`
+  {
+    allArticle {
+      edges {
+        node {
+          id
+          thumnail
+          title
+          date
+        }
+      }
+    }
+  }
+`
+
 
 export default Register

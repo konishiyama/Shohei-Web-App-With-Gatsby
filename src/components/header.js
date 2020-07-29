@@ -1,6 +1,7 @@
 
 import React, { useState, useContext } from "react"
 import styled from "styled-components"
+import {  ProfileImage } from '../components/common';
 import NavbarLinks from "./NavbarLinks"
 import {FirebaseContext} from './Firebase';
 
@@ -14,7 +15,7 @@ const Navigation = styled.nav`
   margin: 0 auto;
   padding: 0 5vw;
   z-index: 2;
-  align-self: center;
+  align-items: center;
 
   @media (max-width: 768px) {
     position: sticky;
@@ -90,6 +91,7 @@ const Hamburger = styled.div`
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const {firebase, user} = useContext(FirebaseContext);
+  console.log(user);
 
   return (
     <>
@@ -99,25 +101,39 @@ const Header = () => {
           src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Flogo.jpg?alt=media&token=6a010728-d709-44b4-a1bf-d19217dbdd5c"
           style={{
             height:`40px`,
-            marginTop: `8px`,
             marginBottom: `0`,
+            display: `flex`,
+            alignItems: `center`
           }}
           alt="image"
         ></img>
       </a>
-      {/* <div>
-        {!!user && !!user.email &&
-          <div
+        {!!user && !!user.photoURL && 
+          <a href="/profile"
           style={{
-            height:`100%`,
-            marginTop: `12px`,
-            verticalAlign: `middle`,
+            display: `flex`,
+            alignItems: `center`
           }}
           >
-            Hi, {user.username || user.email} !
-          </div>
+            <ProfileImage
+            src= {user.photoURL}
+            >
+            </ProfileImage>
+          </a>
+          }
+        {!!user && !user.photoURL && 
+        <a href="/profile"
+        style={{
+          display: `flex`,
+          alignItems: `center`
+        }}
+        >
+          <ProfileImage
+          src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+          >
+          </ProfileImage>
+        </a>
         }
-      </div> */}
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

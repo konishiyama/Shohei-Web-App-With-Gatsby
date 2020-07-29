@@ -14,13 +14,17 @@ class Firebase {
   }
 
 
-  async uploadImages({image}){
-    return this.storage.ref(`/images/${image.name}`).put(image)
-  }
+  // async uploadImages({image}){
+  //   return this.storage.ref(`/images/${image.name}`).put(image)
+  // }
 
-  async getImageURL({image}){
-    return this.storage.ref("images").child(image.name).getDownloadURL();
-  }
+  // async getPImageURL({image}){
+  //   return this.storage.ref("images").child(image.name).getDownloadURL();
+  // }
+
+  // async getImageURL({image}){
+  //   return this.storage.ref("images").child(image.name).getDownloadURL();
+  // }
 
   async postArticle({title, content, cover,date}){
     return this.db.collection('articles').doc().set({
@@ -46,6 +50,23 @@ class Firebase {
       Email: newUser.user.email,
     })
   }
+
+  async editProfile({ username, photoURL}){
+    const update = {
+      displayName: username,
+      photoURL: photoURL,
+      username: username
+    };
+    await this.auth.currentUser.updateProfile(update);
+  }
+
+  // async editProfile({email, username, userId, photoURL}){
+  //   const editUser = await this.auth.updateUserProfile(email, photoURL); 
+  //   return this.db.collection('publicProfiles').where('userId', '==', userId).doc(username).set({
+  //     Email: editUser.user.email,
+  //     userId: editUser.user.uid,
+  //   })
+  // }
 
   async postComment({text, articleId}){
     const postCommentCallable = this.functions.httpsCallable('postComment');
