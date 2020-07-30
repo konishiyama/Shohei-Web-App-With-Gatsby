@@ -22,7 +22,6 @@ const ArticleList = styled.ul`
 `
 
 const IndexPage = ({ data }) => {
-  console.log(data);
   const allArticles = data.allArticle.edges;
   const articlesOrdered = allArticles.sort(function(a, b) {
     if (a.node.date < b.node.date) {

@@ -14,18 +14,6 @@ class Firebase {
   }
 
 
-  // async uploadImages({image}){
-  //   return this.storage.ref(`/images/${image.name}`).put(image)
-  // }
-
-  // async getPImageURL({image}){
-  //   return this.storage.ref("images").child(image.name).getDownloadURL();
-  // }
-
-  // async getImageURL({image}){
-  //   return this.storage.ref("images").child(image.name).getDownloadURL();
-  // }
-
   async postArticle({title, content, cover,date}){
     return this.db.collection('articles').doc().set({
       title: title,
@@ -35,9 +23,6 @@ class Firebase {
     });
   }
 
-  // async getArticleNumber(){
-  //   return this.db.collection('articles').get();
-  // }
 
   async getUserProfile({userId}){
     return this.db.collection('publicProfiles').where('userId', '==', userId).get();
@@ -51,22 +36,27 @@ class Firebase {
     })
   }
 
-  async editProfile({ username, photoURL}){
+  async editProfile({ username, photoURL, userId, email}){
     const update = {
       displayName: username,
       photoURL: photoURL,
-      username: username
     };
     await this.auth.currentUser.updateProfile(update);
-  }
-
-  // async editProfile({email, username, userId, photoURL}){
-  //   const editUser = await this.auth.updateUserProfile(email, photoURL); 
-  //   return this.db.collection('publicProfiles').where('userId', '==', userId).doc(username).set({
-  //     Email: editUser.user.email,
-  //     userId: editUser.user.uid,
+    }
+  // async editProfile({ username, photoURL, userId, email}){
+  //   const update = {
+  //     displayName: username,
+  //     photoURL: photoURL,
+  //   };
+  //   const Edituser = 
+  //   await this.auth.currentUser.updateProfile(update);
+  //   return this.db.collection('publicProfiles').where('userId', '==', userId).set({
+  //     Email: Edituser.user.email,
+  //     userId: Edituser.user.uid,
+  //     userName: Edituser.user.displayName
   //   })
   // }
+
 
   async postComment({text, articleId}){
     const postCommentCallable = this.functions.httpsCallable('postComment');

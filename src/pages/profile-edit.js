@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { navigate } from 'gatsby'
 import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton, ProfileImage} from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
@@ -16,6 +16,15 @@ const A = styled.a`
 `
 
 const Profile = () => {
+  // useEffect(() => {
+  //   const defaultPic = user.photoURL
+  //   if(defaultPic){
+  //     return setPImageUrl(defaultPic)
+  //   }else{
+  //     return setPImageUrl("https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6")
+
+  //   }
+  // } );
 
   const {firebase, user} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
@@ -44,6 +53,8 @@ const Profile = () => {
     firebase.editProfile({
       username: formValues.username,
       photoURL: PimageUrl,
+      email: user.email,
+      userId: user.uid,
     }).then(() => navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
@@ -83,6 +94,7 @@ function handlePImage(e){
     <section>
       <br></br>
       <br></br>
+      {!!user && 
       <FormContainer>
         <Title>
           EDIT PROFILE
@@ -100,7 +112,7 @@ function handlePImage(e){
              > 
              </img>
           }
-
+ 
         <Form  onSubmit={onSubmitPFile}>
           <SubIndex>PROFILE IMAGE</SubIndex>
             <input type="file" onChange={handlePImage} required />
@@ -115,18 +127,7 @@ function handlePImage(e){
         <br></br>
         <Form onSubmit={handleSubmit}>
           <SubIndex>USERNAME</SubIndex>
-          <Input onChange={handleInputChange} value={formValues.username} placeholder="username" type="text"  name="username" />
-          {/* <SubIndex>EMAIL</SubIndex> */}
-          {/* <Input onChange={handleInputChange} value={formValues.email} placeholder="email" type="email"  name="email" /> */}
-          {/* <SubIndex>PASSWORD</SubIndex>
-          <Input onChange={handleInputChange} value={formValues.password} placeholder="password" type="password" required minLength={6} name="password" />
-          <SubIndex>CONFIRM PASSWORD</SubIndex>
-          <Input onChange={handleInputChange} value={formValues.confirmPassword} placeholder="confirm password" type="password" required minLength={6} name="confirmPassword" /> */}
-          {!!errorMessage &&
-          <ErrorMessage>
-            {errorMessage}
-          </ErrorMessage>
-          }
+          <Input onChange={handleInputChange} value={formValues.username} placeholder={user.displayName} type="text" required name="username" />
           <Button type="submit" block>
             EDIT
           </Button>
@@ -134,6 +135,7 @@ function handlePImage(e){
         <br></br>
         <br/>
       </FormContainer>
+    }
       <br></br>
       <br></br>
       <br></br>
