@@ -24,6 +24,7 @@ function useAuth() {
                             ...userResult,
                             username: r.empty ? null : r.docs[0].id
                     })
+                    console.log(userResult);
                     });
                     // get user custom claims
                     /*setLoading(true);

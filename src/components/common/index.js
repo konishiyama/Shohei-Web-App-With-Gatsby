@@ -5,6 +5,7 @@ export * from './CheckBox';
 export * from './Button';
 export * from './UploadButton';
 export * from './UploadInput';
+export * from './Container';
 export * from './FormContainer';
 export * from './Title';
 export * from './SubTitle';

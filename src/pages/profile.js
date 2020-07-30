@@ -1,143 +1,103 @@
 import React, { useState, useContext, useEffect } from "react"
 import { navigate } from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton, ProfileImage} from '../components/common';
+import {  Container, Title, SubTitle } from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
 import styled from 'styled-components';
 
 
-const A = styled.a`
+const TD = styled.td`
+  word-break : break-all;
+`
+
+const EditLink = styled.a`
+  padding: 6px 10px;
+  background: #0086d1;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: none;
   text-decoration: none;
-  color: #0086d1;
+
   &:hover{
-    color: #0086d1;
+    opacity: 80%;
     cursor: pointer;
-    text-decoration: underline;
   }
 `
+
 
 const Profile = () => {
 
   const {firebase, user} = useContext(FirebaseContext);
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const [formValues, setFormValues] = useState({
-    username: ''
-  });
-
-  const [PfileErrorMessage, setPFileErrorMessage] = useState('');
-  const [PfileUploaded, setPFileUploaded] = useState('');
-  const [Pimage, setPImage] = useState("");
   const [PimageUrl, setPImageUrl] = useState('');
-
-  function handleInputChange(e){
-    e.persist();
-    setErrorMessage('');
-    setPFileUploaded('');
-    setFormValues(currentValues => ({
-      ...currentValues,
-      [e.target.name]: e.target.value
-    }))
-  }
-  
-  function handleSubmit(e){
-    e.preventDefault();
-    firebase.editProfile({
-      username: formValues.username,
-      photoURL: PimageUrl,
-    }).then(() => navigate('/')).catch(error => {
-      setErrorMessage(error.message);
-    })
-}
-
-function onSubmitPFile(e){
-  e.preventDefault();
-  if (Pimage === "") {
-    setPFileErrorMessage('Error File Uploading!');
-  }
-  firebase.storage.ref(`/profileImages/${Pimage.name}`).put(Pimage).then(
-    Complete,
-    setPFileErrorMessage(''),
-    setPFileUploaded('File Uploaded')
-  )
-  .catch(error => {
-    setPFileErrorMessage(error.message);
-  })
-}
-
-function Complete(){
-  firebase.storage
-    .ref("profileImages")
-    .child(Pimage.name)
-    .getDownloadURL()
-    .then(fireBaseUrl => {
-      setPImageUrl(fireBaseUrl);
-    });
-};
-
-function handlePImage(e){
-  const Pimage = e.target.files[0];
-  setPImage(Pimage);
-};
+  console.log(user);
 
   return(
     <section>
-      <br></br>
-      <br></br>
-      <FormContainer>
-        <Title>
-          EDIT PROFILE
-        </Title>
-        {!!PimageUrl && 
-             <img
-             src= {PimageUrl}
-             style={{
-               height: `8rem`,
-               width: `8rem`,
-               objectFit: `cover`,
-               borderRadius: `50%`,
-               margin: `0 auto 1rem`
-             }}
-             > 
-             </img>
+      <Container>
+        <SubTitle>
+          <span>PROFILE</span>
+        </SubTitle>
+        {!!user && 
+          <img
+          src= {user.photoURL}
+          style={{
+            height: `8rem`,
+            width: `8rem`,
+            objectFit: `cover`,
+            borderRadius: `50%`,
+            margin: `0 auto 1rem`
+          }}
+          > 
+          </img>
+        }
+        {!user && 
+          <img
+          src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+          style={{
+            height: `8rem`,
+            width: `8rem`,
+            objectFit: `cover`,
+            borderRadius: `50%`,
+            margin: `0 auto 1rem`
+          }}
+          > 
+          </img>
           }
-
-        <Form  onSubmit={onSubmitPFile}>
-          <SubIndex>PROFILE IMAGE</SubIndex>
-            <input type="file" onChange={handlePImage} required />
-            <UploadButton>Upload</UploadButton>
-              {!!PfileUploaded &&
-              <Message>Uploaded image properly!</Message>
-                }
-              {!!PfileErrorMessage &&
-              <ErrorMessage>You need to uploaded image!</ErrorMessage>
-              }
-        </Form>
-        <br></br>
-        <Form onSubmit={handleSubmit}>
-          <SubIndex>USERNAME</SubIndex>
-          <Input onChange={handleInputChange} value={formValues.username} placeholder="username" type="text"  name="username" />
-          {/* <SubIndex>EMAIL</SubIndex> */}
-          {/* <Input onChange={handleInputChange} value={formValues.email} placeholder="email" type="email"  name="email" /> */}
-          {/* <SubIndex>PASSWORD</SubIndex>
-          <Input onChange={handleInputChange} value={formValues.password} placeholder="password" type="password" required minLength={6} name="password" />
-          <SubIndex>CONFIRM PASSWORD</SubIndex>
-          <Input onChange={handleInputChange} value={formValues.confirmPassword} placeholder="confirm password" type="password" required minLength={6} name="confirmPassword" /> */}
-          {!!errorMessage &&
-          <ErrorMessage>
-            {errorMessage}
-          </ErrorMessage>
-          }
-          <Button type="submit" block>
-            EDIT
-          </Button>
-        </Form>
-        <br></br>
-        <br/>
-      </FormContainer>
+      <br></br>
+      <br></br>
+      <table>
+        <tbody>
+          <tr>
+            <TD>
+              <b>EMAIL</b>
+            </TD>
+            {!!user && !!user.email && 
+              <TD>{user.email}</TD>}
+          </tr>
+          <tr>
+            <TD>
+              <b>USERNAME</b>
+            </TD>
+            {!!user && !!user.username && 
+              <TD>{user.username}</TD>}
+          </tr>
+          <tr>
+            <TD>
+              <b>ID</b>
+            </TD>
+            {!!user && !!user.uid && 
+              <TD>{user.uid}</TD>}
+          </tr>
+        </tbody>
+      </table>
+      <br></br>
+      <EditLink href="/profile-edit">EDIT</EditLink>
       <br></br>
       <br></br>
       <br></br>
       <br></br>
+      </Container>
     </section>
 )
 }
