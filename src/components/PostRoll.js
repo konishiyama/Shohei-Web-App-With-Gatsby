@@ -1,33 +1,46 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 
-const EachArticle = styled.li`
-  margin: 0 auto 1rem;
-
-`
-
-const Container = styled.div`
-  width: 160px;
-  text-align: center;
-  margin: 0 auto;
-
-  p{
-    text-align: left;
-    color: #888;
-    margin-bottom: 0.1rem;
+const EachArticle = styled.div`
+  padding: 0.5em;
+  width: 100%;
+  text-decoration: none;
+  border-bottom: 1px solid #f4f4f4;
+  &:hover{
+    cursor: pointer;
+    background-color: #f4f4f4;
+    transition: all 0.2s ease-in;
+    p{
+      text-decoration: underline;
+    }
   }
 `
 
-const Thumnail = styled.img`
-  width: 100%;
-  height: 105px;
-  margin-bottom: 0.5rem;
-  object-fit: cover;
-
+const PostLink = styled.a`
+  
 `
-const Title = styled.h3`
+
+const Container = styled.div`
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+`
+
+const SubContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  span{
+    text-align: left;
+    color: #888;
+    margin-right:1rem;
+  }
+`
+
+const Title = styled.p`
   width: 100%;
   text-decoration: none;
   font-size: 18px;
@@ -35,27 +48,42 @@ const Title = styled.h3`
   color: #02102e;
   text-align: left;
   letter-spacing: normal;
-  &:hover{
-    color: #0086d1;
-    transition: all 0.4s ease-in;
-  }
+
+`
+
+const Image = styled.img`
+  width: 1.5em;
+  height: 1.5em;
+  text-align: left;
+  object-fit: cover;
+  border-radius: 50%;
+  border: solid 1px;
+  border-color: #EEEEEE; 
+  margin-bottom: 0;
+  margin-right: 0.2em;
+
 `
 
 const PostRoll = (props) => {
   return(
     <>
       <EachArticle>
-        <Link 
-          to={`/article/${props.id}`}
-          style={{
-            textDecoration: `none`
-          }}>
-          <Container>
-            <p>{props.date}</p>
-            <Thumnail src={props.thumnail}></Thumnail>
-            <Title>{props.title}</Title>
-          </Container>
-        </Link>
+        <PostLink 
+          // to={`/post/${props.id}`}
+        >
+        <Container>
+          <Title>TitleTitleTitleTitle</Title>
+          <SubContainer>
+            <Image
+              src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+            >
+            </Image>
+              <span>username</span>
+              <span>date</span>
+              <span>views</span>
+          </SubContainer>
+        </Container>
+        </PostLink>
       </EachArticle>
     </>
     )
