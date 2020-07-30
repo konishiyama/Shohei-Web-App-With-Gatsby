@@ -19,7 +19,6 @@ const EachArticle = styled.div`
 `
 
 const PostLink = styled.a`
-  
 `
 
 const Container = styled.div`
@@ -33,10 +32,19 @@ const SubContainer = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
+  div{
+    text-align: left;
+    color: #888;
+  }
   span{
     text-align: left;
     color: #888;
-    margin-right:1rem;
+  }
+  span:before {
+    content: "|";
+    padding: 0 0.5em;
+    font-size: 0.8em;
+    color: #ccc;
   }
 `
 
@@ -78,9 +86,9 @@ const PostRoll = (props) => {
               src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
             >
             </Image>
-              <span>username</span>
-              <span>date</span>
-              <span>views</span>
+            <div>username</div>
+            <span>date</span>
+            <span>views</span>
           </SubContainer>
         </Container>
         </PostLink>
