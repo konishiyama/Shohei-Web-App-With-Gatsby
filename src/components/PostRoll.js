@@ -41,7 +41,7 @@ const Title = styled.h3`
   }
 `
 
-const ArticleRoll = (props) => {
+const PostRoll = (props) => {
   return(
     <>
       <EachArticle>
@@ -61,4 +61,4 @@ const ArticleRoll = (props) => {
     )
 }
 
-export default ArticleRoll
+export default PostRoll

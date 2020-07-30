@@ -55,7 +55,7 @@ const Profile = () => {
       photoURL: PimageUrl,
       email: user.email,
       userId: user.uid,
-    }).then(() => navigate('/')).catch(error => {
+    }).then(() => navigate('/profile')).catch(error => {
       setErrorMessage(error.message);
     })
 }
