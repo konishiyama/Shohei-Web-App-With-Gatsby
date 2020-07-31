@@ -79,8 +79,8 @@ const Profile = () => {
             <TD>
               <b>USERNAME</b>
             </TD>
-            {!!user && !!user.displayName && 
-              <TD>{user.displayName}</TD>}
+            {!!user && !!user.username && 
+              <TD>{user.username}</TD>}
           </tr>
           <tr>
             <TD>

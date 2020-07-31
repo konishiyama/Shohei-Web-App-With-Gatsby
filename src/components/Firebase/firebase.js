@@ -26,10 +26,12 @@ class Firebase {
 
   async getUserProfile({userId}){
     return this.db.collection('publicProfiles').where('userId', '==', userId).get();
+    //whereの第一引数はField名であってDocument名ではない。このクエリによってDocumentを持ってきている。
   }
 
   async register({email, password, username}){
     const newUser = await this.auth.createUserWithEmailAndPassword(email, password); 
+    //createWith...はuser.uidという要素をもつオブジェクトをreturnする(lessson40らへん)。他方、このままだと一人のユーザーが紐づくpublicProfileをいくつも作成できてしまうが、その部分はlesson41以降のfirebasecloud functionsnに関する説明で解消する。
     return this.db.collection('publicProfiles').doc(username).set({
       userId: newUser.user.uid,
       Email: newUser.user.email,
