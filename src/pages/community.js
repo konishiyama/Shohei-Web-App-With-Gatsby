@@ -5,7 +5,7 @@ import PostRoll from "../components/PostRoll"
 import { PageCover } from '../components/common';
 
 
-const PostList = ({data}) => {
+const Community = ({data}) => {
   // const allArticles = data.allArticle.edges;
   // const articlesOrdered = allArticles.sort(function(a, b) {
   //   if (a.node.date < b.node.date) {
@@ -76,4 +76,4 @@ const PostList = ({data}) => {
 // }
 // `
 
-export default PostList
+export default Community

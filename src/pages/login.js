@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
 import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, CheckBox, SubIndex } from '../components/common';
-import {useAuth} from '../components/Firebase'
+import { FirebaseContext } from '../components/Firebase'
 import styled from 'styled-components';
 
 
@@ -17,7 +17,7 @@ const A = styled.a`
 
 const Login = () => {
   const [formValues, setFormValues] = useState({email:'', password: ''});
-  const {firebase} = useAuth();
+  const {firebase} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
 
   function handleSubmit(e){
@@ -27,6 +27,7 @@ const Login = () => {
       setErrorMessage(error.message);
     })
   }
+  //login()はプロミスなので（async）thenを使っている。
 
   function handleInputChange(e){
     e.persist();

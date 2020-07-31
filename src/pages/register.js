@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
 import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton} from '../components/common';
 // import { FirebaseContext} from '../components/Firebase'
-import {useAuth} from '../components/Firebase'
+import { FirebaseContext } from '../components/Firebase'
 import styled from 'styled-components';
 
 
@@ -17,7 +17,7 @@ const A = styled.a`
 `
 
 const Register = () => {
-  const {firebase} = useAuth();
+  const {firebase} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
 
   const [formValues, setFormValues] = useState({
