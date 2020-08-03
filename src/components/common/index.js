@@ -12,6 +12,7 @@ export * from './SubTitle';
 export * from './PageCover';
 export * from './PageTitle';
 export * from './ProfileImage';
+export * from './LoginImage';
 export * from './SubIndex';
 export * from './FBContainer';
 export * from './Facebook';

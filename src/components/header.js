@@ -1,7 +1,7 @@
 
 import React, { useState, useContext } from "react"
 import styled from "styled-components"
-import {  ProfileImage } from '../components/common';
+import {  ProfileImage, LoginImage } from '../components/common';
 import NavbarLinks from "./NavbarLinks"
 import {FirebaseContext} from './Firebase';
 
@@ -59,8 +59,8 @@ const Navbox = styled.div`
 
 const Hamburger = styled.div`
   background-color: #111;
-  width: 30px;
-  height: 2px;
+  width: 25px;
+  height: 1.5px;
   transition: all .3s linear;
   align-self: center;
   position: relative;
@@ -68,8 +68,8 @@ const Hamburger = styled.div`
 
   ::before,
   ::after {
-    width: 30px;
-    height: 2px;
+    width: 25px;
+    height: 1.5px;
     background-color: #111;
     content: "";
     position: absolute;
@@ -78,14 +78,14 @@ const Hamburger = styled.div`
 
   ::before {
     transform: ${props =>
-      props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
-    top: -10px;
+      props.open ? "rotate(-90deg) translate(-9px, 0px)" : "rotate(0deg)"};
+    top: -8px;
   }
 
   ::after {
     opacity: ${props => (props.open ? "0" : "1")};
     transform: ${props => (props.open ? "rotate(90deg) " : "rotate(0deg)")};
-    top: 10px;
+    top: 8px;
   }
 `
 const Header = () => {
@@ -159,6 +159,21 @@ const Header = () => {
           src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
           >
           </ProfileImage>
+        </a>
+      </div>
+      }
+      {!user && 
+      <div>
+        <a href="/login"
+        style={{
+          display: `flex`,
+          alignItems: `center`,
+        }}
+        >
+          <LoginImage
+          src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fsign-in-alt-solid.svg?alt=media&token=8de85d0f-7cba-4ce5-a246-44a839597ea0"
+          >
+          </LoginImage>
         </a>
       </div>
       }

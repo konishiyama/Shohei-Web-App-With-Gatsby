@@ -22,7 +22,7 @@ export const PageCover = styled.div`
     }
 
   img{
-    opacity: 0.4;  
+    opacity: 50%;  
     width: 100%;
     margin: 0;
   }

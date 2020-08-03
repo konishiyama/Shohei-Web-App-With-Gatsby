@@ -8,8 +8,16 @@ export const SubTitle = styled.div`
     font-family: Avenir Next Condensed;
     font-weight: 200;
     letter-spacing: 0.03em;
-    font-size: 28px;
+    font-size: 25px;
     color: #444444;
     margin: 0 auto;
+  }
+  span:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 45vw;
+    margin: 1.5rem auto 0;
+    background-color: #4C9C41;
   }
 `
