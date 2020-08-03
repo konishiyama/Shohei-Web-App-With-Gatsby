@@ -86,7 +86,7 @@ const Register = () => {
         <SmallP>
           <p>Read
            <A 
-           to="/terms"
+           href="/terms"
            target="_blank"
            > Terms and Conditions</A>
           </p>
