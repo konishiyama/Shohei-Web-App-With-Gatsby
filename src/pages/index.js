@@ -5,6 +5,8 @@ import PostRoll from "../components/PostRoll"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
 import {FirebaseContext} from '../components/Firebase';
+import { Fade } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
 
 const CoverPic = styled.img`
   margin: 0;
@@ -23,6 +25,24 @@ const ArticleList = styled.ul`
   justify-content: space-between;
 `
 
+const SeeMore = styled.a`
+  text-decoration: none;
+  color: #808080;
+  color: #808080;
+  &:hover{
+    color: #4c9c41;
+    transition: all 0.4s ease-in;
+  }
+`
+
+const fadeProperties = {
+  duration: 3000,
+  transitionDuration: 1500,
+  infinite: true,
+  indicators: false,
+  arrows: false,
+}
+
 const IndexPage = ({ data }) => {
   const { user } = useContext(FirebaseContext);
   const allArticles = data.allArticle.edges;
@@ -38,7 +58,11 @@ const IndexPage = ({ data }) => {
   return(
   <>
   <section>
-    <CoverPic src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f"></CoverPic>
+    <Fade {...fadeProperties}>
+      <CoverPic src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f"/>
+      <CoverPic src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample5.jpg?alt=media&token=496b4690-25e6-44f2-b9e3-f56cdfb50050" />
+      <CoverPic src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample6.jpg?alt=media&token=9b723082-8601-4d5a-8561-a9f898b09d5e"/>
+    </Fade>
     <div
         style={{
           margin: `0 auto`,
@@ -68,13 +92,10 @@ const IndexPage = ({ data }) => {
           textAlign: `center`
         }}
       >
-        <a 
+        <SeeMore 
           href="/blog"
-          style={{
-            textDecoration: `none`
-          }}
           >>>もっと見る
-        </a>
+        </SeeMore>
       </div>
 
     {!!user  && 
@@ -99,13 +120,10 @@ const IndexPage = ({ data }) => {
             textAlign: `center`
           }}
         >
-          <a 
+          <SeeMore 
             href="/community"
-            style={{
-              textDecoration: `none`
-            }}
             >>>もっと見る
-          </a>
+          </SeeMore>
       </div>
       </div>
     }
@@ -125,14 +143,11 @@ const IndexPage = ({ data }) => {
           textAlign: `center`
         }}
       >
-        <a 
+        <SeeMore 
           href="https://www.twitter.com/"
           target= "_blank"
-          style={{
-            textDecoration: `none`
-          }}
-          >>>もっと見る
-        </a>
+        >>>もっと見る
+        </SeeMore>
       </div>
     <SubTitle>
       <span>
@@ -151,14 +166,11 @@ const IndexPage = ({ data }) => {
         textAlign: `center`
       }}
     >
-      <a 
+      <SeeMore 
         href="https://www.instagram.com/dlwlrma/?hl=ja"
         target= "_blank"
-        style={{
-          textDecoration: `none`,
-        }}
-        >>>もっと見る
-      </a>
+      > >>もっと見る
+      </SeeMore>
     </div>
     </div>
   </section>

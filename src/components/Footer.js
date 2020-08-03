@@ -46,6 +46,7 @@ const LogOut = styled.span`
   text-decoration: none;
   cursor: pointer;
   font-weight: bold;
+  color: #fff;
     &:hover{
       color: #fff;
     }
@@ -67,7 +68,7 @@ const Img = styled.img`
 
 const Paragraph1 = styled.div`
   width: 60%;
-  margin: 0 auto 1.5rem;
+  margin: 10px auto 1.5rem;
   display: flex;
 `
 
@@ -85,9 +86,18 @@ const Line = styled.p`
   font-weight: bold;
   text-decoration: none;
   color: #fff;
+  a{
+    color: #fff;
+    text-decoration: none;
+    &:hover{
+      color: #fff;
+      transition: all 0.4s ease-in;
+    }
+  }
 `
 const Span = styled.span`
   margin: 0 10px;
+  
 `
 
 const CopyRight = styled.p`
@@ -136,10 +146,7 @@ const Footer = () => {
         <Line>
           <a 
           href=""
-          style={{
-            textDecoration: `none`,
-            color: `#808080`,
-          }}>
+          >
             このサイトについて
           </a>
         </Line>
@@ -147,10 +154,7 @@ const Footer = () => {
         <Line>
           <a 
           href=""
-          style={{
-            textDecoration: `none`,
-            color: `#808080`,
-          }}>
+          >
             個人情報保護方針
           </a>
         </Line>
