@@ -96,44 +96,6 @@ const Header = () => {
   return (
     <>
     <Navigation>
-      <a href="/">
-        <img 
-          src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Flogo.jpg?alt=media&token=6a010728-d709-44b4-a1bf-d19217dbdd5c"
-          style={{
-            height:`40px`,
-            marginBottom: `0`,
-            display: `flex`,
-            alignItems: `center`
-          }}
-          alt="image"
-        ></img>
-      </a>
-        {!!user && !!user.photoURL && 
-          <a href="/profile"
-          style={{
-            display: `flex`,
-            alignItems: `center`
-          }}
-          >
-            <ProfileImage
-            src= {user.photoURL}
-            >
-            </ProfileImage>
-          </a>
-          }
-        {!!user && !user.photoURL && 
-        <a href="/profile"
-        style={{
-          display: `flex`,
-          alignItems: `center`
-        }}
-        >
-          <ProfileImage
-          src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
-          >
-          </ProfileImage>
-        </a>
-        }
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}
@@ -152,6 +114,54 @@ const Header = () => {
           <NavbarLinks />
         </Navbox>
       )}
+
+      {/* <a href="/"
+         style={{
+          margin:`0 30px 0 0`,
+        }}
+      >
+        <img 
+          src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fsample_logo.jpg?alt=media&token=65f254d8-cf14-49c8-89eb-e457519fea94"
+          style={{
+            height:`8vw`,
+            marginBottom: `0`,
+            display: `flex`,
+            alignItems: `center`
+          }}
+          alt="image"
+        ></img>
+      </a> */}
+
+      {!!user && !!user.photoURL && 
+      <div>
+        <a href="/profile"
+        style={{
+          display: `flex`,
+          alignItems: `center`,
+        }}
+        >
+        <ProfileImage
+        src= {user.photoURL}
+        >
+        </ProfileImage>
+        </a>
+      </div>
+      }
+      {!!user && !user.photoURL && 
+      <div>
+        <a href="/profile"
+        style={{
+          display: `flex`,
+          alignItems: `center`,
+        }}
+        >
+          <ProfileImage
+          src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+          >
+          </ProfileImage>
+        </a>
+      </div>
+      }
     </Navigation>
     </>
   )

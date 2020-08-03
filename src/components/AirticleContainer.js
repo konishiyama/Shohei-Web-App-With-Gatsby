@@ -43,7 +43,7 @@ const Title = styled.h3`
   color: #02102e;
   text-align: left;
   &:hover{
-    color: #0086d1;
+    color: #4c9c41;
     transition: all 0.4s ease-in;
   }
 `

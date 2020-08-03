@@ -8,7 +8,7 @@ const About = (props) => {
   <>
   <section>
     <PageCover>
-      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample1.jpg?alt=media&token=bd5a45f3-b0ed-409b-a00b-f9760db145d7"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample4.jpg?alt=media&token=05feeaeb-7485-4dc6-a470-6be86d173842"></img>
       <p>
         <span>
           ABOUT

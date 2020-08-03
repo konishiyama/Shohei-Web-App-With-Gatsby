@@ -54,12 +54,19 @@ const ImgContainer = styled.div`
   width: 80%;
   margin: 0 auto 10px;
   display: flex;
+  alignItems: center;
 
 `
 
 const Img = styled.img`
   height: 30px;
   margin: 0 auto;
+
+`
+
+const FBImg = styled.img`
+  height: 25px;
+  margin: 3px auto 0;
 
 `
 
@@ -127,7 +134,7 @@ const Footer = () => {
 
       <ImgContainer>
         <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FTwitter_Logo_Blue.png?alt=media&token=028253c0-ebfe-4f04-9cee-64efba8a187f" href="" target="_blank" alt="Twitter"></Img>
-        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ff_logo_RGB-Blue_58.png?alt=media&token=fb458aff-398e-43fc-9cfd-96d239cad140" href="" target="_blank" alt="Facebook"></Img>
+        <FBImg src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ff_logo_RGB-Blue_58.png?alt=media&token=fb458aff-398e-43fc-9cfd-96d239cad140" href="" target="_blank" alt="Facebook"></FBImg>
         <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FInstagram.png?alt=media&token=d2d96f0e-b7c3-42d7-a11e-d1373577f8c2" href="" target="_blank" alt="Instagram"></Img>
       </ImgContainer>
 

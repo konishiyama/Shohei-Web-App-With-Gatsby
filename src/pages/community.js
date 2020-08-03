@@ -19,10 +19,10 @@ const Community = ({data}) => {
   <>
   <section>
     <PageCover>
-      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample3.jpg?alt=media&token=52fe4ca0-416a-4402-b74d-782209f0a044"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample5.jpg?alt=media&token=496b4690-25e6-44f2-b9e3-f56cdfb50050"></img>
       <p>
         <span>
-          POST
+          COMMUNITY
         </span>
       </p>
     </PageCover>

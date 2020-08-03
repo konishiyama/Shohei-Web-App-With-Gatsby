@@ -9,5 +9,5 @@ export const ProfileImage = styled.img`
   vertical-align: middle;
   border-radius: 50%;
   position: absolute;
-  right: 67.5px;
+  right: 5vw;
 `

@@ -75,7 +75,7 @@ const Post = ({data}) => {
   return(
     <section>
       <PageCover>
-        <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample1.jpg?alt=media&token=bd5a45f3-b0ed-409b-a00b-f9760db145d7" alt="image"></img>
+        <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f" alt="image"></img>
         <p>
           <span>
             POST ARTICLE
@@ -84,7 +84,14 @@ const Post = ({data}) => {
       </PageCover>
       <Form  required onSubmit={onSubmitFile}>
       <SubIndex>COVER IMAGE</SubIndex>
-        <input type="file" onChange={handleImage}  />
+        <input 
+          type="file" 
+          onChange={handleImage} 
+          style = {{
+            marginBottom: `1vw`,
+          }}
+          />
+        <br></br>
         <UploadButton>Upload</UploadButton>
           {!!fileUploaded &&
           <Message>Uploaded image properly!</Message>
@@ -93,9 +100,11 @@ const Post = ({data}) => {
           <ErrorMessage>You need to uploaded image!</ErrorMessage>
           }
       </Form>
+      <br></br>
       <Form onSubmit={handleSubmit}>
         <SubIndex>TITLE</SubIndex>            
         <Input required placeholder="title"  type="text" onChange={handleInputTitleChange}  />
+        <br></br>
         <SubIndex>CONTENT</SubIndex>
         <div className="App">
         <Editor
@@ -121,6 +130,7 @@ const Post = ({data}) => {
         {!!errorMessage &&
         <ErrorMessage>Failed posting article properly</ErrorMessage>
         }
+        <br></br>
         <Button type="submit" block>Post</Button>
       </Form>
       <br/>

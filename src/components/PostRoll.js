@@ -10,7 +10,7 @@ const EachArticle = styled.div`
   border-bottom: 1px solid #f4f4f4;
   &:hover{
     cursor: pointer;
-    background-color: #f4f4f4;
+    background-color: #f4f9ef;
     transition: all 0.2s ease-in;
     p{
       text-decoration: underline;

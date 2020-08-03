@@ -11,7 +11,7 @@ const TD = styled.td`
 
 const EditLink = styled.a`
   padding: 6px 10px;
-  background: #0086d1;
+  background: #4c9c41;
   color: white;
   font-size: 16px;
   border-radius: 4px;

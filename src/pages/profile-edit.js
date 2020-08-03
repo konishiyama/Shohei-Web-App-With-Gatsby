@@ -115,7 +115,14 @@ function handlePImage(e){
  
         <Form  onSubmit={onSubmitPFile}>
           <SubIndex>PROFILE IMAGE</SubIndex>
-            <input type="file" onChange={handlePImage} required />
+            <input 
+              type="file" 
+              onChange={handlePImage} 
+              required
+              style = {{
+                marginBottom: `1vw`,
+              }}
+              />
             <UploadButton>Upload</UploadButton>
               {!!PfileUploaded &&
               <Message>Uploaded image properly!</Message>

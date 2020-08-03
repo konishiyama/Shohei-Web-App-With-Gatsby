@@ -35,7 +35,7 @@ const IndexPage = ({ data }) => {
   return(
   <>
   <section>
-    <CoverPic src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fprofile-pic.jpg?alt=media&token=85714a7f-1863-4a7d-92f2-973a70964737"></CoverPic>
+    <CoverPic src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f"></CoverPic>
     <div
         style={{
           margin: `0 auto`,

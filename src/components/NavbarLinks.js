@@ -21,13 +21,13 @@ const NavItem = styled.a`
     width: 0%;
     content: ".";
     color: transparent;
-    background: #0086d1;
+    background: #4c9c41;
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: #0086d1;
+    color: #4c9c41;
     ::after {
       width: 100%;
     }
@@ -58,13 +58,13 @@ const Logout = styled.span`
     width: 0%;
     content: ".";
     color: transparent;
-    background: #0086d1;
+    background: #4c9c41;
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: #0086d1;
+    color: #4c9c41;
     ::after {
       width: 100%;
     }

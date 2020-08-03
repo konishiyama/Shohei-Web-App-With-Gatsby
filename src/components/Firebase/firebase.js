@@ -72,6 +72,8 @@ class Firebase {
     const articleRef = this.db.collection('articles').doc(articleId); //lesson41,42を参照
     return this.db.collection('comments').where('article' , '==', articleRef).onSnapshot(onSnapshot)
   }
+  //registerのときと同じように'==', 'articleId'では参照できない（getUserProfileのときはたんにデータを呼び出してくるだけだったが、今回はbookのドキュメントに紐付いているコメントを引っ張ってくる（そもそもコメントはブックに紐付いている））ので、レファレンス形式にする必要あるが、その作り方が上のconst articleRef。
+
 
   async login({email, password}) {
     return this.auth.signInWithEmailAndPassword(email, password);
