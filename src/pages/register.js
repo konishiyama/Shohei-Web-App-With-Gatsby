@@ -79,7 +79,7 @@ const Register = () => {
           </ErrorMessage>
           }
           <Button type="submit" block>
-            Register
+            Send
           </Button>
         </Form>
         <br></br>

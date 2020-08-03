@@ -153,9 +153,9 @@ const Footer = () => {
         <Span></Span>
         <Line>
           <a 
-          href=""
+          href="/privacy_policy"
           >
-            個人情報保護方針
+            プライバシーポリシー
           </a>
         </Line>
       </Paragraph2>

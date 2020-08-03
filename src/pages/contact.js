@@ -45,7 +45,7 @@ const Contact = () => {
       <Form name="contact" method="post" action="/contact_success" data-netlify="true" data-netlify-honeypot="bot-field">
       <br></br>
       <p>下記フォームに必要事項をご記入の上、お問合せください。</p>
-      <p>４営業日以内にご連絡いたします。送信エラーなどを未然に防ぐ為、メールアドレスの入力はお間違いのないようにお願いいたします。</p>
+      <p>通常、４営業日以内にご返答いたします。メールアドレスの入力はお間違いのないようにご記入ください。</p>
       <br></br>
         <input type="hidden" name="form-name" value="contact" />
         <SubIndex>NAME</SubIndex>            
@@ -56,7 +56,7 @@ const Contact = () => {
         <Input required placeholder="Email"  type="email" name="email"/>
         <SubIndex>INQUIRY</SubIndex>
         <TEXTAREA required placeholder="Inquiry" name="inquiry"  />
-        <Button type="submit" block>Post</Button>
+        <Button type="submit" block>Send</Button>
       </Form>
       <br/>
       <br/>

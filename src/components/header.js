@@ -131,7 +131,7 @@ const Header = () => {
         ></img>
       </a> */}
 
-      {!!user && !!user.photoURL && 
+      {!!user && 
       <div>
         <a href="/profile"
         style={{
