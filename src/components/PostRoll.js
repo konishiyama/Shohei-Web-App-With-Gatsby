@@ -14,6 +14,8 @@ const EachArticle = styled.div`
     transition: all 0.2s ease-in;
     p{
       text-decoration: underline;
+      color: #4c9c41;
+      transition: all 0.4s ease-in;
     }
   }
 `

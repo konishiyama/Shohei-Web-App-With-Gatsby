@@ -7,9 +7,9 @@ import styled from 'styled-components';
 
 const A = styled.a`
   text-decoration: none;
-  color: #0086d1;
+  color: #4c9c41;
   &:hover{
-    color: #0086d1;
+    color: #4c9c41;
     cursor: pointer;
     text-decoration: underline;
   }

@@ -6,21 +6,22 @@ import {Link, navigate} from 'gatsby'
 
 
 const Container = styled.div`
-
+  background-color: #363636;
+  padding: 1rem 0 1rem;
+  a{
+    color: #fff;
+    text-decoration: none;
+    &:hover{
+      color: #fff;
+      transition: all 0.4s ease-in;
+    }
+  }
 `
 
 const Home = styled.div`
   width: 50%;
   text-align: center;
   cursor: pointer;
-  // font-weight: bold;
-  a{
-    text-decoration: none;
-    &:hover{
-      color: #0086d1;
-      transition: all 0.4s ease-in;
-    }
-  }
 `
 
 const LogIn = styled.div`
@@ -30,9 +31,10 @@ const LogIn = styled.div`
   cursor: pointer;
   font-weight: bold;
   a{
+    color: #fff;
     text-decoration: none;
     &:hover{
-      color: #0086d1;
+      color: #fff;
       transition: all 0.4s ease-in;
     }
   }
@@ -45,34 +47,27 @@ const LogOut = styled.span`
   cursor: pointer;
   font-weight: bold;
     &:hover{
-      color: #0086d1;
+      color: #fff;
     }
   `
 
 const ImgContainer = styled.div`
-  height: 40px;
+  height: 18px;
   width: 80%;
-  margin: 0 auto 10px;
+  margin: 0 auto 1.5rem;
   display: flex;
   alignItems: center;
 
 `
 
 const Img = styled.img`
-  height: 30px;
+  height: 18px;
   margin: 0 auto;
-
-`
-
-const FBImg = styled.img`
-  height: 25px;
-  margin: 3px auto 0;
-
 `
 
 const Paragraph1 = styled.div`
   width: 60%;
-  margin: 0 auto 15px;
+  margin: 0 auto 1.5rem;
   display: flex;
 `
 
@@ -89,7 +84,7 @@ const Line = styled.p`
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
-  color: #404040;
+  color: #fff;
 `
 const Span = styled.span`
   margin: 0 10px;
@@ -97,7 +92,7 @@ const Span = styled.span`
 
 const CopyRight = styled.p`
   font-size: 8px;
-  color: #404040;
+  color: #808080;
   text-align: center;
   margin: 10px auto;
 `
@@ -115,10 +110,9 @@ const Footer = () => {
     <Container>
       <Paragraph1>
         <Home>
-            {/* <img src="/icons/Home1.png"></img> */}
-              <a href="/">
-                HOME
-              </a>
+          <a href="/">
+            HOME
+          </a>
         </Home>
           {!user &&
             <LogIn>
@@ -133,9 +127,9 @@ const Footer = () => {
       </Paragraph1>
 
       <ImgContainer>
-        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FTwitter_Logo_Blue.png?alt=media&token=028253c0-ebfe-4f04-9cee-64efba8a187f" href="" target="_blank" alt="Twitter"></Img>
-        <FBImg src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ff_logo_RGB-Blue_58.png?alt=media&token=fb458aff-398e-43fc-9cfd-96d239cad140" href="" target="_blank" alt="Facebook"></FBImg>
-        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FInstagram.png?alt=media&token=d2d96f0e-b7c3-42d7-a11e-d1373577f8c2" href="" target="_blank" alt="Instagram"></Img>
+        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ffacebook.svg?alt=media&token=01a3eb41-7aa7-4cc8-ba54-798f088b54d6" href="" target="_blank" alt="Facebook"></Img>
+        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fyoutube.svg?alt=media&token=af3a8aa1-c3d1-4e81-817f-db214d79c2ec" href="" target="_blank" alt="Instagram"></Img>
+        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ftwitter.svg?alt=media&token=b173455e-d10e-4c38-8a44-952e43d6067a" href="" target="_blank" alt="Twitter"></Img>
       </ImgContainer>
 
       <Paragraph2>
@@ -144,7 +138,7 @@ const Footer = () => {
           href=""
           style={{
             textDecoration: `none`,
-            color: `#404040`,
+            color: `#808080`,
           }}>
             このサイトについて
           </a>
@@ -155,7 +149,7 @@ const Footer = () => {
           href=""
           style={{
             textDecoration: `none`,
-            color: `#404040`,
+            color: `#808080`,
           }}>
             個人情報保護方針
           </a>

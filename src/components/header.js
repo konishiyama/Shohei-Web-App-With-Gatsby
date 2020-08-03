@@ -91,7 +91,6 @@ const Hamburger = styled.div`
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const {firebase, user} = useContext(FirebaseContext);
-  console.log(user);
 
   return (
     <>

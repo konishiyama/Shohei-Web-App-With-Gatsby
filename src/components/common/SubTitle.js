@@ -16,7 +16,7 @@ export const SubTitle = styled.div`
     content: "";
     display: block;
     height: 1px;
-    width: 45vw;
+    width: 40vw;
     margin: 1.5rem auto 0;
     background-color: #4C9C41;
   }
