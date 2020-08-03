@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import {  SubTitle } from '../components/common';
+import PostRoll from "../components/PostRoll"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
+import {FirebaseContext} from '../components/Firebase';
 
 const CoverPic = styled.img`
   margin: 0;
@@ -22,6 +24,7 @@ const ArticleList = styled.ul`
 `
 
 const IndexPage = ({ data }) => {
+  const { user } = useContext(FirebaseContext);
   const allArticles = data.allArticle.edges;
   const articlesOrdered = allArticles.sort(function(a, b) {
     if (a.node.date < b.node.date) {
@@ -59,15 +62,54 @@ const IndexPage = ({ data }) => {
         />
       ))}
     </ArticleList>
-      <p>
+      <div
+        style={{
+          margin: `1.5rem auto 0 `,
+          textAlign: `center`
+        }}
+      >
         <a 
           href="/blog"
           style={{
             textDecoration: `none`
           }}
-          >もっと見る
+          >>>もっと見る
         </a>
-      </p>
+      </div>
+
+    {!!user  && 
+      <div>
+      <SubTitle>
+        <span>
+          Community
+        </span>
+      </SubTitle>
+      <PostRoll />
+      <PostRoll />
+      <PostRoll />
+      <PostRoll />
+      <PostRoll />
+      <PostRoll />
+      <PostRoll />
+      <PostRoll />
+      <PostRoll />
+      <div
+          style={{
+            margin: `2.5rem auto 0 `,
+            textAlign: `center`
+          }}
+        >
+          <a 
+            href="/community"
+            style={{
+              textDecoration: `none`
+            }}
+            >>>もっと見る
+          </a>
+      </div>
+      </div>
+    }
+
     <SubTitle>
       <span>
         Twitter
@@ -77,6 +119,21 @@ const IndexPage = ({ data }) => {
     style={{
       textDecoration: `none`
     }} target="_blank">Tweets by GekidanHitori</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div
+        style={{
+          margin: `1.5rem auto 0 `,
+          textAlign: `center`
+        }}
+      >
+        <a 
+          href="https://www.twitter.com/"
+          target= "_blank"
+          style={{
+            textDecoration: `none`
+          }}
+          >>>もっと見る
+        </a>
+      </div>
     <SubTitle>
       <span>
         Instagram
@@ -88,16 +145,21 @@ const IndexPage = ({ data }) => {
     >
       <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FInstagram-thumnail.png?alt=media&token=7a577e36-5c8f-43d9-9032-4911cac0b762"></img>
     </a>
-    <p>
+    <div
+      style={{
+        margin: `1.5rem auto 3rem`,
+        textAlign: `center`
+      }}
+    >
       <a 
         href="https://www.instagram.com/dlwlrma/?hl=ja"
         target= "_blank"
         style={{
-          textDecoration: `none`
+          textDecoration: `none`,
         }}
-        >もっと見る
+        >>>もっと見る
       </a>
-    </p>
+    </div>
     </div>
   </section>
   </>
