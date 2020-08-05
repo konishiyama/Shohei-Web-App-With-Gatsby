@@ -114,7 +114,7 @@ const Header = () => {
         </Navbox>
       )}
 
-      {/* <a href="/"
+      <a href="/"
          style={{
           margin:`0 30px 0 0`,
         }}
@@ -129,7 +129,7 @@ const Header = () => {
           }}
           alt="image"
         ></img>
-      </a> */}
+      </a>
 
       {!!user && 
       <div>
