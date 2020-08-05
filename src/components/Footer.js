@@ -145,12 +145,12 @@ const Footer = () => {
       <Paragraph2>
         <Line>
           <a 
-          href=""
+          href="/contact"
           >
-            このサイトについて
+            お問い合わせ
           </a>
         </Line>
-        <Span></Span>
+        {/* <Span></Span> */}
         <Line>
           <a 
           href="/privacy_policy"

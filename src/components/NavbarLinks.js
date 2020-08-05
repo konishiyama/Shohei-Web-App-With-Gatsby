@@ -87,7 +87,7 @@ const NavbarLinks = () => {
     <>
       <NavItem href="/about">About</NavItem>
       <NavItem href="/blog">Blog</NavItem>
-      <NavItem href="/contact">Contact</NavItem>
+      {/* <NavItem href="/contact">Contact</NavItem> */}
       {!user &&
         <NavItem href="/login">Login</NavItem> 
       }

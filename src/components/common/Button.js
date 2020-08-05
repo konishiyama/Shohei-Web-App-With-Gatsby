@@ -8,7 +8,7 @@ export const Button = styled.button`
   border-radius: 4px;
   border: 1px solid #ddd;
   box-shadow: none;
-  ${props => props.block ? 'display: block; width: 20%;' : ''}
+  ${props => props.block ? 'display: block; width: 100%;' : ''}
   &:hover{
     opacity: 80%;
     cursor: pointer;

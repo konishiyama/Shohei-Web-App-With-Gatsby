@@ -36,7 +36,7 @@ const SeeMore = styled.a`
 `
 
 const fadeProperties = {
-  duration: 3000,
+  duration: 2000,
   transitionDuration: 1500,
   infinite: true,
   indicators: false,
@@ -70,34 +70,7 @@ const IndexPage = ({ data }) => {
           padding: `0 0.8rem 1.45rem`,
         }}
       >
-    <SubTitle>
-      <span>
-         Recent Posts
-      </span>
-    </SubTitle>
-    <ArticleList>
-      {latestPosts.map(edge => (
-        <ArticleRoll 
-          title = {edge.node.title}
-          time = {edge.node.time}
-          thumnail = {edge.node.thumnail}
-          id = {edge.node.id}
-          date = {edge.node.date}
-        />
-      ))}
-    </ArticleList>
-      <div
-        style={{
-          margin: `1.5rem auto 0 `,
-          textAlign: `center`
-        }}
-      >
-        <SeeMore 
-          href="/blog"
-          >>>もっと見る
-        </SeeMore>
-      </div>
-
+    
     {!!user  && 
       <div>
       <SubTitle>
@@ -127,6 +100,34 @@ const IndexPage = ({ data }) => {
       </div>
       </div>
     }
+    
+    <SubTitle>
+      <span>
+         Recent Posts
+      </span>
+    </SubTitle>
+    <ArticleList>
+      {latestPosts.map(edge => (
+        <ArticleRoll 
+          title = {edge.node.title}
+          time = {edge.node.time}
+          thumnail = {edge.node.thumnail}
+          id = {edge.node.id}
+          date = {edge.node.date}
+        />
+      ))}
+    </ArticleList>
+      <div
+        style={{
+          margin: `1.5rem auto 0 `,
+          textAlign: `center`
+        }}
+      >
+        <SeeMore 
+          href="/blog"
+          >>>もっと見る
+        </SeeMore>
+      </div>
 
     <SubTitle>
       <span>

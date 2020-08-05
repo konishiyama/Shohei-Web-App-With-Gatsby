@@ -78,6 +78,7 @@ const Register = () => {
             {errorMessage}
           </ErrorMessage>
           }
+          <br></br>
           <Button type="submit" block>
             Send
           </Button>
