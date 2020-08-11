@@ -14,28 +14,38 @@ class Firebase {
   }
 
 
-  async postArticle({title, content, cover,date}){
+  async postArticle({title, content, cover, date, articleNum}){
     return this.db.collection('articles').doc().set({
       title: title,
       content: content,
       thumnail: cover, 
-      date: date
+      date: date,
+      articleNum: articleNum,
     });
   }
 
-  async memberWrite({title, content, date, username, userPhoto}){
+  async memberWrite({title, content, date, username, userPhoto, postNum}){
     return this.db.collection('memberposts').doc().set({
       title: title,
       content: content,
       date: date,
       username: username,
       userPhoto: userPhoto,
+      postNum: postNum
     });
   }
 
   async getUserProfile({userId}){
     return this.db.collection('publicProfiles').where('userId', '==', userId).get();
     //whereの第一引数はField名であってDocument名ではない。このクエリによってDocumentを持ってきている。
+  }
+
+  async getArticleNumbers(){
+    return this.db.collection('articles').get();
+  }
+
+  async getMemberPostNumbers(){
+    return this.db.collection('memberposts').get();
   }
 
   async register({email, password, username}){

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton} from '../components/common';
+import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex } from '../components/common';
 // import { FirebaseContext} from '../components/Firebase'
 import { FirebaseContext } from '../components/Firebase'
 import styled from 'styled-components';

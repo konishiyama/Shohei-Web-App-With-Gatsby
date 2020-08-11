@@ -13,10 +13,11 @@ const MemberWrite = ({data}) => {
   const [timeStamp, setTimeStamp] = useState('');
   const [usernameValues, setUsernameValues] = useState('');
   const [PimageUrl, setPImageUrl] = useState('');
+  const [postNumber, setPostNumber] = useState('');
 
   function handleSubmit(e){
     e.preventDefault();
-    firebase.memberWrite({title: titleValues.title, content: contentValues.content, date:timeStamp, username: usernameValues, userPhoto: PimageUrl}).then(()=> navigate('/')).catch(error => {
+    firebase.memberWrite({title: titleValues.title, content: contentValues.content, date:timeStamp, username: usernameValues, userPhoto: PimageUrl, postNum: postNumber}).then(()=> navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
   }
@@ -29,6 +30,10 @@ const MemberWrite = ({data}) => {
     setTimeStamp(new Date().toLocaleDateString());
     setUsernameValues(user.username);
     setPImageUrl(user.photoURL);
+    firebase.getMemberPostNumbers().then(r => {
+      setPostNumber(r.docs.length +1)
+    }
+    )
   }
 
   function handleEditorChange(e){
@@ -88,32 +93,5 @@ const MemberWrite = ({data}) => {
     </section>
 )
 }
-
-// export const query = graphql`
-// {
-//   allArticle {
-//     edges {
-//       node {
-//         id
-//         thumnail
-//         title
-//         date
-//         content
-//       }
-//     }
-//   }
-//   allMemberPost {
-//     edges {
-//       node {
-//         date
-//         content
-//         id
-//         title
-//         username
-//       }
-//     }
-//   }
-// }
-// `
 
 export default MemberWrite

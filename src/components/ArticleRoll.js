@@ -46,7 +46,7 @@ const ArticleRoll = (props) => {
     <>
       <EachArticle>
         <Link 
-          to={`/article/${props.id}`}
+          to={`/article/${props.articleNum}`}
           style={{
             textDecoration: `none`
           }}>

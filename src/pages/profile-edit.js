@@ -1,19 +1,10 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton, ProfileImage2} from '../components/common';
+import { Form, Button, FormContainer, Title,  ErrorMessage, SubIndex, Message, UploadButton, ProfileImage2} from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
-import styled from 'styled-components';
 
 
-const A = styled.a`
-  text-decoration: none;
-  color: #0086d1;
-  &:hover{
-    color: #0086d1;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`
+
 
 const Profile = () => {
   // useEffect(() => {
@@ -29,9 +20,9 @@ const Profile = () => {
   const {firebase, user} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [formValues, setFormValues] = useState({
-    username: ''
-  });
+  // const [formValues, setFormValues] = useState({
+  //   username: ''
+  // });
 
   const [PfileErrorMessage, setPFileErrorMessage] = useState('');
   const [PfileUploaded, setPFileUploaded] = useState('');
@@ -154,6 +145,7 @@ export const query = graphql`
           thumnail
           title
           date
+          articleNum
         }
       }
     }

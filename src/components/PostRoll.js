@@ -79,7 +79,7 @@ const PostRoll = (props) => {
     <>
       <EachPost>
         <Link 
-          to={`/member/${props.id}`}
+          to={`/member/${props.postNum}`}
           style={{
             textDecoration: `none`
           }}

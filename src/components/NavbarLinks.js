@@ -95,7 +95,7 @@ const NavbarLinks = () => {
         <NavItem href="/postarticle">Post</NavItem> 
       }
       {!!user &&
-        <NavItem href="/community">Community</NavItem>  
+        <NavItem href="/member">Community</NavItem>  
       }
       {!!user &&
         <Logout onClick={handleLogOutClick}>Logout</Logout>

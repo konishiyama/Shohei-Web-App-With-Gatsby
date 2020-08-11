@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react"
-import { navigate } from 'gatsby'
-import { Container, Title, SubTitle, ProfileImage2 } from '../components/common';
+import React, { useContext } from "react"
+import { Container,  SubTitle, ProfileImage2 } from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
 import styled from 'styled-components';
 
@@ -15,27 +14,12 @@ const PhotoLink = styled.a`
     cursor: pointer;
   }
 `
-// const EditLink = styled.a`
-//   padding: 6px 10px;
-//   background: #4c9c41;
-//   color: white;
-//   font-size: 16px;
-//   border-radius: 4px;
-//   border: 1px solid #ddd;
-//   box-shadow: none;
-//   text-decoration: none;
-
-//   &:hover{
-//     opacity: 80%;
-//     cursor: pointer;
-//   }
-// `
 
 
 const Profile = () => {
 
   const {firebase, user} = useContext(FirebaseContext);
-  const [PimageUrl, setPImageUrl] = useState('');
+  // const [PimageUrl, setPImageUrl] = useState('');
   console.log(firebase, user);
 
   return(

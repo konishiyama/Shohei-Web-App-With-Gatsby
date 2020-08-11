@@ -15,11 +15,11 @@ const PostArticle = ({data}) => {
   const [image, setImage] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [timeStamp, setTimeStamp] = useState('');
-
+  const [articleNumber, setArticleNumber] = useState('');
 
   function handleSubmit(e){
     e.preventDefault();
-    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl,  date:timeStamp}).then(()=> navigate('/')).catch(error => {
+    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl,  date:timeStamp, articleNum: articleNumber}).then(()=> navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
   }
@@ -31,6 +31,10 @@ const PostArticle = ({data}) => {
       title: e.target.value
     })
     setTimeStamp(new Date().toLocaleDateString());
+    firebase.getArticleNumbers().then(r => {
+      setArticleNumber(r.docs.length +1)
+    }
+    )
   }
 
   function handleEditorChange(e){
@@ -75,7 +79,7 @@ const PostArticle = ({data}) => {
   return(
     <section>
       <PageCover>
-        <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f" alt="image"></img>
+        <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f" alt="coverImg"></img>
         <p>
           <span>
             POST ARTICLE

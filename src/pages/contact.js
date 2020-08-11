@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react"
-import { navigate } from 'gatsby'
+import React from "react"
 import styled from "styled-components"
-import {  Button, Input, ErrorMessage, Form, SubIndex, PageCover } from '../components/common';
+import {  Button, Input, Form, SubIndex, PageCover } from '../components/common';
 // import { FirebaseContext} from '../components/Firebase'
 // import { Editor } from '@tinymce/tinymce-react';
 
@@ -17,25 +16,14 @@ const TEXTAREA = styled.textarea`
   border: 1px solid #ddd;
   box-shadow: none;
 `
-const RadioContainer = styled.div`
-  display: flex;
-  justify-content: left;
-  align-items: center;
-`
-
-const Radio = styled.input`
-  display: block;
-  height: 1rem;
-  font-size: 14px;
-  margin-right: 0.5rem;
-`
 
 const Contact = () => {
   return(
   <>
   <section>
     <PageCover>
-      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample5.jpg?alt=media&token=496b4690-25e6-44f2-b9e3-f56cdfb50050"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample5.jpg?alt=media&token=496b4690-25e6-44f2-b9e3-f56cdfb50050"
+      alt="coverImg"></img>
       <p>
         <span>
           CONTACT

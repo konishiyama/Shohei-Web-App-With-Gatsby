@@ -47,7 +47,7 @@ const IndexPage = ({ data }) => {
   const { user } = useContext(FirebaseContext);
   const allArticles = data.allArticle.edges;
   const articlesOrdered = allArticles.sort(function(a, b) {
-    if (a.node.date < b.node.date) {
+    if (a.node.articleNum < b.node.articleNum) {
         return 1;
     } else {
         return -1;
@@ -55,6 +55,14 @@ const IndexPage = ({ data }) => {
   });
   const latestPosts = articlesOrdered.slice(0,4);
   const allMemberPosts = data.allMemberPost.edges;
+  const memberPostsOrdered = allMemberPosts.sort(function(a, b) {
+    if (a.node.postNum < b.node.postNum) {
+        return 1;
+    } else {
+        return -1;
+    }
+  });
+  const latestMemberPosts = memberPostsOrdered.slice(0,10);
 
   return(
   <>
@@ -80,13 +88,14 @@ const IndexPage = ({ data }) => {
           Community
         </span>
       </SubTitle>
-      {allMemberPosts.map(edge => (
+      {latestMemberPosts.map(edge => (
         <PostRoll 
           title = {edge.node.title}
           id = {edge.node.id}
           date = {edge.node.date}
           username = {edge.node.username}
           userPhoto = {edge.node.userPhoto}
+          postNum = {edge.node.postNum}
         />
       ))}
       <div
@@ -96,7 +105,7 @@ const IndexPage = ({ data }) => {
           }}
         >
           <SeeMore 
-            href="/community"
+            href="/member"
             >>>もっと見る
           </SeeMore>
       </div>
@@ -126,6 +135,7 @@ const IndexPage = ({ data }) => {
           thumnail = {edge.node.thumnail}
           id = {edge.node.id}
           date = {edge.node.date}
+          articleNum = {edge.node.articleNum}
         />
       ))}
     </ArticleList>
@@ -210,6 +220,7 @@ export const query = graphql`
         title
         date
         content
+        articleNum
       }
     }
   }
@@ -222,6 +233,7 @@ export const query = graphql`
         title
         username
         userPhoto
+        postNum
       }
     }
   }

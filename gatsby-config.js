@@ -27,6 +27,7 @@ module.exports = {
               date: doc.date,
               category: doc.category,
               body: doc.body,
+              articleNum: doc.articleNum,
             })
           },
           {
@@ -38,6 +39,7 @@ module.exports = {
               date: doc.date,
               username: doc.username,
               userPhoto: doc.userPhoto,
+              postNum: doc.postNum,
             })
           },
         ]

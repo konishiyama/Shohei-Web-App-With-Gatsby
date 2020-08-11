@@ -1,4 +1,4 @@
-import React, { Children } from "react"
+import React from "react"
 import { PageCover } from '../components/common';
 import {  Ul } from '../components/common';
 
@@ -9,7 +9,8 @@ const Terms = (props) => {
   <>
   <section>
     <PageCover>
-      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample4.jpg?alt=media&token=05feeaeb-7485-4dc6-a470-6be86d173842"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample4.jpg?alt=media&token=05feeaeb-7485-4dc6-a470-6be86d173842"
+      alt="coverImg"></img>
       <p>
         <span>
           TERMS

@@ -16,12 +16,21 @@ const Write = styled.a`
 
 const Community = ({data}) => {
   const allMemberPosts = data.allMemberPost.edges;
+  const memberPostsOrdered = allMemberPosts.sort(function(a, b) {
+    if (a.node.postNum < b.node.postNum) {
+        return 1;
+    } else {
+        return -1;
+    }
+  });
+  const latestMemberPosts = memberPostsOrdered.slice(0,10);
 
   return(
   <>
   <section>
     <PageCover>
-      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample5.jpg?alt=media&token=496b4690-25e6-44f2-b9e3-f56cdfb50050"></img>
+      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcoversample5.jpg?alt=media&token=496b4690-25e6-44f2-b9e3-f56cdfb50050"
+      alt="coverImg"></img>
       <p>
         <span>
           COMMUNITY
@@ -35,13 +44,14 @@ const Community = ({data}) => {
           padding: `0 0.8rem 1.45rem`,
         }}
       >
-      {allMemberPosts.map(edge => (
+      {latestMemberPosts.map(edge => (
         <PostRoll 
           title = {edge.node.title}
           id = {edge.node.id}
           date = {edge.node.date}
           username = {edge.node.username}
           userPhoto = {edge.node.userPhoto}
+          postNum = {edge.node.postNum}
         />
       ))}
       <div
@@ -65,17 +75,6 @@ const Community = ({data}) => {
 
 export const query = graphql`
 {
-  allArticle {
-    edges {
-      node {
-        id
-        thumnail
-        title
-        date
-        content
-      }
-    }
-  }
   allMemberPost {
     edges {
       node {
@@ -85,6 +84,7 @@ export const query = graphql`
         title
         username
         userPhoto
+        postNum
       }
     }
   }
