@@ -5,7 +5,7 @@ import { FirebaseContext} from '../components/Firebase'
 import { Editor } from '@tinymce/tinymce-react';
 
 
-const Post = ({data}) => {
+const PostArticle = ({data}) => {
   const [titleValues, setTitleValues] = useState({ title:''});
   const [contentValues, setContentValues] = useState({ content: ''});
   const {firebase} = useContext(FirebaseContext);
@@ -155,4 +155,4 @@ export const query = graphql`
   }
 `
 
-export default Post
+export default PostArticle

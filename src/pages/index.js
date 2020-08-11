@@ -54,6 +54,7 @@ const IndexPage = ({ data }) => {
     }
   });
   const latestPosts = articlesOrdered.slice(0,4);
+  const allMemberPosts = data.allMemberPost.edges;
 
   return(
   <>
@@ -79,15 +80,14 @@ const IndexPage = ({ data }) => {
           Community
         </span>
       </SubTitle>
-      <PostRoll />
-      <PostRoll />
-      <PostRoll />
-      <PostRoll />
-      <PostRoll />
-      <PostRoll />
-      <PostRoll />
-      <PostRoll />
-      <PostRoll />
+      {allMemberPosts.map(edge => (
+        <PostRoll 
+          title = {edge.node.title}
+          id = {edge.node.id}
+          date = {edge.node.date}
+          username = {edge.node.username}
+        />
+      ))}
       <div
           style={{
             margin: `2.5rem auto 0 `,
@@ -200,18 +200,30 @@ const IndexPage = ({ data }) => {
 }
 
 export const query = graphql`
-  {
-    allArticle {
-      edges {
-        node {
-          id
-          thumnail
-          title
-          date
-        }
+{
+  allArticle {
+    edges {
+      node {
+        id
+        thumnail
+        title
+        date
+        content
       }
     }
   }
+  allMemberPost {
+    edges {
+      node {
+        date
+        content
+        id
+        title
+        username
+      }
+    }
+  }
+}
 `
 
 export default IndexPage

@@ -5,8 +5,6 @@ import { FirebaseContext } from '../components/Firebase';
 import renderHTML from 'react-render-html'
 
 const ArticleTemplate = (props) => {
-  const {firebase} = useContext(FirebaseContext)
-  console.log(props);
 
   const ArticleItem = styled.section`
   `

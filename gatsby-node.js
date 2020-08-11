@@ -84,23 +84,34 @@ const path = require('path');
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions;
   const ArticleTemplate = path.resolve('src/templates/ArticleTemplate.js');
+  const PostTemplate = path.resolve('src/templates/PostTemplate.js');
 
   return graphql(`
   {
     allArticle {
       edges {
         node {
-          category
-          content
-          coverImage
           id
           thumnail
           title
           date
+          content
+        }
+      }
+    }
+    allMemberPost {
+      edges {
+        node {
+          date
+          content
+          id
+          title
+          username
         }
       }
     }
   }
+  
   
   `).then((result) => {
     if(result.errors){
@@ -113,6 +124,14 @@ exports.createPages = ({graphql, actions}) => {
         component: ArticleTemplate,
         context: edge.node
         //contextによって、作り出したページにpropsとしてedge.nodeのデータが渡されている。
+      })
+    });
+
+    result.data.allMemberPost.edges.forEach(edge =>{
+      createPage({
+        path: `/member/${edge.node.id}`,
+        component: PostTemplate,
+        context: edge.node
       })
     });
   })

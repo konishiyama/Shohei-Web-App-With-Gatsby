@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 
 
-const EachArticle = styled.div`
+const EachPost = styled.div`
   padding: 0.5em;
   width: 100%;
   text-decoration: none;
@@ -20,8 +20,8 @@ const EachArticle = styled.div`
   }
 `
 
-const PostLink = styled.a`
-`
+// const PostLink = styled.a`
+// `
 
 const Container = styled.div`
   width: 100%;
@@ -77,24 +77,24 @@ const Image = styled.img`
 const PostRoll = (props) => {
   return(
     <>
-      <EachArticle>
-        <PostLink 
-          // to={`/post/${props.id}`}
+      <EachPost>
+        <Link 
+          to={`/member/${props.id}`}
         >
         <Container>
-          <Title>TitleTitleTitleTitle</Title>
+          <Title>{props.title}</Title>
           <SubContainer>
             <Image
               src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
             >
             </Image>
-            <div>username</div>
-            <span>date</span>
+            <div>{props.username}</div>
+            <span>{props.date}</span>
             <span>views</span>
           </SubContainer>
         </Container>
-        </PostLink>
-      </EachArticle>
+        </Link>
+      </EachPost>
     </>
     )
 }

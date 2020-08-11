@@ -14,6 +14,7 @@ class RichText extends React.Component {
         init={{
           height: 500,
           menubar: true,
+          language: "ja",
           plugins: [
             'advlist autolink lists link image',
             'charmap print preview anchor help',
@@ -21,8 +22,9 @@ class RichText extends React.Component {
             'insertdatetime media table paste wordcount',
             'textcolor'
           ],
+          color_cols: "5",
           toolbar:
-            'undo redo | formatselect | forecolor backcolor | bold italic | \
+            'undo redo | formatselect | forecolor backcolor | bold italic underline | \
             alignleft aligncenter alignright | \
             bullist numlist outdent indent | help'
         }}

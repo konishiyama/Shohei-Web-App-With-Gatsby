@@ -92,7 +92,7 @@ const NavbarLinks = () => {
         <NavItem href="/login">Login</NavItem> 
       }
       {!!user &&
-        <NavItem href="/post">Post</NavItem> 
+        <NavItem href="/postarticle">Post</NavItem> 
       }
       {!!user &&
         <NavItem href="/community">Community</NavItem>  

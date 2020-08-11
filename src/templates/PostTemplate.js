@@ -4,7 +4,6 @@ import { FirebaseContext } from '../components/Firebase';
 import renderHTML from 'react-render-html'
 
 const PostTemplate = (props) => {
-  const {firebase} = useContext(FirebaseContext)
 
   const PostItem = styled.section`
   `
@@ -21,7 +20,6 @@ const PostTemplate = (props) => {
         <PostItem>
           <h2>{props.pageContext.title}</h2>
           <p>{props.pageContext.date}</p>
-          <img src={props.pageContext.thumnail} alt="CoverImage"></img>
           <p>{renderHTML(props.pageContext.content)}</p>
         </PostItem>
       </div>

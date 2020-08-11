@@ -29,6 +29,16 @@ module.exports = {
               body: doc.body,
             })
           },
+          {
+            type: 'MemberPost', 
+            collection: 'memberposts', 
+            map: doc => ({
+              title: doc.title,
+              content: doc.content,
+              date: doc.date,
+              username: doc.username,
+            })
+          },
         ]
       }
     },
