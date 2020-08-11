@@ -27,7 +27,7 @@ function useAuth() {
                         setUser({
                             ...userResult,
                             username: r.empty ? null : r.docs[0].id,
-                            photoURL: r.empty ? null : r.docs[0].Ud.Ze.proto.mapValue.fields.photoURL.stringValue,
+                            photoURL: r.docs[0].Ud.Ze.proto.mapValue.fields.photoURL ? r.docs[0].Ud.Ze.proto.mapValue.fields.photoURL.stringValue : null,
                              //r.emptyは、userIdが一致するdocumentが存在するかどうかということ。つまりログインしているユーザーが居るか。r.docs[0]idはもってきたpublicProfileドキュメント(r)のID、つまりドキュメント名を指している。
                     })
                     });
