@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import styled from "styled-components"
+import styled, { ThemeConsumer } from "styled-components"
 import {Button} from './Button';
 import {Input} from './Input';
 import { FirebaseContext} from '../Firebase'
-import moment from 'moment';
+// import moment from 'moment';
 
 const CommentForm = styled.form`
   // display: flex;
@@ -60,16 +60,19 @@ export const PostComments = ({firebase, postId}) => {
     }
   }, [])
 
+  function doReload() {
+   window.location.reload();
+  }
+  
   function handlePostCommentSubmit(e){
     e.preventDefault();
-    console.log(commentText);
     firebase.postComment({
       text: commentText,
       postId,
       photoURL: user.photoURL,
       username: user.username,
       memberPostId: postId,
-    })
+    }).then(() => doReload())
   }
 
   return (

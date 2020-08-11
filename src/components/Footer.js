@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import {FirebaseContext} from './Firebase';
-import {Link, navigate} from 'gatsby'
+import {navigate} from 'gatsby'
 // import { Container } from "react-bootstrap"
 
 
@@ -94,10 +94,6 @@ const Line = styled.p`
       transition: all 0.4s ease-in;
     }
   }
-`
-const Span = styled.span`
-  margin: 0 10px;
-  
 `
 
 const CopyRight = styled.p`

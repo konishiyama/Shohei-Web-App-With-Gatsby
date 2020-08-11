@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect, useContext, useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import PostRoll from "../components/PostRoll"
 import { PageCover } from '../components/common';
+import { FirebaseContext} from '../components/Firebase'
 
 const Write = styled.a`
   text-decoration: none;
@@ -14,7 +15,7 @@ const Write = styled.a`
   }
 `
 
-const Community = ({data}) => {
+const Member = ({data}) => {
   const allMemberPosts = data.allMemberPost.edges;
   const memberPostsOrdered = allMemberPosts.sort(function(a, b) {
     if (a.node.postNum < b.node.postNum) {
@@ -24,6 +25,36 @@ const Community = ({data}) => {
     }
   });
   const latestMemberPosts = memberPostsOrdered.slice(0,10);
+  const {firebase} = useContext(FirebaseContext);
+  // const[posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    // const unsubscribe = firebase.subscribeToAllPosts(
+      // onSnapshot: (snapshot) => {
+      //   // console.log(snapshot);
+      //   // const snapshotPosts = [];
+      //   // snapshot.forEach(doc => {
+      //   //   snapshotPosts.push({
+      //   //     id: doc.id,
+      //   //     ...doc.data()
+      //   //   })
+      //   // })
+      //   // setPosts(snapshotPosts);
+      // }
+
+    // )
+
+    return () => {
+      // if(unsubscribe){
+        // unsubscribe();  
+      //   firebase.subscribeToAllPosts(r => {
+      //     console.log(r);
+      //   })
+      // // }
+    }
+  }, [])
+
+
 
   return(
   <>
@@ -91,4 +122,4 @@ export const query = graphql`
 }
 `
 
-export default Community
+export default Member

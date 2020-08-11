@@ -11,15 +11,15 @@ import "./layout.css"
 const Layout = ({ children }) => {
   const {user, firebase, loading} = useAuth();
 
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <FirebaseContext.Provider value= {{user, firebase, loading}}>

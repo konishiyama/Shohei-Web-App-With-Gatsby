@@ -76,6 +76,10 @@ class Firebase {
     })
   }
 
+  async subscribeToAllPosts(){
+    return this.db.collection('memberposts').get()
+  }
+
   async subscribeToPostComments({postId, onSnapshot}){
     const postRef = this.db.collection('memberposts').doc(postId); //lesson41,42を参照
     return this.db.collection('comments').where('memberposts' , '==', postRef).onSnapshot(onSnapshot)

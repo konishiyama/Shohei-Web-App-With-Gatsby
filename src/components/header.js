@@ -90,7 +90,7 @@ const Hamburger = styled.div`
 `
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
-  const {firebase, user} = useContext(FirebaseContext);
+  const {user} = useContext(FirebaseContext);
 
   return (
     <>
@@ -127,7 +127,7 @@ const Header = () => {
             display: `flex`,
             alignItems: `center`
           }}
-          alt="image"
+          alt="logoImg"
         ></img>
       </a>
 
