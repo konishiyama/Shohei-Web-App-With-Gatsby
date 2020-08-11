@@ -5,4 +5,5 @@ color: red;
 font-size: 12px;
 width: 200px;
 margin: 0.3rem auto;
+text-align: center;
 ` 

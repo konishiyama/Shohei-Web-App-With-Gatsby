@@ -37,6 +37,7 @@ module.exports = {
               content: doc.content,
               date: doc.date,
               username: doc.username,
+              userPhoto: doc.userPhoto,
             })
           },
         ]

@@ -13,6 +13,7 @@ export * from './SubTitle';
 export * from './PageCover';
 export * from './PageTitle';
 export * from './ProfileImage';
+export * from './ProfileImage2';
 export * from './LoginImage';
 export * from './SubIndex';
 export * from './FBContainer';

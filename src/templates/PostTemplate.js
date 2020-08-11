@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from "styled-components"
-import { FirebaseContext } from '../components/Firebase';
 import renderHTML from 'react-render-html'
 
 const PostTemplate = (props) => {

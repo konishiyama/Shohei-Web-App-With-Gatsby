@@ -4,16 +4,18 @@ import { graphql } from "gatsby"
 import PostRoll from "../components/PostRoll"
 import { PageCover } from '../components/common';
 
+const Write = styled.a`
+  text-decoration: none;
+  color: #808080;
+  color: #808080;
+  &:hover{
+    color: #4c9c41;
+    transition: all 0.4s ease-in;
+  }
+`
 
 const Community = ({data}) => {
-  // const allArticles = data.allArticle.edges;
-  // const articlesOrdered = allArticles.sort(function(a, b) {
-  //   if (a.node.date < b.node.date) {
-  //       return 1;
-  //   } else {
-  //       return -1;
-  //   }
-  // });
+  const allMemberPosts = data.allMemberPost.edges;
 
   return(
   <>
@@ -33,47 +35,60 @@ const Community = ({data}) => {
           padding: `0 0.8rem 1.45rem`,
         }}
       >
-      {/* {articlesOrdered.map(edge => ( */}
+      {allMemberPosts.map(edge => (
         <PostRoll 
-          // title = {edge.node.title}
-          // time = {edge.node.time}
-          // thumnail = {edge.node.thumnail}
-          // id = {edge.node.id}
-          // date = {edge.node.date}
+          title = {edge.node.title}
+          id = {edge.node.id}
+          date = {edge.node.date}
+          username = {edge.node.username}
+          userPhoto = {edge.node.userPhoto}
         />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
-        <PostRoll />
+      ))}
+      <div
+        style={{
+          margin: `1.5rem auto 0 `,
+          textAlign: `center`
+        }}
+      >
+        <Write 
+          href="/member-write"
+          >>>投稿する
+        </Write>
       </div>
-      <br></br>
-      <br></br>
+    </div>
+    <br></br>
+    <br></br>
   </section>
   </>
 );
 }
 
-// export const query = graphql`
-// {
-//   allArticle {
-//     edges {
-//       node {
-//         id
-//         thumnail
-//         title
-//         date
-//       }
-//     }
-//   }
-// }
-// `
+export const query = graphql`
+{
+  allArticle {
+    edges {
+      node {
+        id
+        thumnail
+        title
+        date
+        content
+      }
+    }
+  }
+  allMemberPost {
+    edges {
+      node {
+        date
+        content
+        id
+        title
+        username
+        userPhoto
+      }
+    }
+  }
+}
+`
 
 export default Community

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import { navigate } from 'gatsby'
-import {  Container, Title, SubTitle } from '../components/common';
+import { Container, Title, SubTitle, ProfileImage2 } from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
 import styled from 'styled-components';
 
@@ -9,21 +9,27 @@ const TD = styled.td`
   word-break : break-all;
 `
 
-const EditLink = styled.a`
-  padding: 6px 10px;
-  background: #4c9c41;
-  color: white;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  box-shadow: none;
-  text-decoration: none;
-
+const PhotoLink = styled.a`
   &:hover{
-    opacity: 80%;
+    opacity: 50%;
     cursor: pointer;
   }
 `
+// const EditLink = styled.a`
+//   padding: 6px 10px;
+//   background: #4c9c41;
+//   color: white;
+//   font-size: 16px;
+//   border-radius: 4px;
+//   border: 1px solid #ddd;
+//   box-shadow: none;
+//   text-decoration: none;
+
+//   &:hover{
+//     opacity: 80%;
+//     cursor: pointer;
+//   }
+// `
 
 
 const Profile = () => {
@@ -39,30 +45,20 @@ const Profile = () => {
           <span>PROFILE</span>
         </SubTitle>
         {!!user && !!user.photoURL &&
-          <img
-          src= {user.photoURL}
-          style={{
-            height: `8rem`,
-            width: `8rem`,
-            objectFit: `cover`,
-            borderRadius: `50%`,
-            margin: `0 auto 1rem`
-          }}
-          > 
-          </img>
+          <PhotoLink href="/profile-edit">
+            <ProfileImage2
+            src= {user.photoURL}
+            > 
+            </ProfileImage2>
+          </PhotoLink>
         }
         {!!user && !user.photoURL &&
-          <img
-          src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
-          style={{
-            height: `8rem`,
-            width: `8rem`,
-            objectFit: `cover`,
-            borderRadius: `50%`,
-            margin: `0 auto 1rem`
-          }}
-          > 
-          </img>
+          <a href="/profile-edit">
+            <ProfileImage2
+            src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+            > 
+            </ProfileImage2>
+          </a>
           }
       <br></br>
       <br></br>
@@ -92,10 +88,7 @@ const Profile = () => {
         </tbody>
       </table>
       <br></br>
-      <EditLink href="/profile-edit">EDIT</EditLink>
-      <br></br>
-      <br></br>
-      <br></br>
+      {/* <EditLink href="/profile-edit">EDIT</EditLink> */}
       <br></br>
       </Container>
     </section>

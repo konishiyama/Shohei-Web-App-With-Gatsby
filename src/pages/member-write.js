@@ -1,36 +1,34 @@
 import React, { useState, useContext } from "react"
 import { navigate } from 'gatsby'
-import {  Button, Input, ErrorMessage, Form, Message, UploadButton, SubIndex, PageCover } from '../components/common';
+import {  Button, Input, ErrorMessage, Form, SubIndex, PageCover } from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
 import { Editor } from '@tinymce/tinymce-react';
 
 
-const PostArticle = ({data}) => {
+const MemberWrite = ({data}) => {
   const [titleValues, setTitleValues] = useState({ title:''});
   const [contentValues, setContentValues] = useState({ content: ''});
-  const {firebase} = useContext(FirebaseContext);
+  const {firebase , user} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
-  const [fileErrorMessage, setFileErrorMessage] = useState('');
-  const [fileUploaded, setFileUploaded] = useState('');
-  const [image, setImage] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
   const [timeStamp, setTimeStamp] = useState('');
-
+  const [usernameValues, setUsernameValues] = useState('');
+  const [PimageUrl, setPImageUrl] = useState('');
 
   function handleSubmit(e){
     e.preventDefault();
-    firebase.postArticle({title: titleValues.title, content: contentValues.content, cover: imageUrl,  date:timeStamp}).then(()=> navigate('/')).catch(error => {
+    firebase.memberWrite({title: titleValues.title, content: contentValues.content, date:timeStamp, username: usernameValues, userPhoto: PimageUrl}).then(()=> navigate('/')).catch(error => {
       setErrorMessage(error.message);
     })
   }
 
   function handleInputTitleChange(e){
-    // e.persist();
     setErrorMessage('');
     setTitleValues( {
       title: e.target.value
     })
     setTimeStamp(new Date().toLocaleDateString());
+    setUsernameValues(user.username);
+    setPImageUrl(user.photoURL);
   }
 
   function handleEditorChange(e){
@@ -38,39 +36,9 @@ const PostArticle = ({data}) => {
           content: e.target.getContent()
         })
     setTimeStamp(new Date().toLocaleDateString());
+    setUsernameValues(user.username);
+    setPImageUrl(user.photoURL);
   }
-
-  function onSubmitFile(e){
-    e.preventDefault();
-    if (image === "") {
-      setFileErrorMessage('Error File Uploading!');
-    }
-    firebase.storage.ref(`/images/${image.name}`).put(image).then(
-      complete,
-      setFileErrorMessage(''),
-      setFileUploaded('File Uploaded')
-    )
-    .catch(error => {
-      setFileErrorMessage(error.message);
-    })
-  }
-
-  function complete(){
-    firebase.storage
-      .ref("images")
-      .child(image.name)
-      .getDownloadURL()
-      .then(fireBaseUrl => {
-        setImageUrl(fireBaseUrl);
-        setTimeStamp(new Date().toLocaleDateString());
-      });
-  };
-
-  function handleImage(e){
-    const image = e.target.files[0];
-    setImage(image);
-    setTimeStamp(new Date().toLocaleDateString());
-  };
 
   return(
     <section>
@@ -78,29 +46,10 @@ const PostArticle = ({data}) => {
         <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f" alt="image"></img>
         <p>
           <span>
-            POST ARTICLE
+            WRITE
           </span>
         </p>
       </PageCover>
-      <Form  required onSubmit={onSubmitFile}>
-      <SubIndex>COVER IMAGE</SubIndex>
-        <input 
-          type="file" 
-          onChange={handleImage} 
-          style = {{
-            marginBottom: `1vw`,
-          }}
-          />
-        <br></br>
-        <UploadButton>Upload</UploadButton>
-          {!!fileUploaded &&
-          <Message>Uploaded image properly!</Message>
-            }
-          {!!fileErrorMessage &&
-          <ErrorMessage>You need to uploaded image!</ErrorMessage>
-          }
-      </Form>
-      <br></br>
       <Form onSubmit={handleSubmit}>
         <SubIndex>TITLE</SubIndex>            
         <Input required placeholder="title"  type="text" onChange={handleInputTitleChange}  />
@@ -110,7 +59,7 @@ const PostArticle = ({data}) => {
         <Editor
           init={{
             height: 500,
-            menubar: false,
+            menubar: true,
             plugins: [
               'advlist autolink lists link image',
               'charmap print preview anchor help',
@@ -128,10 +77,10 @@ const PostArticle = ({data}) => {
         />
         </div>
         {!!errorMessage &&
-        <ErrorMessage>Failed posting article properly</ErrorMessage>
+        <ErrorMessage>Failed posting</ErrorMessage>
         }
         <br></br>
-        <Button type="submit" block>Post</Button>
+        <Button type="submit" block>Write</Button>
       </Form>
       <br/>
       <br/>
@@ -141,18 +90,30 @@ const PostArticle = ({data}) => {
 }
 
 // export const query = graphql`
-//   {
-//     allArticle {
-//       edges {
-//         node {
-//           id
-//           thumnail
-//           title
-//           date
-//         }
+// {
+//   allArticle {
+//     edges {
+//       node {
+//         id
+//         thumnail
+//         title
+//         date
+//         content
 //       }
 //     }
 //   }
+//   allMemberPost {
+//     edges {
+//       node {
+//         date
+//         content
+//         id
+//         title
+//         username
+//       }
+//     }
+//   }
+// }
 // `
 
-export default PostArticle
+export default MemberWrite

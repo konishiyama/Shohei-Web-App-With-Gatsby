@@ -86,6 +86,7 @@ const IndexPage = ({ data }) => {
           id = {edge.node.id}
           date = {edge.node.date}
           username = {edge.node.username}
+          userPhoto = {edge.node.userPhoto}
         />
       ))}
       <div
@@ -220,6 +221,7 @@ export const query = graphql`
         id
         title
         username
+        userPhoto
       }
     }
   }

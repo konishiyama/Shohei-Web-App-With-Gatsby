@@ -23,6 +23,15 @@ class Firebase {
     });
   }
 
+  async memberWrite({title, content, date, username, userPhoto}){
+    return this.db.collection('memberposts').doc().set({
+      title: title,
+      content: content,
+      date: date,
+      username: username,
+      userPhoto: userPhoto,
+    });
+  }
 
   async getUserProfile({userId}){
     return this.db.collection('publicProfiles').where('userId', '==', userId).get();
@@ -38,26 +47,21 @@ class Firebase {
     })
   }
 
-  async editProfile({ username, photoURL, userId, email}){
-    const update = {
-      displayName: username,
-      photoURL: photoURL,
-    };
-    await this.auth.currentUser.updateProfile(update);
-    }
   // async editProfile({ username, photoURL, userId, email}){
   //   const update = {
   //     displayName: username,
   //     photoURL: photoURL,
   //   };
-  //   const Edituser = 
   //   await this.auth.currentUser.updateProfile(update);
-  //   return this.db.collection('publicProfiles').where('userId', '==', userId).set({
-  //     Email: Edituser.user.email,
-  //     userId: Edituser.user.uid,
-  //     userName: Edituser.user.displayName
-  //   })
-  // }
+  //   }
+
+  async editProfile({ username, photoURL, userId, email}){
+    return this.db.collection('publicProfiles').doc(username).set({
+      photoURL: photoURL,
+      userId: userId,
+      Email: email
+    })
+  }
 
 
   async postComment({text, articleId}){

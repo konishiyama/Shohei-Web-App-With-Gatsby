@@ -80,17 +80,27 @@ const PostRoll = (props) => {
       <EachPost>
         <Link 
           to={`/member/${props.id}`}
+          style={{
+            textDecoration: `none`
+          }}
         >
         <Container>
           <Title>{props.title}</Title>
           <SubContainer>
+          {!!props.userPhoto &&
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+              src={props.userPhoto}
             >
             </Image>
+          }
+          {!props.userPhoto &&
+            <Image
+              src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+            >
+            </Image>
+          }
             <div>{props.username}</div>
             <span>{props.date}</span>
-            <span>views</span>
           </SubContainer>
         </Container>
         </Link>

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import { navigate } from 'gatsby'
-import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton, ProfileImage} from '../components/common';
+import { Form, Button, Input, FormContainer, Title, SmallP, ErrorMessage, SubIndex, Message, UploadButton, ProfileImage2} from '../components/common';
 import { FirebaseContext} from '../components/Firebase'
 import styled from 'styled-components';
 
@@ -38,23 +38,23 @@ const Profile = () => {
   const [Pimage, setPImage] = useState("");
   const [PimageUrl, setPImageUrl] = useState('');
 
-  function handleInputChange(e){
-    e.persist();
-    setErrorMessage('');
-    setPFileUploaded('');
-    setFormValues(currentValues => ({
-      ...currentValues,
-      [e.target.name]: e.target.value
-    }))
-  }
+  // function handleInputChange(e){
+  //   e.persist();
+  //   setErrorMessage('');
+  //   setPFileUploaded('');
+  //   setFormValues(currentValues => ({
+  //     ...currentValues,
+  //     [e.target.name]: e.target.value
+  //   }))
+  // }
   
-  function handleSubmit(e){
+function handleSubmit(e){
     e.preventDefault();
     firebase.editProfile({
-      username: formValues.username,
       photoURL: PimageUrl,
-      email: user.email,
+      username: user.username,
       userId: user.uid,
+      email: user.email
     }).then(() => navigate('/profile')).catch(error => {
       setErrorMessage(error.message);
     })
@@ -100,17 +100,10 @@ function handlePImage(e){
           EDIT PROFILE
         </Title>
         {!!PimageUrl && 
-             <img
+             <ProfileImage2
              src= {PimageUrl}
-             style={{
-               height: `8rem`,
-               width: `8rem`,
-               objectFit: `cover`,
-               borderRadius: `50%`,
-               margin: `0 auto 1rem`
-             }}
              > 
-             </img>
+             </ProfileImage2>
           }
  
         <Form  onSubmit={onSubmitPFile}>
@@ -133,8 +126,8 @@ function handlePImage(e){
         </Form>
         <br></br>
         <Form onSubmit={handleSubmit}>
-          <SubIndex>USERNAME</SubIndex>
-          <Input onChange={handleInputChange} value={formValues.username} placeholder={user.displayName} type="text" required name="username" />
+          {/* <SubIndex>USERNAME</SubIndex>
+          <Input onChange={handleInputChange} value={formValues.username} placeholder={user.displayName} type="text" required name="username" /> */}
           <Button type="submit" block>
             EDIT
           </Button>
