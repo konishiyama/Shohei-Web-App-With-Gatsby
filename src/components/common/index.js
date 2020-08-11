@@ -21,4 +21,4 @@ export * from './Facebook';
 export * from './SMallP';
 export * from './ErrorMessage';
 export * from './Message';
-export * from './ArticleComments';
+export * from './PostComments';

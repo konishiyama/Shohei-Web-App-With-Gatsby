@@ -57,13 +57,6 @@ class Firebase {
     })
   }
 
-  // async editProfile({ username, photoURL, userId, email}){
-  //   const update = {
-  //     displayName: username,
-  //     photoURL: photoURL,
-  //   };
-  //   await this.auth.currentUser.updateProfile(update);
-  //   }
 
   async editProfile({ username, photoURL, userId, email}){
     return this.db.collection('publicProfiles').doc(username).set({
@@ -74,17 +67,18 @@ class Firebase {
   }
 
 
-  async postComment({text, articleId}){
-    const postCommentCallable = this.functions.httpsCallable('postComment');
-    return postCommentCallable({
-      text,
-      articleId
-    });
+  async postComment({text, photoURL, username, memberPostId}){
+    return this.db.collection('comments').doc().set({
+      text: text,
+      photoURL: photoURL,
+      username: username,
+      memberposts: this.db.collection("memberposts").doc(memberPostId),
+    })
   }
 
-  async subscribeToArticleComments({articleId, onSnapshot}){
-    const articleRef = this.db.collection('articles').doc(articleId); //lesson41,42を参照
-    return this.db.collection('comments').where('article' , '==', articleRef).onSnapshot(onSnapshot)
+  async subscribeToPostComments({postId, onSnapshot}){
+    const postRef = this.db.collection('memberposts').doc(postId); //lesson41,42を参照
+    return this.db.collection('comments').where('memberposts' , '==', postRef).onSnapshot(onSnapshot)
   }
   //registerのときと同じように'==', 'articleId'では参照できない（getUserProfileのときはたんにデータを呼び出してくるだけだったが、今回はbookのドキュメントに紐付いているコメントを引っ張ってくる（そもそもコメントはブックに紐付いている））ので、レファレンス形式にする必要あるが、その作り方が上のconst articleRef。
 

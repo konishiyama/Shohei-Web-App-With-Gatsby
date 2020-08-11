@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from "styled-components"
 import renderHTML from 'react-render-html'
+import { PostComments } from '../components/common'
+import { FirebaseContext } from '../components/Firebase';
 
 const PostTemplate = (props) => {
-
+  const {firebase} = useContext(FirebaseContext);
   const PostItem = styled.section`
   `
   
@@ -21,6 +23,12 @@ const PostTemplate = (props) => {
           <p>{props.pageContext.date}</p>
           <p>{renderHTML(props.pageContext.content)}</p>
         </PostItem>
+        {!!firebase &&  
+        <PostComments
+            firebase= {firebase}
+            postId= {props.pageContext.id}
+          />
+        }
       </div>
     </section>
   )

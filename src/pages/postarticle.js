@@ -144,19 +144,5 @@ const PostArticle = ({data}) => {
 )
 }
 
-// export const query = graphql`
-//   {
-//     allArticle {
-//       edges {
-//         node {
-//           id
-//           thumnail
-//           title
-//           date
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default PostArticle
