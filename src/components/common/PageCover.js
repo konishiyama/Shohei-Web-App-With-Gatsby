@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PageCover = styled.div`
-  max-width: 100%;
+  max-height: 80%;
   background-color: white;
   position:relative;
   margin-bottom: 1rem;
@@ -25,6 +25,8 @@ export const PageCover = styled.div`
     opacity: 50%;  
     width: 100%;
     margin: 0;
+    height: 8rem;
+    object-fit: cover;
   }
 
 

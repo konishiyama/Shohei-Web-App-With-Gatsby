@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled, { ThemeConsumer } from "styled-components"
-import {Button} from './Button';
-import {Input} from './Input';
-import { CommentContainer, CommentItemContainer,  CommentContent, CommentImage,  } from '../common';
+import { CommentContainer, CommentItemContainer,  CommentContent, CommentImage, Input, Button, TextArea  } from '../common';
 import { FirebaseContext} from '../Firebase'
 import { Link } from "gatsby"
 // import moment from 'moment';
@@ -11,10 +9,11 @@ const CommentForm = styled.form`
   // display: flex;
   margin-top: 32px;
   
-  ${Input}{
+  ${TextArea}{
     margin-right: 8px;
     margin-top: 10px;
     margin-bottom: auto;
+    height: 5rem;
   }
   
   ${Button}{
@@ -37,7 +36,7 @@ const CommentListItem = styled.div`
     font-size: 80%;
     color: #666;
   }
-  border-bottom: 1px solid #f8f8ff;
+  border-bottom: 1px solid #f4f4f4;
   padding: 4px 0;
 `
 
@@ -97,7 +96,7 @@ export const PostComments = ({firebase, postId}) => {
   return (
     <div>
       <CommentForm onSubmit={handlePostCommentSubmit}>
-        <Input value={commentText} onChange={e => {
+        <TextArea value={commentText} onChange={e => {
           e.persist();
           setCommentText(e.target.value);
           setTimeStamp(new Date().toLocaleString().slice(0, -3));

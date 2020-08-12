@@ -1,6 +1,7 @@
 export * from './Form';
 export * from './createForm';
 export * from './Input';
+export * from './TextArea';
 export * from './CheckBox';
 export * from './Button';
 export * from './UploadButton';

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
+export const TextArea = styled.textarea`
   display: block;
   width: 100%;
   padding: 8px;
@@ -9,6 +9,7 @@ export const Input = styled.input`
   border-radius: 4px;
   border: 1px solid #ddd;
   box-shadow: none;
+  outline: none;
 
   &: focus, &:active{
     border: 1px solid #4c9c41;

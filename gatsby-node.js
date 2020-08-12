@@ -28,6 +28,7 @@ exports.createPages = ({graphql, actions}) => {
           title
           username
           postNum
+          userPhoto
         }
       }
     }

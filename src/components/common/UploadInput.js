@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const UploadInput = styled.input`
   padding: 0 8px;
-  background: #0086d1;
+  background: #4c9c41;
   color: white;
   font-size: 10px;
   border-radius: 4px;
