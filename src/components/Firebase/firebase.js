@@ -67,12 +67,13 @@ class Firebase {
   }
 
 
-  async postComment({text, photoURL, username, memberPostId}){
+  async postComment({text, photoURL, username, memberPostId, time}){
     return this.db.collection('comments').doc().set({
       text: text,
       photoURL: photoURL,
       username: username,
       memberposts: this.db.collection("memberposts").doc(memberPostId),
+      timeCreated: time,
     })
   }
 

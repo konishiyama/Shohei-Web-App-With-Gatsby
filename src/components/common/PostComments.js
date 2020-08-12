@@ -2,7 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import styled, { ThemeConsumer } from "styled-components"
 import {Button} from './Button';
 import {Input} from './Input';
+import { CommentContainer, CommentItemContainer,  CommentContent, CommentImage,  } from '../common';
 import { FirebaseContext} from '../Firebase'
+import { Link } from "gatsby"
 // import moment from 'moment';
 
 const CommentForm = styled.form`
@@ -25,7 +27,6 @@ const CommentListItem = styled.div`
     font-size: 80%;
     color: #666;
   }
-  
   border-bottom: 1px solid #ddd;
   padding: 4px 0;
 `
@@ -35,13 +36,20 @@ export const PostComments = ({firebase, postId}) => {
   const { user} = useContext(FirebaseContext);
   const[comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
-
+  const [timeStamp, setTimeStamp] = useState('');
+  const commentsOrdered = comments.sort(function(a, b) {
+    if (a.timeCreated < b.timeCreated) {
+        return -1;
+    } else {
+        return 1;
+    }
+  });
 
   useEffect(() => {
     const unsubscribe = firebase.subscribeToPostComments({
       postId,
       onSnapshot: (snapshot) => {
-        console.log(snapshot);
+        // console.log(snapshot);
         const snapshotComments = [];
         snapshot.forEach(doc => {
           snapshotComments.push({
@@ -63,7 +71,7 @@ export const PostComments = ({firebase, postId}) => {
   function doReload() {
    window.location.reload();
   }
-  
+
   function handlePostCommentSubmit(e){
     e.preventDefault();
     firebase.postComment({
@@ -72,6 +80,7 @@ export const PostComments = ({firebase, postId}) => {
       photoURL: user.photoURL,
       username: user.username,
       memberPostId: postId,
+      time: timeStamp,
     }).then(() => doReload())
   }
 
@@ -81,22 +90,61 @@ export const PostComments = ({firebase, postId}) => {
         <Input value={commentText} onChange={e => {
           e.persist();
           setCommentText(e.target.value);
-          console.log(postId);
+          setTimeStamp(new Date().toLocaleString().slice(0, -3));
         }} />
         <Button type="submit">
           Post
         </Button>
       </CommentForm>
-      {comments.map(comment => (
+      <div
+       style={{
+        borderTop: `1px solid #ddd`,
+       }}
+      >
+      {commentsOrdered.map(comment => (
         <CommentListItem key={comment.id}>
-          <strong>
-            {comment.username}
-          </strong>
-          <div>
-            {comment.text}
-          </div>
+          <CommentItemContainer>
+            <div
+              style={{
+                height: `100%`,
+                display: `flex`,
+                alignItems: `center`,
+              }}
+            >
+            {!!comment.photoURL &&
+              <CommentImage
+                src={comment.photoURL}
+              >
+              </CommentImage>
+            }
+            {!comment.photoURL &&
+              <CommentImage
+                src= "https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FuserDefaultPic.png?alt=media&token=2e1c678f-910a-4332-a6c5-6d3161aa16e6"
+              >
+              </CommentImage>
+            }
+            </div>
+            <div
+             style={{
+              fontSize: `1rem`,
+              fontWeight: `bold`,
+              color: `hsla(0, 0%, 0%, 0.8)`,
+             }}
+            >{comment.username}</div>
+            <span
+              style={{
+                fontSize: `0.7rem`,
+                marginLeft: `auto`,
+                marginRight: `0`,
+              }}
+            >{comment.timeCreated}</span>
+          </CommentItemContainer>
+          <CommentContainer>
+            <CommentContent>{comment.text}</CommentContent>
+          </CommentContainer>
         </CommentListItem>
       ))}
+      </div>
     </div>
   )
 };
