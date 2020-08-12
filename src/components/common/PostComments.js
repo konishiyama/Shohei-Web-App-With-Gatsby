@@ -21,13 +21,23 @@ const CommentForm = styled.form`
     margin: 10px 0 auto;
   }
 `
+const CommentButton = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  color: #4c9c41;
+  margin: 0.3rem 0 0 auto;
+
+`
 
 const CommentListItem = styled.div`
   >strong{
     font-size: 80%;
     color: #666;
   }
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #f8f8ff;
   padding: 4px 0;
 `
 
@@ -92,13 +102,19 @@ export const PostComments = ({firebase, postId}) => {
           setCommentText(e.target.value);
           setTimeStamp(new Date().toLocaleString().slice(0, -3));
         }} />
-        <Button type="submit">
-          Post
-        </Button>
+        <div
+          style={{
+          display: `flex`,
+          }}
+        >
+          <CommentButton type="submit">
+            Comment
+          </CommentButton>
+        </div>
       </CommentForm>
       <div
        style={{
-        borderTop: `1px solid #ddd`,
+        borderTop: `1px solid #f8f8ff`,
        }}
       >
       {commentsOrdered.map(comment => (
