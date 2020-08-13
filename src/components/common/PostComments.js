@@ -42,7 +42,7 @@ const CommentListItem = styled.div`
 
 export const PostComments = ({firebase, postId}) => {
 
-  const { user} = useContext(FirebaseContext);
+  const { user } = useContext(FirebaseContext);
   const[comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
   const [timeStamp, setTimeStamp] = useState('');
@@ -100,6 +100,7 @@ export const PostComments = ({firebase, postId}) => {
           e.persist();
           setCommentText(e.target.value);
           setTimeStamp(new Date().toLocaleString().slice(0, -3));
+          console.log(user.username);
         }} />
         <div
           style={{
@@ -146,6 +147,15 @@ export const PostComments = ({firebase, postId}) => {
               color: `hsla(0, 0%, 0%, 0.8)`,
              }}
             >{comment.username}</div>
+            {/* {!user.username &&
+              <div
+               style={{
+                fontSize: `1rem`,
+                fontWeight: `bold`,
+                color: `hsla(0, 0%, 0%, 0.8)`,
+               }}
+              >削除</div>
+            } */}
             <span
               style={{
                 fontSize: `0.7rem`,
