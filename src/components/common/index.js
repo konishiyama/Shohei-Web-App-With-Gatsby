@@ -3,6 +3,7 @@ export * from './createForm';
 export * from './Input';
 export * from './TextArea';
 export * from './Button';
+export * from './CheckBox';
 export * from './UploadButton';
 export * from './UploadInput';
 export * from './Container';
