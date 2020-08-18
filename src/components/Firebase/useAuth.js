@@ -19,6 +19,14 @@ function useAuth() {
 
             unsubscribe = firebaseInstance.auth.onAuthStateChanged(userResult => {
                 if (userResult) {
+                    console.log(userResult);
+                    userResult.getIdTokenResult(true).then((result) => {
+                        if(result.claims.admin === true){
+                            console.log('user is admin');
+                        }else{
+                            console.log('this user is not admin');
+                        }
+                    }) 
                     firebaseInstance.getUserProfile({
                         userId: userResult.uid
                     }).then(r => {   

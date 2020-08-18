@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import {  SubTitle } from '../components/common';
+import {  SubTitle, Button } from '../components/common';
 import PostRoll from "../components/PostRoll"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
@@ -44,7 +44,7 @@ const fadeProperties = {
 }
 
 const IndexPage = ({ data }) => {
-  const { user } = useContext(FirebaseContext);
+  const { user, firebase } = useContext(FirebaseContext);
   const allArticles = data.allArticle.edges;
   const articlesOrdered = allArticles.sort(function(a, b) {
     if (a.node.articleNum < b.node.articleNum) {
