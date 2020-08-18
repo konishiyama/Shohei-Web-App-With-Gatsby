@@ -71,7 +71,6 @@ const Image = styled.img`
   border-color: #EEEEEE; 
   margin-bottom: 0;
   margin-right: 0.2em;
-
 `
 
 const PostRoll = (props) => {

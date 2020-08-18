@@ -52,6 +52,7 @@ const Blog = ({data}) => {
           thumnail = {edge.node.thumnail}
           id = {edge.node.id}
           date = {edge.node.date}
+          articleNum = {edge.node.articleNum}
         />
       ))}
     </ArticleList>
