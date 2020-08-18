@@ -47,7 +47,7 @@ const ArticleTemplate = (props) => {
           <FacebookShareButton 
           url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}>
             <FacebookIcon 
-            size={ `1.5rem` } 
+            size={ `2rem` } 
             round
             style={{
               marginRight:`0.4em`
@@ -56,7 +56,7 @@ const ArticleTemplate = (props) => {
           <TwitterShareButton 
           url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}>
             <TwitterIcon 
-            size={ `1.5rem` } 
+            size={ `2rem` } 
             round
             style={{
               marginRight:`0.4em`
@@ -66,7 +66,7 @@ const ArticleTemplate = (props) => {
           <LineShareButton 
           url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}>
             <LineIcon 
-            size={ `1.5rem` } 
+            size={ `2rem` } 
             round
             style={{
               marginRight:`0.4em`
