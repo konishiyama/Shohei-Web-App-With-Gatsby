@@ -8,7 +8,7 @@ import { Editor } from '@tinymce/tinymce-react';
 const PostArticle = ({data}) => {
   const [titleValues, setTitleValues] = useState({ title:''});
   const [contentValues, setContentValues] = useState({ content: ''});
-  const {firebase} = useContext(FirebaseContext);
+  const {user, firebase} = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
   const [fileErrorMessage, setFileErrorMessage] = useState('');
   const [fileUploaded, setFileUploaded] = useState('');
@@ -42,6 +42,7 @@ const PostArticle = ({data}) => {
           content: e.target.getContent()
         })
     setTimeStamp(new Date().toLocaleDateString());
+    console.log(user);
   }
 
   function onSubmitFile(e){

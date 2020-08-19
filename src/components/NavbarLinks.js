@@ -91,7 +91,7 @@ const NavbarLinks = () => {
       {!user &&
         <NavItem href="/login">Login</NavItem> 
       }
-      {!!user &&
+      {!!user &&  !!user.admin &&
         <NavItem href="/postarticle">Post</NavItem> 
       }
       {!!user &&

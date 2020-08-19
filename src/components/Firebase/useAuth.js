@@ -19,12 +19,13 @@ function useAuth() {
 
             unsubscribe = firebaseInstance.auth.onAuthStateChanged(userResult => {
                 if (userResult) {
-                    console.log(userResult);
                     userResult.getIdTokenResult(true).then((result) => {
                         if(result.claims.admin === true){
-                            console.log('user is admin');
+                            setUser({
+                                ...userResult,
+                                admin: true
+                        });
                         }else{
-                            console.log('this user is not admin');
                         }
                     }) 
                     firebaseInstance.getUserProfile({
@@ -33,7 +34,7 @@ function useAuth() {
                         //ここで持ってきているrはuserIdが一致するpublicProfilesの中のdocument
                         console.log(r);
                         setUser({
-                            ...userResult,
+                            ...user,
                             username: r.empty ? null : r.docs[0].id,
                             photoURL: r.docs[0].Ud.Ze.proto.mapValue.fields.photoURL ? r.docs[0].Ud.Ze.proto.mapValue.fields.photoURL.stringValue : null,
                              //r.emptyは、userIdが一致するdocumentが存在するかどうかということ。つまりログインしているユーザーが居るか。r.docs[0]idはもってきたpublicProfileドキュメント(r)のID、つまりドキュメント名を指している。
