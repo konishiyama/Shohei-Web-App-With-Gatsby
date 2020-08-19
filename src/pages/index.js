@@ -6,7 +6,7 @@ import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
 import {FirebaseContext} from '../components/Firebase';
 import { Fade } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css'
+import 'react-slideshow-image/dist/styles.css';
 
 const CoverPic = styled.img`
   margin: 0;
@@ -23,6 +23,12 @@ const ArticleList = styled.ul`
   margin: 0;
   flex-wrap: wrap;
   justify-content: space-between;
+  ul:after{
+    content:"";
+    display:block;
+    width: 160px;
+    height:160px;
+  }
 `
 
 const SeeMore = styled.a`

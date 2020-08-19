@@ -19,15 +19,15 @@ function useAuth() {
 
             unsubscribe = firebaseInstance.auth.onAuthStateChanged(userResult => {
                 if (userResult) {
-                    userResult.getIdTokenResult(true).then((result) => {
-                        if(result.claims.admin === true){
-                            setUser({
-                                ...userResult,
-                                admin: true
-                        });
-                        }else{
-                        }
-                    }) 
+                    // userResult.getIdTokenResult(true).then((result) => {
+                    //     if(result.claims.admin === true){
+                    //     //     setUser({
+                    //     //         ...userResult,
+                    //     //         admin: true
+                    //     // });
+                    //     }else{
+                    //     }
+                    // }) 
                     firebaseInstance.getUserProfile({
                         userId: userResult.uid
                     }).then(r => {   

@@ -94,7 +94,11 @@ export const PostComments = ({firebase, postId}) => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        marginBottom: `1.45rem`
+      }}
+    >
       <CommentForm onSubmit={handlePostCommentSubmit}>
         <TextArea value={commentText} onChange={e => {
           e.persist();

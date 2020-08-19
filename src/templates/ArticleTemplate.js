@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from "styled-components"
 import renderHTML from 'react-render-html'
+import { BottomBar } from '../components/common'
+import {FirebaseContext} from '../components/Firebase';
+import CreateIcon from '@material-ui/icons/Create';
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -15,7 +18,7 @@ import {
 } from "react-share";
 
 const ArticleTemplate = (props) => {
-
+  const {user} = useContext(FirebaseContext);
   const ArticleItem = styled.section`
   border-bottom: 1px solid #f4f4f4
   `
@@ -44,36 +47,66 @@ const ArticleTemplate = (props) => {
             marginTop:`1.45em`
           }}
         >
+        </div>
+        <BottomBar>
           <FacebookShareButton 
-          url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}>
+          url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}
+          style={{
+            display: `flex`,
+            alignItems: `center`
+          }}
+          >
             <FacebookIcon 
-            size={ `2rem` } 
+            size={ `2.3rem` } 
             round
             style={{
-              marginRight:`0.4em`
+              marginRight:`1em`
             }} />
           </FacebookShareButton>
           <TwitterShareButton 
-          url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}>
+          url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}
+          style={{
+            display: `flex`,
+            alignItems: `center`
+          }}
+          >
             <TwitterIcon 
-            size={ `2rem` } 
+            size={ `2.3rem` } 
             round
             style={{
-              marginRight:`0.4em`
+              marginRight:`1em`
             }} 
             />
           </TwitterShareButton>
           <LineShareButton 
-          url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}>
+          url={`https://infallible-rosalind-21f943.netlify.app/article/${props.pageContext.articleNum}`}
+          style={{
+            display: `flex`,
+            alignItems: `center`
+          }}
+          >
             <LineIcon 
-            size={ `2rem` } 
+            size={ `2.3rem` } 
             round
             style={{
-              marginRight:`0.4em`
+              marginRight:`1em`
             }} 
             />
           </LineShareButton>
-        </div>
+          {/* {!!user &&  !!user.admin &&
+          <CreateIcon 
+            style={{
+              color: `white`,
+              backgroundColor: `#4c9c41`,
+              borderRadius: `50%`,
+              padding: `0.5rem`,
+              height: `3rem`,
+              width: `3rem`,
+              margin: `0 0 0 auto`
+            }}
+          />
+          }  */}
+        </BottomBar>
       </div>
     </section>
   )

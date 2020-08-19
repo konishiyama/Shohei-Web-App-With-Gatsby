@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import ArticleRoll from "../components/ArticleRoll"
 import { PageCover } from '../components/common';
-
+import CreateIcon from '@material-ui/icons/Create';
 
 const ArticleList = styled.ul`
   display: flex;
@@ -12,6 +12,14 @@ const ArticleList = styled.ul`
   margin: 0;
   flex-wrap: wrap;
   justify-content: space-between;
+  :after{
+    content:"";
+    display:block;
+    margin: 0 auto 1rem;
+    padding: 0.5rem 0.2rem 1rem;
+    width: 174.7px;
+    height:160px;
+  }
 `
 
 const Blog = ({data}) => {

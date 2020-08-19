@@ -23,13 +23,6 @@ const Test = (props) => {
          Recent Posts
       </span>
     </SubTitle>
-    {/* {!!firebase&&
-      // <p>firebase</p>
-      <Articles
-      // firebase= {firebase}
-      />
-
-    } */}
     </div>
   </section>
   </>

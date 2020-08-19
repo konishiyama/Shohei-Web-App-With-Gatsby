@@ -5,7 +5,8 @@ import { Link } from "gatsby"
 
 const EachArticle = styled.li`
   margin: 0 auto 1rem;
-
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 0.2rem 1rem;
 `
 
 const Container = styled.div`

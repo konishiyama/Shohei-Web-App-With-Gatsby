@@ -2,8 +2,9 @@ import React, { useEffect, useContext, useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import PostRoll from "../components/PostRoll"
-import { PageCover } from '../components/common';
-import { FirebaseContext} from '../components/Firebase'
+import { PageCover, BottomBar } from '../components/common';
+import { FirebaseContext} from '../components/Firebase';
+import CreateIcon from '@material-ui/icons/Create';
 
 const Write = styled.a`
   text-decoration: none;
@@ -25,7 +26,7 @@ const Member = ({data}) => {
     }
   });
   const latestMemberPosts = memberPostsOrdered.slice(0,10);
-  const {firebase} = useContext(FirebaseContext);
+  const {user, firebase} = useContext(FirebaseContext);
   // const[posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -87,18 +88,36 @@ const Member = ({data}) => {
       ))}
       <div
         style={{
-          margin: `1.5rem auto 0 `,
+          margin: `1.45rem auto 0 `,
           textAlign: `center`
         }}
       >
-        <Write 
-          href="/member-write"
-          >>>投稿する
-        </Write>
+         {!!user  &&
+         <BottomBar>
+          <a 
+            href="/member-write"
+            style={{
+              borderRadius: `50%`,
+              margin: `0 0 0 auto`,
+              display: `flex`,
+              alignItems: `center`,
+            }}
+          >
+            <CreateIcon 
+              style={{
+                color: `white`,
+                backgroundColor: `#4c9c41`,
+                borderRadius: `50%`,
+                padding: `0.5rem`,
+                height: `3rem`,
+                width: `3rem`,
+              }}
+            />
+          </a>
+        </BottomBar>
+         } 
       </div>
     </div>
-    <br></br>
-    <br></br>
   </section>
   </>
 );

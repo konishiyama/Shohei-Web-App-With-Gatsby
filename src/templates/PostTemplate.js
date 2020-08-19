@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
 import styled from "styled-components"
 import renderHTML from 'react-render-html'
-import { PostComments, PageCover } from '../components/common'
+import { PostComments, PageCover, BottomBar } from '../components/common'
 import { FirebaseContext } from '../components/Firebase';
+import CreateIcon from '@material-ui/icons/Create';
 
 const Container = styled.div`
   width: 100%;
@@ -61,7 +62,7 @@ const Content = styled.p`
 `
 
 const PostTemplate = (props) => {
-  const {firebase} = useContext(FirebaseContext);
+  const {user, firebase} = useContext(FirebaseContext);
   const PostItem = styled.section`
   `
   
@@ -111,6 +112,30 @@ const PostTemplate = (props) => {
             postId= {props.pageContext.id}
           />
         }
+        {!!user  &&
+          <BottomBar>
+          <a 
+            href="/member-write"
+            style={{
+              borderRadius: `50%`,
+              margin: `0 0 0 auto`,
+              display: `flex`,
+              alignItems: `center`,
+            }}
+          >
+            <CreateIcon 
+              style={{
+                color: `white`,
+                backgroundColor: `#4c9c41`,
+                borderRadius: `50%`,
+                padding: `0.5rem`,
+                height: `3rem`,
+                width: `3rem`,
+              }}
+            />
+          </a>
+        </BottomBar>
+         } 
       </div>
     </section>
   )

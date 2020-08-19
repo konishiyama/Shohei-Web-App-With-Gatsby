@@ -25,3 +25,4 @@ export * from './SMallP';
 export * from './ErrorMessage';
 export * from './Message';
 export * from './PostComments';
+export * from './BottomBar';
