@@ -12,7 +12,7 @@ export const ProfileImage = styled.img`
   right: 5vw;
 
   @media (min-width: 1024px) {
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
   }
 `
