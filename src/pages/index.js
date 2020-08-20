@@ -111,7 +111,7 @@ const IndexPage = ({data}) => {
           >>>もっと見る
         </SeeMore>
       </div>
-    <SubTitle>
+    {/* <SubTitle>
       <span>
         Mission
       </span>
@@ -120,7 +120,7 @@ const IndexPage = ({data}) => {
     <br></br>
     <br></br>
     <br></br>
-    <br></br>
+    <br></br> */}
     <SubTitle>
       <span>
         Twitter

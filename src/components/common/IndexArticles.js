@@ -11,6 +11,7 @@ import { Input } from '.';
 const ArticleList = styled.ul`
   list-style: none;
   margin: 0;
+  overflow-x: hidden;
   justify-content: space-between;
   // ul:after{
   //   content:"";
