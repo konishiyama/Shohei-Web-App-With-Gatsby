@@ -15,7 +15,6 @@ exports.createPages = ({graphql, actions}) => {
           title
           date
           content
-          articleNum
         }
       }
     }

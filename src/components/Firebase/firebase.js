@@ -77,10 +77,9 @@ class Firebase {
     })
   }
 
-  async subscribeToAllPosts(){
-    return this.db.collection('memberposts').get()
+  async subscribeToMemberPosts({onSnapshot}){
+    return this.db.collection('memberposts').onSnapshot(onSnapshot)
   }
-
   async subscribeToArticles({onSnapshot}){
     return this.db.collection('articles').onSnapshot(onSnapshot)
   }

@@ -1,10 +1,11 @@
-import React, { useContext } from "react"
-import {  IndexArticles, Articles, Button, SubTitle } from '../components/common';
+import React, { useContext, Component } from "react"
+import {  IndexArticles, IndexMemberPosts, Articles, Button, SubTitle } from '../components/common';
 import styled, { ThemeConsumer } from "styled-components"
+import Slider from "react-slick";
 import {FirebaseContext} from '../components/Firebase';
 
 const Test = (props) => {
-  const { user, firebase } = useContext(FirebaseContext);
+  const { firebase } = useContext(FirebaseContext);
 
   return(
   <>
@@ -16,12 +17,20 @@ const Test = (props) => {
           padding: `0 0.8rem 1.45rem`,
         }}
       >
+      <br></br>
+      <br></br>
+      <br></br>
+      </div>
       {!!firebase &&  
         <IndexArticles
             firebase= {firebase}
           />
         }
-    </div>
+      {!!firebase &&  
+        <IndexMemberPosts
+            firebase= {firebase}
+          />
+        }
   </section>
   </>
 );

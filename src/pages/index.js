@@ -1,9 +1,7 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import {  SubTitle, Button } from '../components/common';
-import PostRoll from "../components/PostRoll"
+import {  IndexArticles, IndexMemberPosts, SubTitle, Button } from '../components/common';
 import { graphql } from "gatsby"
-import ArticleRoll from "../components/ArticleRoll"
 import {FirebaseContext} from '../components/Firebase';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
@@ -14,21 +12,6 @@ const CoverPic = styled.img`
   padding: 0 0 0;
   height: 630px;
   object-fit: cover;
-`
-
-const ArticleList = styled.ul`
-  display: flex;
-  list-style: none;
-  font-size: 14px;
-  margin: 0;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  ul:after{
-    content:"";
-    display:block;
-    width: 160px;
-    height:160px;
-  }
 `
 
 const SeeMore = styled.a`
@@ -49,26 +32,8 @@ const fadeProperties = {
   arrows: false,
 }
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({data}) => {
   const { user, firebase } = useContext(FirebaseContext);
-  const allArticles = data.allArticle.edges;
-  const articlesOrdered = allArticles.sort(function(a, b) {
-    if (a.node.articleNum < b.node.articleNum) {
-        return 1;
-    } else {
-        return -1;
-    }
-  });
-  const latestPosts = articlesOrdered.slice(0,4);
-  const allMemberPosts = data.allMemberPost.edges;
-  const memberPostsOrdered = allMemberPosts.sort(function(a, b) {
-    if (a.node.postNum < b.node.postNum) {
-        return 1;
-    } else {
-        return -1;
-    }
-  });
-  const latestMemberPosts = memberPostsOrdered.slice(0,6);
 
   return(
   <>
@@ -99,16 +64,11 @@ const IndexPage = ({ data }) => {
           Community
         </span>
       </SubTitle>
-      {latestMemberPosts.map(edge => (
-        <PostRoll 
-          title = {edge.node.title}
-          id = {edge.node.id}
-          date = {edge.node.date}
-          username = {edge.node.username}
-          userPhoto = {edge.node.userPhoto}
-          postNum = {edge.node.postNum}
-        />
-      ))}
+      {!!firebase &&  
+      <IndexMemberPosts
+        firebase= {firebase}
+      />
+      }
       <div
           style={{
             margin: `2.5rem auto 0 `,
@@ -132,24 +92,24 @@ const IndexPage = ({ data }) => {
     <br></br>
     <br></br>
     <br></br>
-
+    </div>
     <SubTitle>
       <span>
          Recent Posts
       </span>
     </SubTitle>
-    <ArticleList>
-      {latestPosts.map(edge => (
-        <ArticleRoll 
-          title = {edge.node.title}
-          time = {edge.node.time}
-          thumnail = {edge.node.thumnail}
-          id = {edge.node.id}
-          date = {edge.node.date}
-          articleNum = {edge.node.articleNum}
-        />
-      ))}
-    </ArticleList>
+    {!!firebase &&  
+    <IndexArticles
+        firebase= {firebase}
+      />
+    }
+     <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `0 0.8rem 1.45rem`,
+        }}
+      >
       <div
         style={{
           margin: `1.5rem auto 0 `,
@@ -161,16 +121,6 @@ const IndexPage = ({ data }) => {
           >>>もっと見る
         </SeeMore>
       </div>
-    {/* <SubTitle>
-      <span>
-        News
-      </span>
-    </SubTitle>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br> */}
     <SubTitle>
       <span>
         Twitter

@@ -37,8 +37,10 @@
     "react-render-html": "^0.6.0",
     "react-request": "^3.1.2",
     "react-share": "^4.2.1",
+    "react-slick": "^0.27.9",
     "react-slideshow-image": "^3.0.2",
     "request": "^2.88.2",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

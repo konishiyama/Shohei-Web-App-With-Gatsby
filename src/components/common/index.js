@@ -27,3 +27,5 @@ export * from './Message';
 export * from './PostComments';
 export * from './BottomBar';
 export * from './IndexArticles';
+export * from './BlogPageArticles';
+export * from './IndexMemberPosts';

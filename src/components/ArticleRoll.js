@@ -4,15 +4,14 @@ import { Link } from "gatsby"
 
 
 const EachArticle = styled.li`
-  margin: 0 auto 1rem;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 0.5rem 0.2rem 1rem;
+  margin: 0 auto 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  width: 90%;
 `
 
 const Container = styled.div`
-  width: 90%;
+  width: 100%;
   text-align: center;
-  margin: 0 auto;
 
   p{
     text-align: left;
@@ -23,17 +22,25 @@ const Container = styled.div`
 
 const ImgContainer = styled.div`
   width: 100%;
-  height: 50%;
   margin: 0 auto;
-  border-radius: 4px;
   `
 
 const Thumnail = styled.img`
   width: 100%;
-  height: 70%;
+  height: 10rem;
   object-fit: cover;
 `
+
+const TextContainer = styled.div`
+  width: 90%;
+  margin: 0.5rem auto;
+`
+
 const Title = styled.h3`
+  padding-top: 0.5rem;
+  height: 3.4em
+  font-size: 18px;
+  line-height: 1.6;
   width: 100%;
   text-decoration: none;
   font-size: 18px;
@@ -45,6 +52,13 @@ const Title = styled.h3`
     color: #4c9c41;
     transition: all 0.4s ease-in;
   }
+`
+
+const Date = styled.p`
+  width: 100%;
+  text-decoration: none;
+  letter-spacing: normal;
+  padding-bottom: 0.7rem;
 `
 
 const ArticleRoll = (props) => {
@@ -60,8 +74,10 @@ const ArticleRoll = (props) => {
             <ImgContainer>
               <Thumnail src={props.thumnail}></Thumnail>
             </ImgContainer>
-            <Title>{props.title}</Title>
-            <p>{props.date}</p>
+            <TextContainer>
+              <Title>{props.title}</Title>
+              <Date>{props.date}</Date>
+            </TextContainer>
           </Container>
         </Link>
       </EachArticle>

@@ -1,34 +1,26 @@
-import React, { useContext, useState, useEffect, Component } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import styled, { ThemeConsumer } from "styled-components"
-import ArticleRoll from "../ArticleRoll";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import ArticleRoll from "../ArticleRoll"
 import {FirebaseContext} from '../Firebase';
 import { Input } from '.';
 
 
 const ArticleList = styled.ul`
+  display: flex;
   list-style: none;
+  font-size: 14px;
   margin: 0;
+  flex-wrap: wrap;
   justify-content: space-between;
-  // ul:after{
-  //   content:"";
-  //   display:block;
-  //   width: 160px;
-  //   height:160px;
-  // }
+  ul:after{
+    content:"";
+    display:block;
+    width: 160px;
+    height:160px;
+  }
 `
 
-export const IndexArticles = ({firebase}) => {
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "40px",
-    slidesToShow: 1,
-    overflow: false,
-  };
+export const BlogPageArticles = ({firebase}) => {
   const[articles, setArticles] = useState([]);
   const articlesOrdered = articles.sort(function(a, b) {
     if (a.articleNum < b.articleNum) {
@@ -37,7 +29,7 @@ export const IndexArticles = ({firebase}) => {
         return -1;
     }
   });
-  const latestArticles = articlesOrdered.slice(0,4);
+  const latestArticles = articlesOrdered.slice(0,12);
 
   useEffect(() => {
     const unsubscribe = firebase.subscribeToArticles({
@@ -69,28 +61,26 @@ export const IndexArticles = ({firebase}) => {
   return(
   <>
   <section>
-    {/* <div
+    <div
         style={{
           margin: `0 auto`,
           maxWidth: 960,
           padding: `0 0.8rem 1.45rem`,
         }}
-      > */}
-          <ArticleList>
-            <Slider {...settings}>
-            {latestArticles.map(article => (
-              <ArticleRoll 
-                title = {article.title}
-                time = {article.time}
-                thumnail = {article.thumnail}
-                id = {article.id}
-                date = {article.date}
-                articleNum = {article.articleNum}
-              />
-            ))} 
-            </Slider>
-          </ArticleList>
-    {/* </div> */}
+      >
+        <ArticleList>
+      {latestArticles.map(article => (
+         <ArticleRoll 
+          title = {article.title}
+          time = {article.time}
+          thumnail = {article.thumnail}
+          id = {article.id}
+          date = {article.date}
+          articleNum = {article.articleNum}
+        />
+      ))}
+       </ArticleList>
+    </div>
   </section>
   </>
 );
