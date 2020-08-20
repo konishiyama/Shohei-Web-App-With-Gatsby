@@ -15,7 +15,7 @@ exports.removeAdminClaim = functions.firestore.document('admin_users/{docID}').o
     if (deletedAdminUser === undefined) return;
     removeAdmin(deletedAdminUser.uid, false);
   });
-  
+
 function modifyAdmin (uid) {
   admin.auth().setCustomUserClaims(uid, {admin: true})
   }
@@ -26,13 +26,9 @@ function removeAdmin (uid) {
 
 const WEBHOOK_URL = 'https://api.netlify.com/build_hooks/5f3bb37c0f4976d8c039f442';
 
-exports.postArticleBuild = functions.firestore.document('articles/{docID}').onCreate(async () => {
-  const response = await request({
+exports.postArticleBuild = functions.firestore.document('articles/{docID}').onCreate(() => {
+  return request({
     uri: WEBHOOK_URL,
     method: 'POST',
-  });
-  if (response.statusCode >= 400) {
-    throw new Error(`HTTP Error: ${response.statusCode}`);
-  }
-  // console.log('SUCCESS! Posted', snap.ref);
+  })
 });

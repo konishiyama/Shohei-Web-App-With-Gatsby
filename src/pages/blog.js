@@ -79,7 +79,6 @@ export const query = graphql`
         thumnail
         title
         date
-        articleNum
       }
     }
   }

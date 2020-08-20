@@ -2,17 +2,21 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import {FirebaseContext} from './Firebase';
 import {navigate} from 'gatsby'
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
 // import { Container } from "react-bootstrap"
 
 
 const Container = styled.div`
-  background-color: #363636;
+  background-color: #fff;
   padding: 1rem 0 1rem;
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
   a{
-    color: #fff;
+    color: #787c7b;
     text-decoration: none;
     &:hover{
-      color: #fff;
+      color: #787c7b;
       transition: all 0.4s ease-in;
     }
   }
@@ -31,10 +35,10 @@ const LogIn = styled.div`
   cursor: pointer;
   font-weight: bold;
   a{
-    color: #fff;
+    color: #787c7b;
     text-decoration: none;
     &:hover{
-      color: #fff;
+      color: #787c7b;
       transition: all 0.4s ease-in;
     }
   }
@@ -46,23 +50,24 @@ const LogOut = styled.span`
   text-decoration: none;
   cursor: pointer;
   font-weight: bold;
-  color: #fff;
+  color: #787c7b;
     &:hover{
-      color: #fff;
+      color: #787c7b;
     }
   `
 
 const ImgContainer = styled.div`
   height: 18px;
-  width: 80%;
+  width: 50%;
   margin: 0 auto 1.5rem;
   display: flex;
   alignItems: center;
 
 `
 
-const Img = styled.img`
-  height: 18px;
+const SNSLink = styled.a`
+  display: flex;
+  align-items: center;
   margin: 0 auto;
 `
 
@@ -85,12 +90,12 @@ const Line = styled.p`
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
-  color: #fff;
+  color: #787c7b;
   a{
-    color: #fff;
+    color: #787c7b;
     text-decoration: none;
     &:hover{
-      color: #fff;
+      color: #787c7b;
       transition: all 0.4s ease-in;
     }
   }
@@ -133,9 +138,23 @@ const Footer = () => {
       </Paragraph1>
 
       <ImgContainer>
-        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ffacebook.svg?alt=media&token=01a3eb41-7aa7-4cc8-ba54-798f088b54d6" href="" target="_blank" alt="Facebook"></Img>
-        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fyoutube.svg?alt=media&token=af3a8aa1-c3d1-4e81-817f-db214d79c2ec" href="" target="_blank" alt="Instagram"></Img>
-        <Img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Ftwitter.svg?alt=media&token=b173455e-d10e-4c38-8a44-952e43d6067a" href="" target="_blank" alt="Twitter"></Img>
+        <SNSLink
+          href=""
+          target="_blank"
+        >
+          <FacebookIcon
+            alt="Facebook"
+            style={{
+
+            }}
+          ></FacebookIcon>
+        </SNSLink>
+        <SNSLink>
+          <YouTubeIcon></YouTubeIcon>
+        </SNSLink>
+        <SNSLink>
+          <TwitterIcon></TwitterIcon>
+        </SNSLink>
       </ImgContainer>
 
       <Paragraph2>

@@ -68,11 +68,15 @@ const IndexPage = ({ data }) => {
         return -1;
     }
   });
-  const latestMemberPosts = memberPostsOrdered.slice(0,10);
+  const latestMemberPosts = memberPostsOrdered.slice(0,6);
 
   return(
   <>
-  <section>
+  <section
+    style={{
+      // backgroundColor: `#f7f9f9`
+    }}
+  >
 
     <Fade {...fadeProperties}>
       <CoverPic src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2Fcover-photo2.jpg?alt=media&token=2e15a9eb-c440-484d-8029-96daabdab65f"/>
@@ -157,7 +161,7 @@ const IndexPage = ({ data }) => {
           >>>もっと見る
         </SeeMore>
       </div>
-    <SubTitle>
+    {/* <SubTitle>
       <span>
         News
       </span>
@@ -166,7 +170,7 @@ const IndexPage = ({ data }) => {
     <br></br>
     <br></br>
     <br></br>
-    <br></br>
+    <br></br> */}
     <SubTitle>
       <span>
         Twitter
@@ -193,23 +197,42 @@ const IndexPage = ({ data }) => {
         Instagram
       </span>
     </SubTitle>
-    <a 
-    href="https://www.instagram.com/dlwlrma/?hl=ja"
-    target= "_blank"
-    >
-      <img src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FInstagram-thumnail.png?alt=media&token=7a577e36-5c8f-43d9-9032-4911cac0b762"></img>
-    </a>
     <div
       style={{
-        margin: `1.5rem auto 3rem`,
-        textAlign: `center`
+        // border: `1px solid #e2e8f0`,
+        borderRadius: `5px`,
+        width: `100%`,
+        backgroundColor: `#fff`,
+        padding: `1rem 0.5rem 1rem`
       }}
     >
-      <SeeMore 
-        href="https://www.instagram.com/dlwlrma/?hl=ja"
-        target= "_blank"
-      > >>もっと見る
-      </SeeMore>
+      <a 
+      href="https://www.instagram.com/dlwlrma/?hl=ja"
+      target= "_blank"
+      style={{
+        // border: `0 solid #e2e8f0`,
+        borderRadius: `5px`
+      }}
+      >
+        <img 
+          src="https://firebasestorage.googleapis.com/v0/b/shohei-s-webapp-with-gatsby.appspot.com/o/site_default_images%2FInstagram-thumnail.png?alt=media&token=7a577e36-5c8f-43d9-9032-4911cac0b762"
+          style={{
+            borderRadius: `5px`,
+          }}
+        ></img>
+      </a>
+      <div
+        style={{
+          margin: `0rem auto 1rem`,
+          textAlign: `center`
+        }}
+      >
+        <SeeMore 
+          href="https://www.instagram.com/dlwlrma/?hl=ja"
+          target= "_blank"
+        > >>もっと見る
+        </SeeMore>
+    </div>
     </div>
     </div>
   </section>
@@ -227,7 +250,6 @@ export const query = graphql`
         title
         date
         content
-        articleNum
       }
     }
   }

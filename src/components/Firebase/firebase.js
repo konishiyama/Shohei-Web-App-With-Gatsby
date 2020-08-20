@@ -40,10 +40,6 @@ class Firebase {
     //whereの第一引数はField名であってDocument名ではない。このクエリによってDocumentを持ってきている。
   }
 
-  async getArticleData({onSnapshot}){
-    return this.db.collection('articles').onSnapshot(onSnapshot)
-  }
-
   async getArticleNumbers(){
     return this.db.collection('articles').get();
   }
@@ -83,6 +79,10 @@ class Firebase {
 
   async subscribeToAllPosts(){
     return this.db.collection('memberposts').get()
+  }
+
+  async subscribeToArticles({onSnapshot}){
+    return this.db.collection('articles').onSnapshot(onSnapshot)
   }
 
   async subscribeToPostComments({postId, onSnapshot}){

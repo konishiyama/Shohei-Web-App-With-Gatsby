@@ -111,6 +111,7 @@ const Member = ({data}) => {
                 padding: `0.5rem`,
                 height: `3rem`,
                 width: `3rem`,
+                boxShadow: `rgba(0, 0, 0, 0.4) 0 2px 5px`,
               }}
             />
           </a>

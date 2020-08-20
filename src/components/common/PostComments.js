@@ -58,7 +58,7 @@ export const PostComments = ({firebase, postId}) => {
     const unsubscribe = firebase.subscribeToPostComments({
       postId,
       onSnapshot: (snapshot) => {
-        // console.log(snapshot);
+        console.log(snapshot);
         const snapshotComments = [];
         snapshot.forEach(doc => {
           snapshotComments.push({

@@ -10,7 +10,7 @@ const EachArticle = styled.li`
 `
 
 const Container = styled.div`
-  width: 160px;
+  width: 90%;
   text-align: center;
   margin: 0 auto;
 
@@ -21,12 +21,17 @@ const Container = styled.div`
   }
 `
 
+const ImgContainer = styled.div`
+  width: 100%;
+  height: 50%;
+  margin: 0 auto;
+  border-radius: 4px;
+  `
+
 const Thumnail = styled.img`
   width: 100%;
-  height: 105px;
-  margin-bottom: 0.5rem;
+  height: 70%;
   object-fit: cover;
-
 `
 const Title = styled.h3`
   width: 100%;
@@ -52,9 +57,11 @@ const ArticleRoll = (props) => {
             textDecoration: `none`
           }}>
           <Container>
-            <p>{props.date}</p>
-            <Thumnail src={props.thumnail}></Thumnail>
+            <ImgContainer>
+              <Thumnail src={props.thumnail}></Thumnail>
+            </ImgContainer>
             <Title>{props.title}</Title>
+            <p>{props.date}</p>
           </Container>
         </Link>
       </EachArticle>
