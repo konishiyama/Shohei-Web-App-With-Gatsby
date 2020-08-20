@@ -8,10 +8,18 @@ import 'react-slideshow-image/dist/styles.css';
 
 const CoverPic = styled.img`
   margin: 0;
-  maxWidth: 960;
+  width: 100%;
   padding: 0 0 0;
   height: 630px;
   object-fit: cover;
+
+  @media (min-width: 768px) {
+    height: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    height: 630px;
+  }
 `
 
 const SeeMore = styled.a`

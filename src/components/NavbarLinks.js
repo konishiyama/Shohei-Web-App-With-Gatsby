@@ -38,6 +38,12 @@ const NavItem = styled.a`
     font-size: 1.5rem;
     z-index: 6;
   }
+
+  @media (max-width: 1024px) {
+    padding: 20px 0;
+    font-size: 1.5rem;
+    z-index: 6;
+  }
 `
 
 const Logout = styled.span`
@@ -71,6 +77,12 @@ const Logout = styled.span`
   }
 
   @media (max-width: 768px) {
+    padding: 20px 0;
+    font-size: 1.5rem;
+    z-index: 6;
+  }
+
+  @media (max-width: 1024px) {
     padding: 20px 0;
     font-size: 1.5rem;
     z-index: 6;

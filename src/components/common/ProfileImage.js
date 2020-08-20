@@ -10,4 +10,9 @@ export const ProfileImage = styled.img`
   border-radius: 50%;
   position: absolute;
   right: 5vw;
+
+  @media (min-width: 1024px) {
+    height: 45px;
+    width: 45px;
+  }
 `

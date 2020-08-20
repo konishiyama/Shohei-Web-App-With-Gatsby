@@ -26,6 +26,15 @@ const Navigation = styled.nav`
     right: 0;
     left: 0;
   }
+
+  @media (max-width: 1024px) {
+    position: sticky;
+    height: 6.5vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+  }
 `
 
 const Toggle = styled.div`
@@ -115,7 +124,7 @@ const Header = () => {
         </Navbox>
       )}
 
-      <a href="/"
+      {/* <a href="/"
          style={{
           margin:`0 30px 0 0`,
         }}
@@ -130,7 +139,7 @@ const Header = () => {
           }}
           alt="logoImg"
         ></img>
-      </a>
+      </a> */}
 
       {!!user && 
       <div>

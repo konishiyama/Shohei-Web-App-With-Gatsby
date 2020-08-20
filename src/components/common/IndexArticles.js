@@ -27,8 +27,34 @@ export const IndexArticles = ({firebase}) => {
     centerMode: true,
     infinite: true,
     centerPadding: "40px",
-    slidesToShow: 1,
+    slidesToShow: 4,
     overflow: false,
+    responsive: [
+      // {
+      //   breakpoint: 1500,
+      //   settings: {
+      //     slidesToShow: 4,
+      //   }
+      // },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        }
+      },
+    ]
   };
   const[articles, setArticles] = useState([]);
   const articlesOrdered = articles.sort(function(a, b) {
