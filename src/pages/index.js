@@ -82,16 +82,6 @@ const IndexPage = ({data}) => {
       </div>
       </div>
     }
-    <SubTitle>
-      <span>
-        Mission
-      </span>
-    </SubTitle>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
     </div>
     <SubTitle>
       <span>
@@ -121,6 +111,16 @@ const IndexPage = ({data}) => {
           >>>もっと見る
         </SeeMore>
       </div>
+    <SubTitle>
+      <span>
+        Mission
+      </span>
+    </SubTitle>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
     <SubTitle>
       <span>
         Twitter
